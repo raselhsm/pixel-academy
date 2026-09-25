@@ -5,7 +5,6 @@
 --   orders    bKash/Nagad payments students submit; admins approve or reject
 --   modules   course sections, in order
 --   lessons   videos inside a module; only visible with an approved order
---   legacy_students  buyers imported from the old WordPress site (admin only)
 --
 -- Helper functions live in the `private` schema, which the API doesn't expose.
 
@@ -127,7 +126,7 @@ create index orders_reviewed_by_idx on public.orders (reviewed_by);
 alter table public.orders enable row level security;
 
 -- Students create their own pending order; admins can also grant access
--- directly ('manual' orders, e.g. for buyers from the old site).
+-- directly ('manual' orders, e.g. a free pass).
 create policy "orders: students order, admins grant" on public.orders
   for insert to authenticated
   with check (
@@ -220,37 +219,14 @@ create policy "lessons: admin deletes" on public.lessons
   for delete to authenticated using ((select private.is_admin()));
 
 
--- 5. Buyers from the old WordPress site ------------------------------------------
--- Imported by the admin; when one signs up, the admin panel flags them for
--- one-click access.
-
-create table public.legacy_students (
-  email text primary key check (email = lower(email)),
-  full_name text,
-  phone text,
-  imported_at timestamptz not null default now()
-);
-
-alter table public.legacy_students enable row level security;
-
-create policy "legacy_students: admin reads" on public.legacy_students
-  for select to authenticated using ((select private.is_admin()));
-create policy "legacy_students: admin inserts" on public.legacy_students
-  for insert to authenticated with check ((select private.is_admin()));
-create policy "legacy_students: admin updates" on public.legacy_students
-  for update to authenticated using ((select private.is_admin())) with check ((select private.is_admin()));
-create policy "legacy_students: admin deletes" on public.legacy_students
-  for delete to authenticated using ((select private.is_admin()));
-
-
--- 6. Function permissions --------------------------------------------------------
+-- 5. Function permissions --------------------------------------------------------
 -- Policies need is_admin / has_course_access; nothing else is callable.
 
 revoke execute on all functions in schema private from public, anon, authenticated;
 grant execute on function private.is_admin(), private.has_course_access() to authenticated;
 
 
--- 7. Curriculum: Lightroom Mastery (13 lessons, 8 h 20 min) -----------------------
+-- 6. Curriculum: Lightroom Mastery (13 lessons, 8 h 20 min) -----------------------
 -- Add video links from the site: /admin/content.
 
 with m as (

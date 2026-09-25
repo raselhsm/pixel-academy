@@ -59,14 +59,10 @@ triggers, starter curriculum). The live project already has it; run it only on a
 
 Do these **before** deleting WordPress:
 
-1. **Export the students** who bought on WordPress (Tutor LMS → Students, or WooCommerce →
-   Orders → Export) and paste the list into **/admin/students → পুরনো ওয়েবসাইটের শিক্ষার্থী**.
-   When they sign up here with the same email they're flagged, and **অ্যাক্সেস দিন** gives them
-   the course for free.
-2. **Video links**: copy each lesson's unlisted YouTube link into **/admin/content**.
-3. **Photos**: download anything you want to keep (instructor photo, before/after edits) and
+1. **Video links**: already copied into **/admin/content** (12 on YouTube, lesson 1 on Vimeo).
+2. **Photos**: download anything you want to keep (instructor photo, before/after edits) and
    add it under `public/`, then set `INSTRUCTOR.photo` / `HERO_BEFORE_IMAGE` in `homeContent.js`.
-4. **Deploy** the new site and point the `pixelacademyit.com` domain at it. Old WordPress URLs
+3. **Deploy** the new site and point the `pixelacademyit.com` domain at it. Old WordPress URLs
    (`/courses/...`, `/dashboard/`, `/privacy-policy-2/`, …) redirect to the new pages via
    `public/_redirects`.
 
