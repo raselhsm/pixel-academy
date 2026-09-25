@@ -25,3 +25,8 @@ dist-ssr
 
 # Claude Code local config
 .claude/
+
+# Local environment (Supabase keys etc.)
+.env
+.env.*
+!.env.example

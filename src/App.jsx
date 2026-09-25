@@ -1,39 +1,44 @@
-import UrgencyBar from './sections/UrgencyBar';
-import Navbar from './sections/Navbar';
-import Hero from './sections/Hero';
-import TrustMetrics from './sections/TrustMetrics';
-import Transformation from './sections/Transformation';
-import Gallery from './sections/Gallery';
-import Curriculum from './sections/Curriculum';
-import Bonuses from './sections/Bonuses';
-import Instructor from './sections/Instructor';
-import Pricing from './sections/Pricing';
-import FAQ from './sections/FAQ';
-import Footer from './sections/Footer';
-import MobileStickyBar from './sections/MobileStickyBar';
-import WhatsAppButton from './sections/WhatsAppButton';
+import { lazy, Suspense, useEffect } from 'react';
+import { Route, Routes, useLocation } from 'react-router';
+import { track } from './lib/pixel';
+import Home from './pages/Home';
+import Spinner from './components/ui/Spinner';
+
+// Account pages (and the Supabase client) load only when a visitor goes there,
+// so the landing page from ads stays light.
+const MemberLayout = lazy(() => import('./pages/MemberLayout'));
+const Checkout = lazy(() => import('./pages/Checkout'));
+const Login = lazy(() => import('./pages/Login'));
+const MyCourse = lazy(() => import('./pages/MyCourse'));
+const Admin = lazy(() => import('./pages/Admin'));
+
+function RouteEffects() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    track('PageView');
+  }, [pathname]);
+
+  return null;
+}
 
 export default function App() {
   return (
-    // overflow-x-clip (not hidden) keeps decorative glows from widening the
-    // mobile viewport without breaking the sticky header.
-    <div id="top" className="overflow-x-clip pb-24 md:pb-0">
-      <UrgencyBar />
-      <Navbar />
-      <main>
-        <Hero />
-        <TrustMetrics />
-        <Transformation />
-        <Gallery />
-        <Curriculum />
-        <Bonuses />
-        <Instructor />
-        <Pricing />
-        <FAQ />
-      </main>
-      <Footer />
-      <MobileStickyBar />
-      <WhatsAppButton />
-    </div>
+    <>
+      <RouteEffects />
+      <Suspense fallback={<Spinner />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route element={<MemberLayout />}>
+            <Route path="checkout" element={<Checkout />} />
+            <Route path="login" element={<Login />} />
+            <Route path="my-course" element={<MyCourse />} />
+            <Route path="admin" element={<Admin />} />
+          </Route>
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </Suspense>
+    </>
   );
 }

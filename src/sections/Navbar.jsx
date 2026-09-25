@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router';
+import { CircleUserRound, Menu, X } from 'lucide-react';
 import Logo from '../components/ui/Logo';
 import { NAV_LINKS } from '../data/homeContent';
 
@@ -31,12 +32,19 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <a
-            href="#pricing"
+          <Link
+            to="/login"
+            className="flex items-center gap-1.5 whitespace-nowrap rounded-full border border-slate-700 px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-emerald-500/50 hover:text-white sm:px-4"
+          >
+            <CircleUserRound className="size-4" aria-hidden="true" />
+            লগইন
+          </Link>
+          <Link
+            to="/checkout"
             className="hidden whitespace-nowrap rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 px-6 py-2.5 text-sm font-bold text-slate-950 shadow-lg shadow-emerald-500/25 transition hover:brightness-110 sm:inline-flex"
           >
-            এনরোল করুন →
-          </a>
+            কোর্সটি কিনুন →
+          </Link>
           <button
             type="button"
             onClick={() => setMenuOpen((o) => !o)}

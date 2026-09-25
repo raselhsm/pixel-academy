@@ -1,6 +1,8 @@
+import { Link } from 'react-router';
 import { Check, Flame, Lock } from 'lucide-react';
 import { useCountdown } from '../hooks/useCountdown';
-import { PRICE, PRICING_FEATURES } from '../data/homeContent';
+import { toBnDigits } from '../lib/format';
+import { HOW_TO_BUY, OFFER_ENDS_AT, PRICE, PRICING_FEATURES } from '../data/homeContent';
 
 function TimeBox({ value, label }) {
   return (
@@ -12,29 +14,34 @@ function TimeBox({ value, label }) {
 }
 
 export default function Pricing() {
-  const { hours, minutes, seconds } = useCountdown();
+  const left = useCountdown(OFFER_ENDS_AT);
 
   return (
     <section id="pricing" className="mx-auto max-w-4xl scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20">
       <div className="relative space-y-8 rounded-3xl border-2 border-emerald-500/40 bg-gradient-to-b from-slate-900 to-[#0b1019] p-6 text-center shadow-2xl shadow-emerald-500/10 sm:p-10 lg:p-14">
-        <div className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1 text-xs font-bold text-emerald-400">
-          <Flame className="size-3.5" aria-hidden="true" />
-          স্পেশাল {PRICE.discountLabel} ছাড় চলছে
-        </div>
+        {left && (
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1 text-xs font-bold text-emerald-400">
+            <Flame className="size-3.5" aria-hidden="true" />
+            স্পেশাল {PRICE.discountLabel} ছাড় চলছে
+          </div>
+        )}
 
         <div>
-          <h2 className="text-3xl font-extrabold text-white sm:text-4xl">কোর্সে এখনই এনরোল করুন</h2>
-          <p className="mt-2 text-sm text-slate-400">এককালীন ফি দিয়ে আজীবন অ্যাক্সেস এবং ভিআইপি সাপোর্ট নিশ্চিত করুন</p>
+          <h2 className="text-3xl font-extrabold text-white sm:text-4xl">আজই কোর্সটি কিনুন</h2>
+          <p className="mt-2 text-sm text-slate-400">এককালীন পেমেন্টে লাইফটাইম অ্যাক্সেস — কোনো মাসিক চার্জ নেই</p>
         </div>
 
-        <div role="timer" aria-label="অফার শেষ হতে বাকি সময়">
-          <p className="mb-3 text-xs font-semibold text-slate-400">অফার শেষ হতে বাকি</p>
-          <div className="flex justify-center gap-2 sm:gap-3">
-            <TimeBox value={hours} label="ঘণ্টা" />
-            <TimeBox value={minutes} label="মিনিট" />
-            <TimeBox value={seconds} label="সেকেন্ড" />
+        {left && (
+          <div role="timer" aria-label="অফার শেষ হতে বাকি সময়">
+            <p className="mb-3 text-xs font-semibold text-slate-400">অফার শেষ হতে বাকি</p>
+            <div className="flex justify-center gap-2 sm:gap-3">
+              {left.days > 0 && <TimeBox value={toBnDigits(left.days)} label="দিন" />}
+              <TimeBox value={left.hours} label="ঘণ্টা" />
+              <TimeBox value={left.minutes} label="মিনিট" />
+              <TimeBox value={left.seconds} label="সেকেন্ড" />
+            </div>
           </div>
-        </div>
+        )}
 
         <div className="flex items-baseline justify-center gap-4">
           <span className="font-sans text-xl text-slate-500 line-through sm:text-2xl">
@@ -57,17 +64,31 @@ export default function Pricing() {
         </ul>
 
         <div>
-          {/* TODO: wire to the bKash / Nagad checkout once the payment flow exists. */}
-          <button
-            type="button"
-            className="w-full max-w-md rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 py-4 text-base font-extrabold text-slate-950 shadow-xl shadow-emerald-500/25 transition hover:brightness-110 active:scale-[0.99] sm:text-lg"
+          <Link
+            to="/checkout"
+            className="inline-block w-full max-w-md rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 py-4 text-base font-extrabold text-slate-950 shadow-xl shadow-emerald-500/25 transition hover:brightness-110 active:scale-[0.99] sm:text-lg"
           >
-            বিকাশ / নগদ দিয়ে এখনই শুরু করুন →
-          </button>
+            বিকাশ / নগদ দিয়ে এখনই কিনুন →
+          </Link>
           <p className="mt-3 flex items-center justify-center gap-1.5 text-xs text-slate-400">
             <Lock className="size-3.5" aria-hidden="true" />
-            শতভাগ নিরাপদ ইনস্ট্যান্ট পেমেন্ট ও অটোমেটিক ব্যাচ অ্যাক্সেস
+            পেমেন্ট যাচাই হলেই লগইন করে কোর্স দেখা শুরু করুন
           </p>
+        </div>
+
+        <div className="border-t border-slate-800 pt-8 text-left">
+          <h3 className="mb-5 text-center text-lg font-bold text-white">কীভাবে কিনবেন? মাত্র ৩টি ধাপ</h3>
+          <ol className="grid gap-4 sm:grid-cols-3">
+            {HOW_TO_BUY.map((step, i) => (
+              <li key={step.title} className="rounded-2xl border border-slate-800 bg-slate-950/40 p-4">
+                <span className="flex size-8 items-center justify-center rounded-full bg-emerald-500 font-sans text-sm font-extrabold text-slate-950">
+                  {toBnDigits(i + 1)}
+                </span>
+                <p className="mt-3 font-bold text-white">{step.title}</p>
+                <p className="mt-1 text-sm text-slate-400">{step.text}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     </section>
