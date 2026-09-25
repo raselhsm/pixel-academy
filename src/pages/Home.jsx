@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { track } from '../lib/pixel';
+import { hasStoredSession } from '../lib/session';
 import { PRICE } from '../data/homeContent';
 import UrgencyBar from '../sections/UrgencyBar';
 import Navbar from '../sections/Navbar';
@@ -17,6 +18,8 @@ import MobileStickyBar from '../sections/MobileStickyBar';
 import WhatsAppButton from '../sections/WhatsAppButton';
 
 export default function Home() {
+  const [loggedIn] = useState(hasStoredSession);
+
   useEffect(() => {
     track('ViewContent', { value: PRICE.amount, currency: 'BDT' });
   }, []);
@@ -26,7 +29,7 @@ export default function Home() {
     // mobile viewport without breaking the sticky header.
     <div id="top" className="overflow-x-clip pb-24 md:pb-0">
       <UrgencyBar />
-      <Navbar />
+      <Navbar account={{ loggedIn }} />
       <main>
         <Hero />
         <TrustMetrics />
@@ -40,7 +43,7 @@ export default function Home() {
       </main>
       <Footer />
       <MobileStickyBar />
-      <WhatsAppButton />
+      <WhatsAppButton raised />
     </div>
   );
 }

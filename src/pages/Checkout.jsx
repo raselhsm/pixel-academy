@@ -8,6 +8,7 @@ import { track } from '../lib/pixel';
 import { isValidTrxId, normalizeBdPhone, normalizeTrxId, whatsappLink } from '../lib/format';
 import { COURSE, PAYMENT, PRICE, SUPPORT_PHONE } from '../data/homeContent';
 import Field from '../components/ui/Field';
+import GoogleButton from '../components/auth/GoogleButton';
 import Spinner from '../components/ui/Spinner';
 import OrderSummary from '../components/checkout/OrderSummary';
 import OrderStatus from '../components/checkout/OrderStatus';
@@ -132,7 +133,10 @@ export default function Checkout() {
         const { data, error } = await supabase.auth.signUp({
           email: form.email.trim().toLowerCase(),
           password: form.password,
-          options: { data: { full_name: order.full_name, phone: order.phone } },
+          options: {
+            data: { full_name: order.full_name, phone: order.phone },
+            emailRedirectTo: `${window.location.origin}/checkout`,
+          },
         });
         if (error) {
           fail(
@@ -189,12 +193,15 @@ export default function Checkout() {
               </p>
             ) : (
               needsAccount && (
-                <p className="mb-4 text-sm text-slate-400">
-                  আগে থেকে অ্যাকাউন্ট আছে?{' '}
-                  <Link to="/login?next=/checkout" className="font-semibold text-emerald-400 underline-offset-2 hover:underline">
-                    লগইন করুন
-                  </Link>
-                </p>
+                <>
+                  <GoogleButton next="/checkout" label="Google দিয়ে এক ক্লিকে অ্যাকাউন্ট খুলুন" divider="অথবা নিচের তথ্য দিন" />
+                  <p className="mb-4 text-sm text-slate-400">
+                    আগে থেকে অ্যাকাউন্ট আছে?{' '}
+                    <Link to="/login?next=/checkout" className="font-semibold text-emerald-400 underline-offset-2 hover:underline">
+                      লগইন করুন
+                    </Link>
+                  </p>
+                </>
               )
             )}
             <div className="grid gap-4 sm:grid-cols-2">
