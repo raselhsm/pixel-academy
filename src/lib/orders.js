@@ -4,7 +4,7 @@ import { supabase } from './supabase';
 export async function fetchMyOrder() {
   const { data } = await supabase
     .from('orders')
-    .select('status, trx_id, created_at')
+    .select('status, trx_id, note, created_at')
     .order('created_at', { ascending: false });
   const orders = data ?? [];
   return orders.find((o) => o.status === 'approved') ?? orders[0] ?? null;

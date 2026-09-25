@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight, CirclePlay, Clock } from 'lucide-react';
 import { useAuth } from '../auth/context';
 import { supabase } from '../lib/supabase';
 import { fetchMyOrder } from '../lib/orders';
+import { fetchCourseContent } from '../lib/course';
 import { toEmbed } from '../lib/video';
 import { toBnDigits } from '../lib/format';
 import { COURSE } from '../data/homeContent';
@@ -37,19 +38,15 @@ function Player({ lesson }) {
   );
 }
 
-function CoursePlayer({ lessons }) {
+function CoursePlayer({ modules }) {
+  // One flat, ordered list for prev/next; each lesson remembers its module number.
+  const lessons = useMemo(
+    () => modules.flatMap((m, mi) => m.lessons.map((l) => ({ ...l, moduleNo: mi + 1 }))),
+    [modules],
+  );
   const [currentId, setCurrentId] = useState(lessons[0]?.id);
   const index = Math.max(0, lessons.findIndex((l) => l.id === currentId));
   const lesson = lessons[index];
-
-  const modules = useMemo(() => {
-    const byModule = new Map();
-    for (const l of lessons) {
-      if (!byModule.has(l.module_no)) byModule.set(l.module_no, { title: l.module_title, lessons: [] });
-      byModule.get(l.module_no).lessons.push(l);
-    }
-    return [...byModule.entries()];
-  }, [lessons]);
 
   if (!lesson) {
     return <p className="px-4 py-16 text-center text-slate-400">কোর্সের লেসনগুলো শীঘ্রই যোগ করা হবে।</p>;
@@ -67,7 +64,7 @@ function CoursePlayer({ lessons }) {
         <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <p className="text-xs font-semibold text-emerald-400">
-              মডিউল {toBnDigits(lesson.module_no)} • লেসন {toBnDigits(index + 1)}/{toBnDigits(lessons.length)}
+              মডিউল {toBnDigits(lesson.moduleNo)} • লেসন {toBnDigits(index + 1)}/{toBnDigits(lessons.length)}
             </p>
             <h1 className="mt-1 text-xl font-bold text-white sm:text-2xl">{lesson.title}</h1>
           </div>
@@ -94,10 +91,10 @@ function CoursePlayer({ lessons }) {
 
       <aside className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50 lg:max-h-[calc(100dvh-8rem)] lg:overflow-y-auto">
         <h2 className="border-b border-slate-800 px-5 py-4 font-bold text-white">{COURSE.title}</h2>
-        {modules.map(([moduleNo, mod]) => (
-          <div key={moduleNo} className="border-b border-slate-800/70 last:border-0">
+        {modules.map((mod, mi) => (
+          <div key={mod.id} className="border-b border-slate-800/70 last:border-0">
             <p className="bg-slate-950/40 px-5 py-2.5 text-xs font-semibold text-slate-400">
-              মডিউল {toBnDigits(moduleNo)}: {mod.title}
+              মডিউল {toBnDigits(mi + 1)}: {mod.title}
             </p>
             <ul>
               {mod.lessons.map((l) => {
@@ -136,16 +133,8 @@ export default function MyCourse() {
     let cancelled = false;
     (async () => {
       const order = await fetchMyOrder();
-      let lessons = [];
-      if (order?.status === 'approved') {
-        const { data } = await supabase
-          .from('lessons')
-          .select('id, module_no, module_title, position, title, video_url')
-          .order('module_no')
-          .order('position');
-        lessons = data ?? [];
-      }
-      if (!cancelled) setResult({ userId, order, lessons });
+      const modules = order?.status === 'approved' ? await fetchCourseContent() : [];
+      if (!cancelled) setResult({ userId, order, modules });
     })();
     return () => {
       cancelled = true;
@@ -157,7 +146,7 @@ export default function MyCourse() {
   if (!user) return <Navigate to="/login?next=/my-course" replace />;
   if (result?.userId !== userId) return <Spinner label="আপনার কোর্স লোড হচ্ছে…" />;
 
-  const { order, lessons } = result;
+  const { order, modules } = result;
   if (!order) {
     return (
       <div className="mx-auto max-w-md px-4 py-16 text-center">
@@ -171,5 +160,5 @@ export default function MyCourse() {
   }
   if (order.status !== 'approved') return <OrderStatus order={order} />;
 
-  return <CoursePlayer lessons={lessons} />;
+  return <CoursePlayer modules={modules} />;
 }

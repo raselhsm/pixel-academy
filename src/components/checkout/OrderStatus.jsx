@@ -34,6 +34,11 @@ export default function OrderStatus({ order }) {
         <Icon className="mx-auto size-12" aria-hidden="true" />
         <h1 className="mt-4 text-2xl font-bold text-white">{title}</h1>
         <p className="mt-3 text-sm leading-relaxed text-slate-300">{text}</p>
+        {order.status === 'rejected' && order.note && (
+          <p className="mt-3 rounded-xl bg-slate-950/40 px-4 py-2.5 text-sm text-white">
+            <span className="text-slate-400">কারণ:</span> {order.note}
+          </p>
+        )}
         <p className="mt-4 font-sans text-xs text-slate-400">
           TrxID: <span className="font-bold text-slate-200">{order.trx_id}</span>
         </p>

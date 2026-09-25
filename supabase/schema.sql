@@ -1,42 +1,49 @@
--- Pixel Academy: run once in Supabase Dashboard → SQL Editor.
--- Students sign up at checkout, submit a bKash/Nagad TrxID as an order,
--- and can watch lessons once an admin approves that order.
+-- Pixel Academy database — the complete schema for a fresh Supabase project.
+-- Run once in Supabase Dashboard → SQL Editor. (The live project already has it.)
+--
+--   profiles  one row per account (name, phone, email, is_admin)
+--   orders    bKash/Nagad payments students submit; admins approve or reject
+--   modules   course sections, in order
+--   lessons   videos inside a module; only visible with an approved order
+--
+-- Helper functions live in the `private` schema, which the API doesn't expose.
 
--- Helper functions live in `private`, which the API doesn't expose, so they
--- can't be called directly over REST.
 create schema if not exists private;
 grant usage on schema private to authenticated;
 
--- Profiles ------------------------------------------------------------------
+
+-- 1. Admin accounts ----------------------------------------------------------
+-- An address listed here becomes admin once it's verified (confirmation link
+-- or Google), so nobody can claim admin by signing up with it first.
+
+create table private.admin_emails (
+  email text primary key check (email = lower(email))
+);
+
+insert into private.admin_emails (email) values ('pixelacademyit@gmail.com');
+
+create function private.qualifies_as_admin(p_email text, p_confirmed_at timestamptz)
+returns boolean
+language sql stable
+security definer set search_path = ''
+as $$
+  select p_confirmed_at is not null
+     and exists (select 1 from private.admin_emails where email = lower(p_email));
+$$;
+
+
+-- 2. Profiles ------------------------------------------------------------------
 
 create table public.profiles (
   id uuid primary key references auth.users on delete cascade,
   full_name text,
   phone text,
+  email text,
   is_admin boolean not null default false,
   created_at timestamptz not null default now()
 );
 
 alter table public.profiles enable row level security;
-
--- Copies name/phone from sign-up metadata. is_admin is never taken from metadata.
-create function private.handle_new_user()
-returns trigger
-language plpgsql
-security definer set search_path = ''
-as $$
-begin
-  insert into public.profiles (id, full_name, phone)
-  values (new.id, new.raw_user_meta_data ->> 'full_name', new.raw_user_meta_data ->> 'phone');
-  return new;
-end;
-$$;
-
-create trigger on_auth_user_created
-  after insert on auth.users
-  for each row execute function private.handle_new_user();
-
-revoke execute on function private.handle_new_user() from public, anon, authenticated;
 
 create function private.is_admin()
 returns boolean
@@ -51,7 +58,50 @@ create policy "profiles: read own or admin" on public.profiles
   for select to authenticated
   using (id = (select auth.uid()) or (select private.is_admin()));
 
--- Orders --------------------------------------------------------------------
+-- Name/phone come from sign-up data (Google sends `name`); is_admin never does.
+create function private.handle_new_user()
+returns trigger
+language plpgsql
+security definer set search_path = ''
+as $$
+begin
+  insert into public.profiles (id, full_name, phone, email, is_admin)
+  values (
+    new.id,
+    coalesce(new.raw_user_meta_data ->> 'full_name', new.raw_user_meta_data ->> 'name'),
+    new.raw_user_meta_data ->> 'phone',
+    new.email,
+    private.qualifies_as_admin(new.email, new.email_confirmed_at)
+  );
+  return new;
+end;
+$$;
+
+create trigger on_auth_user_created
+  after insert on auth.users
+  for each row execute function private.handle_new_user();
+
+-- Keeps the email in sync and grants admin once a listed address is verified.
+create function private.handle_user_updated()
+returns trigger
+language plpgsql
+security definer set search_path = ''
+as $$
+begin
+  update public.profiles
+  set email = new.email,
+      is_admin = is_admin or private.qualifies_as_admin(new.email, new.email_confirmed_at)
+  where id = new.id;
+  return new;
+end;
+$$;
+
+create trigger on_auth_user_updated
+  after update of email, email_confirmed_at on auth.users
+  for each row execute function private.handle_user_updated();
+
+
+-- 3. Orders --------------------------------------------------------------------
 
 create table public.orders (
   id bigint generated always as identity primary key,
@@ -63,12 +113,15 @@ create table public.orders (
   trx_id text not null unique,
   amount integer not null,
   status text not null default 'pending' check (status in ('pending', 'approved', 'rejected')),
+  note text, -- shown to the student, e.g. why a payment was rejected
   created_at timestamptz not null default now(),
-  reviewed_at timestamptz
+  reviewed_at timestamptz,
+  reviewed_by uuid references auth.users on delete set null
 );
 
 create index orders_user_id_idx on public.orders (user_id);
 create index orders_status_idx on public.orders (status, created_at desc);
+create index orders_reviewed_by_idx on public.orders (reviewed_by);
 
 alter table public.orders enable row level security;
 
@@ -85,6 +138,25 @@ create policy "orders: admin reviews" on public.orders
   using ((select private.is_admin()))
   with check ((select private.is_admin()));
 
+-- Records who approved/rejected and when, whenever the status changes.
+create function private.stamp_order_review()
+returns trigger
+language plpgsql
+set search_path = ''
+as $$
+begin
+  if new.status is distinct from old.status then
+    new.reviewed_at := now();
+    new.reviewed_by := auth.uid();
+  end if;
+  return new;
+end;
+$$;
+
+create trigger orders_stamp_review
+  before update on public.orders
+  for each row execute function private.stamp_order_review();
+
 create function private.has_course_access()
 returns boolean
 language sql stable
@@ -95,44 +167,84 @@ as $$
   );
 $$;
 
-revoke execute on function private.is_admin(), private.has_course_access() from public, anon;
-grant execute on function private.is_admin(), private.has_course_access() to authenticated;
 
--- Lessons -------------------------------------------------------------------
+-- 4. Course content ------------------------------------------------------------
+
+create table public.modules (
+  id bigint generated always as identity primary key,
+  position integer not null,
+  title text not null,
+  created_at timestamptz not null default now()
+);
 
 create table public.lessons (
   id bigint generated always as identity primary key,
-  module_no integer not null,
-  module_title text not null,
+  module_id bigint not null references public.modules on delete cascade,
   position integer not null,
   title text not null,
   video_url text,
-  unique (module_no, position)
+  created_at timestamptz not null default now()
 );
 
+create index lessons_module_id_idx on public.lessons (module_id, position);
+
+alter table public.modules enable row level security;
 alter table public.lessons enable row level security;
+
+-- Module titles are the public curriculum.
+create policy "modules: anyone can read" on public.modules
+  for select to anon, authenticated using (true);
+create policy "modules: admin inserts" on public.modules
+  for insert to authenticated with check ((select private.is_admin()));
+create policy "modules: admin updates" on public.modules
+  for update to authenticated using ((select private.is_admin())) with check ((select private.is_admin()));
+create policy "modules: admin deletes" on public.modules
+  for delete to authenticated using ((select private.is_admin()));
 
 -- Video links are only visible to students with an approved order (and admins).
 create policy "lessons: paid students and admins" on public.lessons
   for select to authenticated
   using ((select private.has_course_access()) or (select private.is_admin()));
+create policy "lessons: admin inserts" on public.lessons
+  for insert to authenticated with check ((select private.is_admin()));
+create policy "lessons: admin updates" on public.lessons
+  for update to authenticated using ((select private.is_admin())) with check ((select private.is_admin()));
+create policy "lessons: admin deletes" on public.lessons
+  for delete to authenticated using ((select private.is_admin()));
 
--- Starter lessons from the curriculum. Paste each lesson's video link into
--- video_url (Table Editor → lessons), e.g. an unlisted YouTube URL.
-insert into public.lessons (module_no, module_title, position, title) values
-  (1, 'লাইটরুম ইন্টারফেস, ক্যাটালগ ও RAW প্রসেসিং', 1, 'ক্যাটালগ সেটআপ ও ফাস্ট ইমপোর্ট মেথড'),
-  (1, 'লাইটরুম ইন্টারফেস, ক্যাটালগ ও RAW প্রসেসিং', 2, 'হিস্টোগ্রাম ও বেসিক প্যানেল ব্যালেন্স'),
-  (1, 'লাইটরুম ইন্টারফেস, ক্যাটালগ ও RAW প্রসেসিং', 3, 'হোয়াইট ব্যালেন্সের প্রফেশনাল শর্টকাট'),
-  (2, 'টোন কার্ভ ও কালার গ্রেডিং ম্যাস্টারি', 1, 'RGB Curve দিয়ে সিনেমাটিক ম্যাট লুক'),
-  (2, 'টোন কার্ভ ও কালার গ্রেডিং ম্যাস্টারি', 2, 'HSL প্যানেল ও স্কিন টোন প্রটেকশন'),
-  (2, 'টোন কার্ভ ও কালার গ্রেডিং ম্যাস্টারি', 3, 'Color Grading হুইল: শ্যাডো, মিডটোন, হাইলাইটস'),
-  (3, 'AI মাস্কিং ও অ্যাডভান্সড স্কিন রিটাচিং', 1, 'AI মাস্কিং: সাবজেক্ট, ব্যাকগ্রাউন্ড ও স্কিন'),
-  (3, 'AI মাস্কিং ও অ্যাডভান্সড স্কিন রিটাচিং', 2, 'ন্যাচারাল ডজ অ্যান্ড বার্ন'),
-  (3, 'AI মাস্কিং ও অ্যাডভান্সড স্কিন রিটাচিং', 3, 'চোখ, দাঁত ও হেয়ার রিটাচিং'),
-  (4, 'ফাইভার, আপওয়ার্ক ও ফ্রিল্যান্সিং রোডম্যাপ', 1, 'ফাইভার গিগ ও কি-ওয়ার্ড অপটিমাইজেশন'),
-  (4, 'ফাইভার, আপওয়ার্ক ও ফ্রিল্যান্সিং রোডম্যাপ', 2, 'হাই-পেয়িং ক্লায়েন্টদের জন্য পোর্টফোলিও'),
-  (4, 'ফাইভার, আপওয়ার্ক ও ফ্রিল্যান্সিং রোডম্যাপ', 3, 'ব্যাংক ও বিকাশে পেমেন্ট নেওয়ার গাইড');
 
--- Make yourself admin after signing up once on the site:
---   update public.profiles set is_admin = true
---   where id = (select id from auth.users where email = 'you@example.com');
+-- 5. Function permissions --------------------------------------------------------
+-- Policies need is_admin / has_course_access; nothing else is callable.
+
+revoke execute on all functions in schema private from public, anon, authenticated;
+grant execute on function private.is_admin(), private.has_course_access() to authenticated;
+
+
+-- 6. Starter curriculum ------------------------------------------------------------
+-- Edit titles and add video links from the site: /admin/content.
+
+with m as (
+  insert into public.modules (position, title) values
+    (1, 'লাইটরুম ইন্টারফেস, ক্যাটালগ ও RAW প্রসেসিং'),
+    (2, 'টোন কার্ভ ও কালার গ্রেডিং ম্যাস্টারি'),
+    (3, 'AI মাস্কিং ও অ্যাডভান্সড স্কিন রিটাচিং'),
+    (4, 'ফাইভার, আপওয়ার্ক ও ফ্রিল্যান্সিং রোডম্যাপ')
+  returning id, position
+)
+insert into public.lessons (module_id, position, title)
+select m.id, l.position, l.title
+from m
+join (values
+  (1, 1, 'ক্যাটালগ সেটআপ ও ফাস্ট ইমপোর্ট মেথড'),
+  (1, 2, 'হিস্টোগ্রাম ও বেসিক প্যানেল ব্যালেন্স'),
+  (1, 3, 'হোয়াইট ব্যালেন্সের প্রফেশনাল শর্টকাট'),
+  (2, 1, 'RGB Curve দিয়ে সিনেমাটিক ম্যাট লুক'),
+  (2, 2, 'HSL প্যানেল ও স্কিন টোন প্রটেকশন'),
+  (2, 3, 'Color Grading হুইল: শ্যাডো, মিডটোন, হাইলাইটস'),
+  (3, 1, 'AI মাস্কিং: সাবজেক্ট, ব্যাকগ্রাউন্ড ও স্কিন'),
+  (3, 2, 'ন্যাচারাল ডজ অ্যান্ড বার্ন'),
+  (3, 3, 'চোখ, দাঁত ও হেয়ার রিটাচিং'),
+  (4, 1, 'ফাইভার গিগ ও কি-ওয়ার্ড অপটিমাইজেশন'),
+  (4, 2, 'হাই-পেয়িং ক্লায়েন্টদের জন্য পোর্টফোলিও'),
+  (4, 3, 'ব্যাংক ও বিকাশে পেমেন্ট নেওয়ার গাইড')
+) as l (module_position, position, title) on l.module_position = m.position;
