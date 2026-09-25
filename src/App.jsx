@@ -13,12 +13,19 @@ const MyCourse = lazy(() => import('./pages/MyCourse'));
 const Admin = lazy(() => import('./pages/Admin'));
 
 function RouteEffects() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
     track('PageView');
   }, [pathname]);
+
+  useEffect(() => {
+    // Section links like /#pricing from other pages; ignore auth tokens in the hash.
+    const target = /^#[\w-]+$/.test(hash) && document.getElementById(hash.slice(1));
+    // Instant: arriving on a new page shouldn't animate through the whole document.
+    if (target) target.scrollIntoView({ behavior: 'instant' });
+    else window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [pathname, hash]);
 
   return null;
 }
