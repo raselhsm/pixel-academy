@@ -3,7 +3,7 @@ import { Check, Flame, Lock, PlayCircle } from 'lucide-react';
 import BeforeAfterSlider from '../components/ui/BeforeAfterSlider';
 import { useCountdown } from '../hooks/useCountdown';
 import { toBnDigits } from '../lib/format';
-import { COURSE, COURSE_INCLUDES, HERO_IMAGE, OFFER_ENDS_AT, PRICE, SUPPORT_PHONE } from '../data/homeContent';
+import { COURSE, COURSE_INCLUDES, HERO_BEFORE_IMAGE, HERO_IMAGE, OFFER_ENDS_AT, PRICE, SUPPORT_PHONE } from '../data/homeContent';
 
 export default function CourseCard() {
   const left = useCountdown(OFFER_ENDS_AT);
@@ -11,14 +11,14 @@ export default function CourseCard() {
   return (
     <div className="overflow-hidden rounded-3xl border border-slate-700/70 bg-slate-900 shadow-2xl shadow-emerald-500/10 ring-1 ring-white/5">
       <div className="relative p-2.5 pb-0">
-        <BeforeAfterSlider image={HERO_IMAGE} alt="ওয়েডিং ফটো" className="aspect-[4/3] w-full" />
+        <BeforeAfterSlider image={HERO_IMAGE} beforeImage={HERO_BEFORE_IMAGE} alt="ওয়েডিং ফটো" className="aspect-[4/3] w-full" />
         <p className="px-1 pt-2 text-center text-[11px] text-slate-400">↔ টেনে দেখুন: এডিটের আগে ও পরে</p>
       </div>
 
       <div className="space-y-5 p-5 sm:p-6">
         <div>
           <span className="inline-flex items-center gap-1.5 rounded-md bg-emerald-500/10 px-2 py-1 text-xs font-bold text-emerald-400">
-            <PlayCircle className="size-3.5" aria-hidden="true" /> {COURSE.format} • লাইফটাইম অ্যাক্সেস
+            <PlayCircle className="size-3.5" aria-hidden="true" /> {COURSE.title} • {COURSE.format}
           </span>
           <div className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1 font-sans">
             <span className="text-4xl font-extrabold text-white">{PRICE.offer}</span>

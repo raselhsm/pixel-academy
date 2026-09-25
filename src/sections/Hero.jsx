@@ -1,6 +1,6 @@
 import { ChevronDown, MonitorPlay, Star } from 'lucide-react';
 import CourseCard from './CourseCard';
-import { COURSE, STUDENT_AVATARS } from '../data/homeContent';
+import { COURSE, SOCIAL_PROOF } from '../data/homeContent';
 
 const HIGHLIGHTS = ['নিজের সময়ে শিখুন', 'মোবাইল ও ল্যাপটপে দেখুন', 'প্রিসেট ও RAW ফাইল ফ্রি'];
 
@@ -29,8 +29,8 @@ export default function Hero() {
           </h1>
 
           <p className="max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
-            কোনো পূর্ব অভিজ্ঞতা ছাড়াই বেসিক RAW প্রসেসিং থেকে শুরু করে হাই-এন্ড ওয়েডিং কালার গ্রেডিং ও স্কিন রিটাচিং
-            শিখুন। সাথে থাকছে ফাইভার ও আপওয়ার্কে ক্লায়েন্ট পাওয়ার কমপ্লিট রোডম্যাপ।
+            কোনো পূর্ব অভিজ্ঞতা ছাড়াই লাইটরুমের বেসিক থেকে কালিং, কালার কারেকশন, প্রিসেট তৈরি ও রিয়েল ওয়েডিং
+            প্রজেক্ট শিখুন। সাথে থাকছে ফাইভারে অ্যাকাউন্ট খুলে গিগ পাবলিশ করে ক্লায়েন্ট পাওয়ার গাইড।
           </p>
         </div>
 
@@ -51,18 +51,17 @@ export default function Hero() {
 
           <div className="flex flex-wrap items-center gap-4 border-t border-slate-800/80 pt-5">
             <div className="flex -space-x-3">
-              {STUDENT_AVATARS.map((src) => (
-                <img
-                  key={src}
-                  src={src}
-                  alt=""
-                  width={40}
-                  height={40}
-                  className="size-10 rounded-full border-2 border-slate-900 object-cover"
-                />
+              {SOCIAL_PROOF.initials.map((letter, i) => (
+                <span
+                  key={letter + i}
+                  aria-hidden="true"
+                  className="flex size-10 items-center justify-center rounded-full border-2 border-slate-900 bg-gradient-to-br from-slate-700 to-slate-800 text-sm font-bold text-slate-200"
+                >
+                  {letter}
+                </span>
               ))}
-              <div className="flex size-10 items-center justify-center rounded-full border-2 border-slate-900 bg-emerald-950 font-sans text-xs font-bold text-emerald-400">
-                +1.2k
+              <div className="flex size-10 items-center justify-center rounded-full border-2 border-slate-900 bg-emerald-950 text-xs font-bold text-emerald-400">
+                {SOCIAL_PROOF.students}
               </div>
             </div>
             <div>
@@ -70,9 +69,10 @@ export default function Hero() {
                 {Array.from({ length: 5 }, (_, i) => (
                   <Star key={i} className="size-3.5 fill-current" aria-hidden="true" />
                 ))}
-                <span className="ml-1.5 font-sans font-bold text-white">4.9/5</span>
+                <span className="ml-1.5 font-sans font-bold text-white">{SOCIAL_PROOF.rating}/5</span>
+                <span className="ml-1 text-xs text-slate-400">({SOCIAL_PROOF.reviews})</span>
               </div>
-              <p className="text-xs text-slate-400">১২৫০+ শিক্ষার্থী ইতিমধ্যে কোর্সটি করেছেন</p>
+              <p className="text-xs text-slate-400">{SOCIAL_PROOF.students} শিক্ষার্থী ইতিমধ্যে কোর্সটিতে ভর্তি হয়েছেন</p>
             </div>
           </div>
 

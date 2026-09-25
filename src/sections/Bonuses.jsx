@@ -9,10 +9,10 @@ export default function Bonuses() {
         <SectionHeading
           eyebrow="Free Perks"
           title="কোর্সের সাথে সম্পূর্ণ ফ্রি পাচ্ছেন"
-          subtitle="যার মোট বাজারমূল্য ৭,৫০০ টাকারও বেশি"
+          subtitle="কোনো অতিরিক্ত খরচ ছাড়াই, কোর্সের সাথেই"
         />
         <ul className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
-          {BONUSES.map(({ value, title, description }, i) => (
+          {BONUSES.map(({ title, description }, i) => (
             <li
               key={title}
               className={`space-y-3 rounded-2xl border border-slate-800 bg-slate-900/70 p-6 transition hover:border-emerald-500/30 ${
@@ -24,7 +24,7 @@ export default function Bonuses() {
                   <Gift className="size-5" aria-hidden="true" />
                 </span>
                 <span className="rounded border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-xs font-bold text-emerald-400">
-                  মূল্য: <s className="decoration-emerald-400/60">{value}</s> ফ্রি
+                  কোর্সের সাথে ফ্রি
                 </span>
               </div>
               <h3 className="text-lg font-bold text-white">{title}</h3>

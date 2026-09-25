@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { Check, MessageCircle, Phone, RotateCcw, X } from 'lucide-react';
 import CopyButton from '../ui/CopyButton';
 import { buttonStyles, inputStyles } from './styles';
-import { STATUS, formatDateTime } from './orderMeta';
+import { METHOD_LABELS, STATUS, formatDateTime } from './orderMeta';
 import { toBnDigits, whatsappLink } from '../../lib/format';
-import { COURSE, PAYMENT, PRICE } from '../../data/homeContent';
+import { COURSE, PRICE } from '../../data/homeContent';
 
 const REJECT_REASONS = ['TrxID মেলেনি', 'টাকার পরিমাণ কম', 'এই নম্বর থেকে পেমেন্ট আসেনি'];
 
@@ -28,7 +28,8 @@ export default function OrderCard({ order, onReview }) {
     order.status === 'rejected'
       ? `আসসালামু আলাইকুম ${order.full_name}, আপনার TrxID ${order.trx_id} যাচাই করা যায়নি${order.note ? ` (${order.note})` : ''}। সঠিক তথ্য দিয়ে আবার অর্ডার করুন: ${window.location.origin}/checkout`
       : `আসসালামু আলাইকুম ${order.full_name}, আপনার পেমেন্ট যাচাই হয়েছে। "${COURSE.title}" কোর্সটি চালু হয়ে গেছে। লগইন করে দেখুন: ${loginUrl}`;
-  const amountMismatch = order.amount !== PRICE.amount;
+  const manual = order.payment_method === 'manual';
+  const amountMismatch = !manual && order.amount !== PRICE.amount;
 
   return (
     <li className="rounded-2xl border border-slate-800 bg-slate-900/50 p-4 sm:p-5">
@@ -48,7 +49,7 @@ export default function OrderCard({ order, onReview }) {
       <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 rounded-xl bg-slate-950/50 p-3 text-sm sm:grid-cols-4">
         <div>
           <dt className="text-xs text-slate-500">মেথড</dt>
-          <dd className="font-semibold text-white">{PAYMENT.methods[order.payment_method]?.label}</dd>
+          <dd className="font-semibold text-white">{METHOD_LABELS[order.payment_method]}</dd>
         </div>
         <div>
           <dt className="text-xs text-slate-500">যে নম্বর থেকে</dt>

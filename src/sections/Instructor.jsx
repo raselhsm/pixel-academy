@@ -1,20 +1,30 @@
 import { INSTRUCTOR } from '../data/homeContent';
 
 export default function Instructor() {
-  const { name, role, photo, bio, stats } = INSTRUCTOR;
+  const { name, role, photo, initial, bio, stats } = INSTRUCTOR;
 
   return (
     <section id="instructor" className="mx-auto max-w-5xl scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20">
       <div className="grid items-center gap-8 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-10 md:grid-cols-12 lg:p-12">
         <div className="text-center md:col-span-5">
-          <img
-            src={photo}
-            alt={name}
-            loading="lazy"
-            width={224}
-            height={224}
-            className="mx-auto size-44 rounded-2xl border-2 border-emerald-500/40 object-cover shadow-xl shadow-emerald-500/10 sm:size-56"
-          />
+          {photo ? (
+            <img
+              src={photo}
+              alt={name}
+              loading="lazy"
+              width={224}
+              height={224}
+              className="mx-auto size-44 rounded-2xl border-2 border-emerald-500/40 object-cover shadow-xl shadow-emerald-500/10 sm:size-56"
+            />
+          ) : (
+            // Monogram until a real photo is added in homeContent.js.
+            <div
+              aria-hidden="true"
+              className="mx-auto flex size-44 items-center justify-center rounded-2xl border-2 border-emerald-500/40 bg-gradient-to-br from-emerald-900/60 to-slate-900 text-7xl font-bold text-emerald-300 shadow-xl shadow-emerald-500/10 sm:size-56"
+            >
+              {initial}
+            </div>
+          )}
           <h3 className="mt-4 text-xl font-bold text-white">{name}</h3>
           <p className="text-xs font-semibold text-emerald-400">{role}</p>
         </div>

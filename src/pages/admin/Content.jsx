@@ -14,10 +14,12 @@ const nextPosition = (rows) => Math.max(0, ...rows.map((r) => r.position)) + 1;
 function LessonRow({ lesson, index, isFirst, isLast, onMove, onSave, onDelete }) {
   const [title, setTitle] = useState(lesson.title);
   const [videoUrl, setVideoUrl] = useState(lesson.video_url ?? '');
+  const [duration, setDuration] = useState(lesson.duration ?? '');
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
 
-  const dirty = title.trim() !== lesson.title || (videoUrl.trim() || null) !== lesson.video_url;
+  const dirty =
+    title.trim() !== lesson.title || (videoUrl.trim() || null) !== lesson.video_url || (duration.trim() || null) !== lesson.duration;
   const embed = toEmbed(videoUrl.trim());
   const badLink = videoUrl.trim() !== '' && !embed;
 
@@ -25,7 +27,7 @@ function LessonRow({ lesson, index, isFirst, isLast, onMove, onSave, onDelete })
     if (!title.trim() || badLink) return;
     setSaving(true);
     try {
-      await onSave(lesson.id, { title: title.trim(), video_url: videoUrl.trim() || null });
+      await onSave(lesson.id, { title: title.trim(), video_url: videoUrl.trim() || null, duration: duration.trim() || null });
       setSaved(true);
       setTimeout(() => setSaved(false), 1500);
     } finally {
@@ -34,13 +36,17 @@ function LessonRow({ lesson, index, isFirst, isLast, onMove, onSave, onDelete })
   };
 
   return (
-    <li className="grid gap-3 px-4 py-4 sm:px-5 lg:grid-cols-[auto_1fr_1.2fr_auto] lg:items-start">
+    <li className="grid gap-3 px-4 py-4 sm:px-5 lg:grid-cols-[auto_1fr_5rem_1.2fr_auto] lg:items-start">
       <span className="flex size-8 items-center justify-center rounded-lg bg-slate-800 font-sans text-xs font-bold text-slate-300">
         {toBnDigits(index + 1)}
       </span>
       <label>
         <span className="sr-only">লেসনের নাম</span>
         <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="লেসনের নাম" className={inputStyles} />
+      </label>
+      <label>
+        <span className="sr-only">ভিডিওর দৈর্ঘ্য</span>
+        <input value={duration} onChange={(e) => setDuration(e.target.value)} placeholder="১০:২০" title="ভিডিওর দৈর্ঘ্য (মিনিট:সেকেন্ড)" className={`${inputStyles} font-sans`} />
       </label>
       <label>
         <span className="sr-only">ভিডিও লিংক</span>
@@ -123,7 +129,7 @@ function ModuleCard({ module, index, isFirst, isLast, run }) {
       <ul className="divide-y divide-slate-800/70">
         {lessons.map((lesson, i) => (
           <LessonRow
-            key={`${lesson.id}:${lesson.title}:${lesson.video_url}`}
+            key={`${lesson.id}:${lesson.title}:${lesson.video_url}:${lesson.duration}`}
             lesson={lesson}
             index={i}
             isFirst={i === 0}

@@ -6,5 +6,7 @@ export const STATUS = {
   rejected: { label: 'বাতিল', badge: 'bg-red-500/15 text-red-300' },
 };
 
+export const METHOD_LABELS = { bkash: 'বিকাশ', nagad: 'নগদ', manual: 'ম্যানুয়াল (অ্যাডমিন)' };
+
 export const formatDateTime = (iso) =>
   new Date(iso).toLocaleString('bn-BD', { day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' });
