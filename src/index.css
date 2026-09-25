@@ -1,83 +1,27 @@
 @import "tailwindcss";
 
+@theme {
+  /* `font-sans` is used for Latin text and figures; Bangla copy uses the body font. */
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-bangla: 'Hind Siliguri', 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
 @layer base {
-  :root {
-    --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
+  html {
+    color-scheme: dark;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 
   body {
-    font-family: var(--font-sans);
-    background-color: #07080c;
-    color: #e2e8f0;
+    @apply bg-[#090d14] font-bangla text-slate-100 antialiased selection:bg-emerald-500 selection:text-white;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-emerald-400;
   }
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #090a0f;
-}
-::-webkit-scrollbar-thumb {
-  background: #1e293b;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #10b981;
-}
-
-/* Glow effects */
-.emerald-glow {
-  box-shadow: 0 0 35px -5px rgba(16, 185, 129, 0.35);
-}
-
-.emerald-glow-sm {
-  box-shadow: 0 0 15px -3px rgba(16, 185, 129, 0.3);
-}
-
-.glass-card {
-  background: rgba(17, 20, 29, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.glass-card:hover {
-  border-color: rgba(16, 185, 129, 0.3);
-}
-
-.glass-nav {
-  background: rgba(8, 9, 13, 0.82);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-}
-
-/* Subtle grid texture */
-.bg-grid-pattern {
-  background-size: 40px 40px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-}
-
-/* Radial dark vignette */
-.radial-mask {
-  mask-image: radial-gradient(circle at center, black 40%, transparent 85%);
-}
-
-@keyframes pulse-subtle {
-  0%, 100% { opacity: 0.4; transform: scale(1); }
-  50% { opacity: 0.7; transform: scale(1.03); }
-}
-
-.animate-pulse-subtle {
-  animation: pulse-subtle 4s ease-in-out infinite;
 }
