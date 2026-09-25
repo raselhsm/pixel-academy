@@ -1,5 +1,6 @@
 // All site copy lives here so sections stay purely presentational.
-// Numbers match the real course (previously sold on pixelacademyit.com).
+// Numbers match the real course (previously sold on pixelacademyit.com): the old
+// course page showed "78 enrolled", but only 42 orders were actually paid.
 
 export const COURSE = {
   title: 'Lightroom Mastery',
@@ -23,7 +24,7 @@ export const OFFER_ENDS_AT = null;
 export const SOCIAL_PROOF = {
   rating: '5.0',
   reviews: '৪টি রিভিউ',
-  students: '৭৮+',
+  students: '৪০+', // 42 paid orders on the old site (WooCommerce, Sept 2026)
   // First letters of real students' names (Maruf, Tanvir, Eamin, Rabby, Fahad).
   initials: ['ম', 'ত', 'ই', 'র'],
 };
@@ -86,7 +87,7 @@ export const HERO_IMAGE =
 export const HERO_BEFORE_IMAGE = null;
 
 export const TRUST_METRICS = [
-  { value: '৭৮+', label: 'শিক্ষার্থী কোর্সটিতে ভর্তি হয়েছেন', accent: false },
+  { value: '৪০+', label: 'শিক্ষার্থী কোর্সটি কিনেছেন', accent: false },
   { value: '৮ ঘণ্টা+', label: 'রেকর্ডেড ভিডিও লেসন', accent: true },
   { value: '৫০০+', label: 'ফাইভার অর্ডার সম্পন্ন করেছেন মেন্টর', accent: false },
   { value: '$১ লাখ+', label: 'মেন্টরের ফ্রিল্যান্সিং আয়', accent: true },
