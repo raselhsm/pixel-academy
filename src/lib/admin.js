@@ -53,15 +53,12 @@ export async function fetchStats() {
 
 const STATUS_RANK = { approved: 3, pending: 2, rejected: 1 };
 
-// Every registered student with the status of their most relevant order, and
-// whether they bought on the old WordPress site.
+// Every registered student with the status of their most relevant order.
 export async function fetchStudents() {
-  const [profiles, orders, legacy] = await Promise.all([
+  const [profiles, orders] = await Promise.all([
     supabase.from('profiles').select('id, full_name, phone, email, created_at').eq('is_admin', false).order('created_at', { ascending: false }).then(unwrap),
     supabase.from('orders').select('user_id, status, phone, created_at').then(unwrap),
-    supabase.from('legacy_students').select('email').then(unwrap),
   ]);
-  const legacyEmails = new Set(legacy.map((l) => l.email));
   const best = new Map();
   for (const o of orders) {
     const current = best.get(o.user_id);
@@ -74,12 +71,11 @@ export async function fetchStudents() {
       phone: p.phone || order?.phone || '',
       status: order?.status ?? 'none',
       orderedAt: order?.created_at ?? null,
-      legacy: Boolean(p.email && legacyEmails.has(p.email.toLowerCase())),
     };
   });
 }
 
-// Gives a student access without a bKash/Nagad payment (old-site buyers, free passes).
+// Gives a student access without a bKash/Nagad payment (e.g. a free pass).
 export async function grantAccess(student, note) {
   return unwrap(
     await supabase.from('orders').insert({
@@ -95,33 +91,6 @@ export async function grantAccess(student, note) {
       reviewed_at: new Date().toISOString(),
     }),
   );
-}
-
-// Old-site buyers ---------------------------------------------------------------
-
-export async function fetchLegacyCount() {
-  const { count, error } = await supabase.from('legacy_students').select('email', { count: 'exact', head: true });
-  if (error) throw error;
-  return count ?? 0;
-}
-
-// Accepts pasted CSV/spreadsheet text; picks out every email plus the rest of its line.
-export function parseLegacyList(text) {
-  const rows = new Map();
-  for (const line of text.split(/\r?\n/)) {
-    const email = line.match(/[^\s,;"'<>]+@[^\s,;"'<>]+\.[^\s,;"'<>]+/)?.[0]?.toLowerCase();
-    if (!email) continue;
-    const cells = line.split(/[,;\t]/).map((c) => c.trim().replace(/^"|"$/g, '')).filter((c) => c && c.toLowerCase() !== email);
-    const phone = cells.find((c) => /^\+?[\d\s-]{10,}$/.test(c)) ?? null;
-    const name = cells.find((c) => c !== phone && /[a-zA-Z\u0980-\u09FF]/.test(c)) ?? null;
-    const prev = rows.get(email);
-    rows.set(email, { email, full_name: prev?.full_name ?? name, phone: prev?.phone ?? phone });
-  }
-  return [...rows.values()];
-}
-
-export async function importLegacyStudents(rows) {
-  return unwrap(await supabase.from('legacy_students').upsert(rows, { onConflict: 'email' }));
 }
 
 // Course content -------------------------------------------------------------

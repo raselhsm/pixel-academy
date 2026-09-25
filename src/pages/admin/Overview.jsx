@@ -1,7 +1,7 @@
 import { Link } from 'react-router';
 import { ArrowRight, CircleCheck, CircleDashed, Clock, GraduationCap, TrendingUp, UserPlus, Wallet } from 'lucide-react';
 import { useAsync } from '../../hooks/useAsync';
-import { fetchLegacyCount, fetchOrders, fetchStats, reviewOrder } from '../../lib/admin';
+import { fetchOrders, fetchStats, reviewOrder } from '../../lib/admin';
 import { fetchCourseContent } from '../../lib/course';
 import { fetchAuthSettings } from '../../lib/authSettings';
 import { toBnDigits } from '../../lib/format';
@@ -52,15 +52,14 @@ function ChecklistItem({ done, children, href }) {
 }
 
 async function loadOverview() {
-  const [stats, pending, modules, auth, legacyCount] = await Promise.all([
+  const [stats, pending, modules, auth] = await Promise.all([
     fetchStats(),
     fetchOrders({ status: 'pending', limit: 5 }),
     fetchCourseContent(),
     fetchAuthSettings(),
-    fetchLegacyCount(),
   ]);
   const lessons = modules.flatMap((m) => m.lessons);
-  return { stats, pending, auth, legacyCount, lessonCount: lessons.length, withVideo: lessons.filter((l) => l.video_url).length };
+  return { stats, pending, auth, lessonCount: lessons.length, withVideo: lessons.filter((l) => l.video_url).length };
 }
 
 export default function Overview() {
@@ -69,7 +68,7 @@ export default function Overview() {
   if (loading && !data) return <Spinner />;
   if (!data) return <ErrorNote>ড্যাশবোর্ড লোড করা যায়নি। পেজটি রিফ্রেশ করুন।</ErrorNote>;
 
-  const { stats, pending, auth, legacyCount, lessonCount, withVideo } = data;
+  const { stats, pending, auth, lessonCount, withVideo } = data;
   const review = async (id, status, note) => {
     await reviewOrder(id, status, note);
     reload();
@@ -114,14 +113,6 @@ export default function Overview() {
                 লেসনে ভিডিও যোগ হয়েছে: {toBnDigits(withVideo)}/{toBnDigits(lessonCount)}
                 {withVideo < lessonCount && (
                   <Link to="/admin/content" className="ml-2 font-semibold text-emerald-400 hover:underline">
-                    যোগ করুন →
-                  </Link>
-                )}
-              </ChecklistItem>
-              <ChecklistItem done={legacyCount > 0}>
-                পুরনো ওয়েবসাইটের শিক্ষার্থীদের তালিকা যোগ: {toBnDigits(legacyCount)} জন
-                {!legacyCount && (
-                  <Link to="/admin/students" className="ml-2 font-semibold text-emerald-400 hover:underline">
                     যোগ করুন →
                   </Link>
                 )}

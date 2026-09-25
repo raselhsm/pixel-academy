@@ -1,6 +1,6 @@
 // All site copy lives here so sections stay purely presentational.
 // Numbers match the real course (previously sold on pixelacademyit.com): the old
-// course page showed "78 enrolled", but only 42 orders were actually paid.
+// course page showed "78 enrolled", but 42 students actually took it there.
 
 export const COURSE = {
   title: 'Lightroom Mastery',
@@ -24,7 +24,7 @@ export const OFFER_ENDS_AT = null;
 export const SOCIAL_PROOF = {
   rating: '5.0',
   reviews: '৪টি রিভিউ',
-  students: '৪০+', // 42 paid orders on the old site (WooCommerce, Sept 2026)
+  students: '৪০+', // 42 students took it on the old site (Tutor LMS, Sept 2026)
   // First letters of real students' names (Maruf, Tanvir, Eamin, Rabby, Fahad).
   initials: ['ম', 'ত', 'ই', 'র'],
 };
@@ -87,7 +87,7 @@ export const HERO_IMAGE =
 export const HERO_BEFORE_IMAGE = null;
 
 export const TRUST_METRICS = [
-  { value: '৪০+', label: 'শিক্ষার্থী কোর্সটি কিনেছেন', accent: false },
+  { value: '৪০+', label: 'শিক্ষার্থী কোর্সটি করেছেন', accent: false },
   { value: '৮ ঘণ্টা+', label: 'রেকর্ডেড ভিডিও লেসন', accent: true },
   { value: '৫০০+', label: 'ফাইভার অর্ডার সম্পন্ন করেছেন মেন্টর', accent: false },
   { value: '$১ লাখ+', label: 'মেন্টরের ফ্রিল্যান্সিং আয়', accent: true },
@@ -218,10 +218,6 @@ export const FAQS = [
   {
     question: 'কোনো সমস্যা হলে সাপোর্ট কীভাবে পাব?',
     answer: 'কোর্সের সাথে একটি প্রাইভেট সাপোর্ট গ্রুপ রয়েছে, যেখানে সরাসরি মেন্টর আপনার কাজের ফিডব্যাক এবং সমস্যার সমাধান দেবেন।',
-  },
-  {
-    question: 'আগের ওয়েবসাইট থেকে কোর্সটি কিনেছিলাম, এখন কীভাবে দেখব?',
-    answer: 'যে ইমেইল দিয়ে আগে কিনেছিলেন, সেই ইমেইল দিয়ে এখানে অ্যাকাউন্ট খুলুন এবং হোয়াটসঅ্যাপে (01871303786) জানান। আমরা যাচাই করে কোনো টাকা ছাড়াই অ্যাক্সেস চালু করে দেব।',
   },
   {
     question: 'পেমেন্ট করেছি কিন্তু এখনো অ্যাক্সেস পাইনি, কী করব?',
