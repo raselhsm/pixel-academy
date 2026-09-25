@@ -1,26 +1,26 @@
-import { ArrowRight, ChevronDown, Star } from 'lucide-react';
-import BeforeAfterSlider from '../components/ui/BeforeAfterSlider';
-import { HERO_IMAGE, PRICE, STUDENT_AVATARS } from '../data/homeContent';
+import { ChevronDown, MonitorPlay, Star } from 'lucide-react';
+import CourseCard from './CourseCard';
+import { COURSE, STUDENT_AVATARS } from '../data/homeContent';
+
+const HIGHLIGHTS = ['নিজের সময়ে শিখুন', 'মোবাইল ও ল্যাপটপে দেখুন', 'প্রিসেট ও RAW ফাইল ফ্রি'];
 
 export default function Hero() {
   return (
-    <section className="relative mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6 sm:pb-20 sm:pt-12 lg:pt-16">
+    <section className="relative mx-auto max-w-7xl px-4 pb-16 pt-8 sm:px-6 sm:pb-20 sm:pt-12 lg:pt-16">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute left-1/3 top-0 -z-10 size-96 bg-emerald-500/10 blur-[130px]"
       />
 
-      <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
-        <div className="space-y-6 lg:col-span-7">
+      {/* On phones the card sits right under the headline; on desktop it's the right-hand column. */}
+      <div className="grid gap-8 lg:grid-cols-12 lg:grid-rows-[auto_1fr] lg:gap-x-12 lg:gap-y-8">
+        <div className="space-y-5 lg:col-span-7 lg:pt-6">
           <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-semibold text-emerald-400">
-            <span className="relative flex size-2">
-              <span className="absolute inline-flex size-full rounded-full bg-emerald-400 opacity-75 motion-safe:animate-ping" />
-              <span className="relative inline-flex size-2 rounded-full bg-emerald-400" />
-            </span>
-            ব্যাচ ০৬ রেজিস্ট্রেশন চলছে • মাত্র ১২টি সিট বাকি
+            <MonitorPlay className="size-4" aria-hidden="true" />
+            {COURSE.format} • আজই শুরু করুন, নিজের সময়ে শিখুন
           </div>
 
-          <h1 className="text-4xl font-extrabold leading-tight text-balance text-white sm:text-5xl lg:text-6xl">
+          <h1 className="text-[2rem] font-extrabold leading-tight text-balance text-white sm:text-5xl lg:text-6xl">
             প্রফেশনাল{' '}
             <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-200 bg-clip-text text-transparent">
               লাইটরুম এডিটিং
@@ -32,25 +32,24 @@ export default function Hero() {
             কোনো পূর্ব অভিজ্ঞতা ছাড়াই বেসিক RAW প্রসেসিং থেকে শুরু করে হাই-এন্ড ওয়েডিং কালার গ্রেডিং ও স্কিন রিটাচিং
             শিখুন। সাথে থাকছে ফাইভার ও আপওয়ার্কে ক্লায়েন্ট পাওয়ার কমপ্লিট রোডম্যাপ।
           </p>
+        </div>
 
-          <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
-            <a
-              href="#pricing"
-              className="group flex items-center justify-center gap-3 rounded-xl bg-emerald-500 px-8 py-4 text-base font-bold text-slate-950 shadow-xl shadow-emerald-500/20 transition hover:bg-emerald-400"
-            >
-              কোর্সে জয়েন করুন ({PRICE.discountLabel} ছাড়)
-              <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" strokeWidth={2.5} />
-            </a>
-            <a
-              href="#curriculum"
-              className="flex items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-900/60 px-6 py-4 font-semibold text-slate-200 transition hover:border-slate-500"
-            >
-              কারিকুলাম দেখুন
-              <ChevronDown className="size-4" />
-            </a>
+        <div className="lg:col-span-5 lg:row-span-2">
+          <div className="mx-auto max-w-md lg:sticky lg:top-24 lg:max-w-none">
+            <CourseCard />
           </div>
+        </div>
 
-          <div className="flex items-center gap-4 border-t border-slate-800/80 pt-5">
+        <div className="space-y-6 lg:col-span-7">
+          <ul className="flex flex-wrap gap-2">
+            {HIGHLIGHTS.map((item) => (
+              <li key={item} className="rounded-full border border-slate-700 bg-slate-900/60 px-3.5 py-1.5 text-sm text-slate-200">
+                ✓ {item}
+              </li>
+            ))}
+          </ul>
+
+          <div className="flex flex-wrap items-center gap-4 border-t border-slate-800/80 pt-5">
             <div className="flex -space-x-3">
               {STUDENT_AVATARS.map((src) => (
                 <img
@@ -73,22 +72,17 @@ export default function Hero() {
                 ))}
                 <span className="ml-1.5 font-sans font-bold text-white">4.9/5</span>
               </div>
-              <p className="text-xs text-slate-400">১২৫০+ শিক্ষার্থী ইতিমধ্যে সফলভাবে সম্পন্ন করেছেন</p>
+              <p className="text-xs text-slate-400">১২৫০+ শিক্ষার্থী ইতিমধ্যে কোর্সটি করেছেন</p>
             </div>
           </div>
-        </div>
 
-        <div className="lg:col-span-5">
-          <div className="rounded-3xl border border-slate-800 bg-gradient-to-b from-slate-800 to-slate-900/60 p-2.5 shadow-2xl">
-            <BeforeAfterSlider
-              image={HERO_IMAGE}
-              alt="ওয়েডিং ফটো"
-              className="aspect-[4/5] max-h-[520px] w-full sm:aspect-[5/4] lg:aspect-[4/5]"
-            />
-            <p className="px-2 pt-3 text-center text-xs text-slate-400">
-              দাগটি ডানে-বামে টেনে (বা অ্যারো কী দিয়ে) এডিটিংয়ের আউটপুট দেখুন
-            </p>
-          </div>
+          <a
+            href="#curriculum"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 transition hover:text-emerald-400"
+          >
+            কোর্সে কী কী শিখবেন দেখুন
+            <ChevronDown className="size-4" aria-hidden="true" />
+          </a>
         </div>
       </div>
     </section>
