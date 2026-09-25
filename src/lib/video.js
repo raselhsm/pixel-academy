@@ -1,21 +1,33 @@
-// Turns a lesson's video link into something the player can render.
-export function toEmbed(url) {
+function parse(url) {
   if (!url) return null;
-  let parsed;
   try {
-    parsed = new URL(url);
+    const parsed = new URL(url);
+    return { parsed, host: parsed.hostname.replace(/^www\.|^m\./, '') };
   } catch {
     return null;
   }
-  const host = parsed.hostname.replace(/^www\.|^m\./, '');
+}
 
-  let youtubeId = null;
-  if (host === 'youtu.be') youtubeId = parsed.pathname.slice(1);
-  else if (host === 'youtube.com' || host === 'youtube-nocookie.com') {
-    youtubeId = parsed.searchParams.get('v') ?? parsed.pathname.match(/^\/(?:embed|shorts|live)\/([^/?]+)/)?.[1];
+// The video ID of any YouTube link (watch, youtu.be, embed, shorts, live), or null.
+export function youtubeId(url) {
+  const p = parse(url);
+  if (!p) return null;
+  if (p.host === 'youtu.be') return p.parsed.pathname.slice(1) || null;
+  if (p.host === 'youtube.com' || p.host === 'youtube-nocookie.com') {
+    return p.parsed.searchParams.get('v') ?? p.parsed.pathname.match(/^\/(?:embed|shorts|live)\/([^/?]+)/)?.[1] ?? null;
   }
-  if (youtubeId) {
-    return { type: 'iframe', src: `https://www.youtube-nocookie.com/embed/${youtubeId}?rel=0&modestbranding=1` };
+  return null;
+}
+
+// Turns a lesson's video link into something the player can render.
+export function toEmbed(url) {
+  const p = parse(url);
+  if (!p) return null;
+  const { parsed, host } = p;
+
+  const ytId = youtubeId(url);
+  if (ytId) {
+    return { type: 'iframe', src: `https://www.youtube-nocookie.com/embed/${ytId}?rel=0&modestbranding=1` };
   }
 
   if (host === 'vimeo.com') {
