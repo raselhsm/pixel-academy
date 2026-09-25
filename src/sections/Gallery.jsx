@@ -1,5 +1,6 @@
 import SectionHeading from '../components/ui/SectionHeading';
-import { GALLERY } from '../data/homeContent';
+import BeforeAfterSlider from '../components/ui/BeforeAfterSlider';
+import { GALLERY, HERO_BEFORE_IMAGE, HERO_IMAGE, PROMO_VIDEO_URL } from '../data/homeContent';
 
 export default function Gallery() {
   return (
@@ -7,8 +8,15 @@ export default function Gallery() {
       <SectionHeading
         eyebrow="Portfolio"
         title="কোর্সে যে ধরণের এডিটিং শিখবেন"
-        subtitle="আন্তর্জাতিক মানের ওয়েডিং, পোর্ট্রেট ও সিনেমাটিক কালার গ্রেডিং"
+        subtitle="ওয়েডিং, কালার কারেকশন ও কাস্টম প্রিসেট দিয়ে প্রফেশনাল লুক"
       />
+      {/* The hero shows the intro video once it's set, so the before/after lives here. */}
+      {PROMO_VIDEO_URL && (
+        <div className="mx-auto mb-10 max-w-4xl">
+          <BeforeAfterSlider image={HERO_IMAGE} beforeImage={HERO_BEFORE_IMAGE} alt="ওয়েডিং ফটো" className="aspect-[16/10] w-full" />
+          <p className="pt-3 text-center text-xs text-slate-400">↔ দাগটি টেনে এডিটের আগে ও পরে দেখুন</p>
+        </div>
+      )}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {GALLERY.map(({ tag, title, image }, i) => (
           <figure

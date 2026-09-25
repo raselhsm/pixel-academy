@@ -73,6 +73,11 @@ export const NAV_LINKS = [
   { href: '#faq', label: 'প্রশ্নোত্তর' },
 ];
 
+// Intro video in the hero card: an unlisted YouTube link, e.g.
+// 'https://youtu.be/XXXXXXXXXXX'. While it's null the before/after slider shows
+// there instead; once set, the slider moves to the editing-styles section.
+export const PROMO_VIDEO_URL = null;
+
 // Hero before/after. Put your own edit in /public (e.g. /hero-before.jpg and
 // /hero-after.jpg) and set both paths; until then one photo is shown with a
 // flat "RAW-like" filter on the left side.
