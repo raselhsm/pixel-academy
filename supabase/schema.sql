@@ -2,6 +2,11 @@
 -- Students sign up at checkout, submit a bKash/Nagad TrxID as an order,
 -- and can watch lessons once an admin approves that order.
 
+-- Helper functions live in `private`, which the API doesn't expose, so they
+-- can't be called directly over REST.
+create schema if not exists private;
+grant usage on schema private to authenticated;
+
 -- Profiles ------------------------------------------------------------------
 
 create table public.profiles (
@@ -15,7 +20,7 @@ create table public.profiles (
 alter table public.profiles enable row level security;
 
 -- Copies name/phone from sign-up metadata. is_admin is never taken from metadata.
-create function public.handle_new_user()
+create function private.handle_new_user()
 returns trigger
 language plpgsql
 security definer set search_path = ''
@@ -29,9 +34,11 @@ $$;
 
 create trigger on_auth_user_created
   after insert on auth.users
-  for each row execute function public.handle_new_user();
+  for each row execute function private.handle_new_user();
 
-create function public.is_admin()
+revoke execute on function private.handle_new_user() from public, anon, authenticated;
+
+create function private.is_admin()
 returns boolean
 language sql stable
 security definer set search_path = ''
@@ -42,7 +49,7 @@ $$;
 -- Students can read (not edit) their own profile; admins can read all.
 create policy "profiles: read own or admin" on public.profiles
   for select to authenticated
-  using (id = (select auth.uid()) or (select public.is_admin()));
+  using (id = (select auth.uid()) or (select private.is_admin()));
 
 -- Orders --------------------------------------------------------------------
 
@@ -71,14 +78,14 @@ create policy "orders: student creates own pending order" on public.orders
 
 create policy "orders: read own or admin" on public.orders
   for select to authenticated
-  using (user_id = (select auth.uid()) or (select public.is_admin()));
+  using (user_id = (select auth.uid()) or (select private.is_admin()));
 
 create policy "orders: admin reviews" on public.orders
   for update to authenticated
-  using ((select public.is_admin()))
-  with check ((select public.is_admin()));
+  using ((select private.is_admin()))
+  with check ((select private.is_admin()));
 
-create function public.has_course_access()
+create function private.has_course_access()
 returns boolean
 language sql stable
 security definer set search_path = ''
@@ -87,6 +94,9 @@ as $$
     select 1 from public.orders where user_id = auth.uid() and status = 'approved'
   );
 $$;
+
+revoke execute on function private.is_admin(), private.has_course_access() from public, anon;
+grant execute on function private.is_admin(), private.has_course_access() to authenticated;
 
 -- Lessons -------------------------------------------------------------------
 
@@ -105,7 +115,7 @@ alter table public.lessons enable row level security;
 -- Video links are only visible to students with an approved order (and admins).
 create policy "lessons: paid students and admins" on public.lessons
   for select to authenticated
-  using ((select public.has_course_access()) or (select public.is_admin()));
+  using ((select private.has_course_access()) or (select private.is_admin()));
 
 -- Starter lessons from the curriculum. Paste each lesson's video link into
 -- video_url (Table Editor → lessons), e.g. an unlisted YouTube URL.
