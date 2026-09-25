@@ -1,19 +1,21 @@
 import { CirclePlay } from 'lucide-react';
 import Accordion, { AccordionItem } from '../components/ui/Accordion';
 import SectionHeading from '../components/ui/SectionHeading';
-import { COURSE, CURRICULUM } from '../data/homeContent';
+import { useCourseOutline } from '../hooks/useCourseOutline';
 import { toBnDigits } from '../lib/format';
 
 export default function Curriculum() {
+  const { modules, lessonsLabel, durationLabel } = useCourseOutline();
+
   return (
     <section id="curriculum" className="mx-auto max-w-4xl scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20">
       <SectionHeading
         eyebrow="Curriculum"
         title="পূর্ণাঙ্গ কোর্স কারিকুলাম"
-        subtitle={`লাইটরুম ইনস্টল থেকে ফাইভারে গিগ পাবলিশ পর্যন্ত • ${COURSE.lessons} • ${COURSE.duration}`}
+        subtitle={`লাইটরুম ইনস্টল থেকে ফাইভারে গিগ পাবলিশ পর্যন্ত • ${lessonsLabel} • ${durationLabel}`}
       />
       <Accordion>
-        {CURRICULUM.map((module, i) => (
+        {modules.map((module, i) => (
           <AccordionItem
             key={module.title}
             label={`Module ${String(i + 1).padStart(2, '0')}`}

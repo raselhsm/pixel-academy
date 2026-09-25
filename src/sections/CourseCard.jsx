@@ -1,13 +1,15 @@
 import { Link } from 'react-router';
+import { useCourseIncludes } from '../hooks/useCourseOutline';
 import { Check, Flame, Lock, PlayCircle } from 'lucide-react';
 import BeforeAfterSlider from '../components/ui/BeforeAfterSlider';
 import VideoPreview from '../components/ui/VideoPreview';
 import { useCountdown } from '../hooks/useCountdown';
 import { toBnDigits } from '../lib/format';
-import { COURSE, COURSE_INCLUDES, HERO_BEFORE_IMAGE, HERO_IMAGE, OFFER_ENDS_AT, PRICE, PROMO_VIDEO_URL, SUPPORT_PHONE } from '../data/homeContent';
+import { COURSE, HERO_BEFORE_IMAGE, HERO_IMAGE, OFFER_ENDS_AT, PRICE, PROMO_VIDEO_URL, SUPPORT_PHONE } from '../data/homeContent';
 
 export default function CourseCard() {
   const left = useCountdown(OFFER_ENDS_AT);
+  const includes = useCourseIncludes();
 
   return (
     <div className="overflow-hidden rounded-3xl border border-slate-700/70 bg-slate-900 shadow-2xl shadow-emerald-500/10 ring-1 ring-white/5">
@@ -68,7 +70,7 @@ export default function CourseCard() {
         <div className="border-t border-slate-800 pt-4">
           <p className="mb-3 text-sm font-bold text-white">এই কোর্সে যা পাচ্ছেন:</p>
           <ul className="space-y-2 text-sm text-slate-300">
-            {COURSE_INCLUDES.map((item) => (
+            {includes.map((item) => (
               <li key={item} className="flex items-start gap-2">
                 <Check className="mt-0.5 size-4 shrink-0 text-emerald-400" strokeWidth={3} aria-hidden="true" />
                 {item}

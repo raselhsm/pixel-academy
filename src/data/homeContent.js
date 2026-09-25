@@ -6,8 +6,6 @@ export const COURSE = {
   title: 'Lightroom Mastery',
   subtitle: 'প্রফেশনাল ফটো এডিটিং ও ফ্রিল্যান্সিং কোর্স',
   format: 'রেকর্ডেড কোর্স',
-  lessons: '১৩টি লেসন',
-  duration: '৮ ঘণ্টা ২০ মিনিট',
 };
 
 export const PRICE = {
@@ -50,8 +48,8 @@ export const PAYMENT = {
   },
 };
 
+// The lesson count and total length are added in front from the live curriculum.
 export const COURSE_INCLUDES = [
-  '১৩টি রেকর্ডেড লেসন (৮ ঘণ্টা ২০ মিনিট)',
   'লাইফটাইম অ্যাক্সেস — নিজের সময়ে শিখুন',
   '৫০+ প্রিমিয়াম প্রিসেট প্যাক',
   '১০০+ RAW প্র্যাকটিস ফাইল',
@@ -88,7 +86,7 @@ export const HERO_BEFORE_IMAGE = null;
 
 export const TRUST_METRICS = [
   { value: '৪০+', label: 'শিক্ষার্থী কোর্সটি করেছেন', accent: false },
-  { value: '৮ ঘণ্টা+', label: 'রেকর্ডেড ভিডিও লেসন', accent: true },
+  { value: 'live:duration', label: 'রেকর্ডেড ভিডিও লেসন', accent: true }, // filled from the curriculum
   { value: '৫০০+', label: 'ফাইভার অর্ডার সম্পন্ন করেছেন মেন্টর', accent: false },
   { value: '$১ লাখ+', label: 'মেন্টরের ফ্রিল্যান্সিং আয়', accent: true },
 ];
@@ -126,6 +124,8 @@ export const GALLERY = [
   },
 ];
 
+// Fallback only: the live curriculum is loaded from the database (lessons you
+// add in /admin/content show up automatically). Shown until that loads.
 export const CURRICULUM = [
   {
     title: 'লাইটরুম বেসিক',
@@ -189,8 +189,8 @@ export const INSTRUCTOR = {
   ],
 };
 
+// The first line (lessons + length) comes from the live curriculum.
 export const PRICING_FEATURES = [
-  '১৩টি রেকর্ডেড লেসন (৮ ঘণ্টা+)',
   'লাইফটাইম ভিডিও অ্যাক্সেস',
   '৫০+ প্রিসেট ও ১০০+ RAW ফাইল',
   'ফাইভার অ্যাকাউন্ট ও গিগ গাইড',
@@ -205,7 +205,7 @@ export const FAQS = [
   },
   {
     question: 'কোর্সটি কি লাইভ নাকি রেকর্ডেড? কতদিন দেখতে পারব?',
-    answer: 'এটি সম্পূর্ণ রেকর্ডেড কোর্স (১৩টি লেসন, মোট ৮ ঘণ্টা ২০ মিনিট)। একবার কিনলে লাইফটাইম অ্যাক্সেস — যখন খুশি, যতবার খুশি দেখতে পারবেন।',
+    answer: 'এটি সম্পূর্ণ রেকর্ডেড কোর্স। একবার কিনলে লাইফটাইম অ্যাক্সেস — যখন খুশি, যতবার খুশি দেখতে পারবেন।',
   },
   {
     question: 'আমার কোনো পূর্ব অভিজ্ঞতা নেই, আমি কি শিখতে পারব?',

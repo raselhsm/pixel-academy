@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Link, Navigate, useNavigate, useSearchParams } from 'react-router';
+import { useCourseIncludes } from '../hooks/useCourseOutline';
 import { Check, LoaderCircle, Star } from 'lucide-react';
 import { useAuth } from '../auth/context';
 import { supabase } from '../lib/supabase';
 import { normalizeBdPhone } from '../lib/format';
-import { COURSE, COURSE_INCLUDES, HERO_IMAGE, PRICE, SOCIAL_PROOF } from '../data/homeContent';
+import { COURSE, HERO_IMAGE, PRICE, SOCIAL_PROOF } from '../data/homeContent';
 import Field from '../components/ui/Field';
 import Spinner from '../components/ui/Spinner';
 import SetupNotice from '../components/ui/SetupNotice';
@@ -40,6 +41,8 @@ function Message({ tone = 'error', children }) {
 
 // Left-hand panel on desktop: reminds visitors what they're signing up for.
 function CoursePanel() {
+  const includes = useCourseIncludes();
+
   return (
     <aside className="hidden flex-col justify-between rounded-3xl border border-slate-800 bg-gradient-to-br from-emerald-950/50 via-slate-900 to-slate-900 p-8 lg:flex">
       <div>
@@ -51,7 +54,7 @@ function CoursePanel() {
           </div>
         </div>
         <ul className="mt-8 space-y-3 text-sm text-slate-300">
-          {COURSE_INCLUDES.map((item) => (
+          {includes.map((item) => (
             <li key={item} className="flex items-start gap-2.5">
               <Check className="mt-0.5 size-4 shrink-0 text-emerald-400" strokeWidth={3} aria-hidden="true" />
               {item}

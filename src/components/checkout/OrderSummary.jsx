@@ -1,7 +1,10 @@
 import { Check, ShieldCheck } from 'lucide-react';
-import { COURSE, COURSE_INCLUDES, HERO_IMAGE, PRICE } from '../../data/homeContent';
+import { useCourseIncludes } from '../../hooks/useCourseOutline';
+import { COURSE, HERO_IMAGE, PRICE } from '../../data/homeContent';
 
 export default function OrderSummary() {
+  const includes = useCourseIncludes();
+
   return (
     <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6">
       <div className="flex gap-4">
@@ -22,7 +25,7 @@ export default function OrderSummary() {
       </div>
 
       <ul className="mt-5 hidden space-y-2.5 border-t border-slate-800 pt-4 text-sm text-slate-300 lg:block">
-        {COURSE_INCLUDES.map((item) => (
+        {includes.map((item) => (
           <li key={item} className="flex items-start gap-2">
             <Check className="mt-0.5 size-4 shrink-0 text-emerald-400" strokeWidth={3} aria-hidden="true" />
             {item}
