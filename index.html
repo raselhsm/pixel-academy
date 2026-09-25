@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pixel Academy - প্রফেশনাল লাইটরুম এডিটিং ও ফ্রিল্যান্সিং ক্যারিয়ার</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            bangla: ['Hind Siliguri', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'Hind Siliguri', 'Plus Jakarta Sans', sans-serif; }
+    .slider-container { position: relative; overflow: hidden; user-select: none; }
+    .resize-img { position: absolute; top: 0; left: 0; height: 100%; width: 50%; overflow: hidden; }
+    .handle {
+      position: absolute; top: 0; bottom: 0; left: 50%; width: 3px;
+      background: #10b981; cursor: ew-resize; transform: translateX(-50%);
+    }
+  </style>
+</head>
+<body class="bg-[#090d14] text-slate-100 antialiased selection:bg-emerald-500 selection:text-white pb-20 md:pb-0">
+
+  <!-- 1. Top Urgency Bar -->
+  <div class="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-600 text-slate-950 font-bold text-center py-2 text-xs sm:text-sm px-4 flex items-center justify-center gap-2">
+    <span>🔥 স্পেশাল ৫০% ডিসকাউন্ট আর মাত্র:</span>
+    <span id="countdown" class="bg-slate-950 text-emerald-400 px-2 py-0.5 rounded font-sans text-xs font-extrabold tracking-wider">08:45:20</span>
+    <a href="#pricing" class="underline hover:text-white transition ml-2 hidden sm:inline">ছাড় নিন →</a>
+  </div>
+
+  <!-- 2. Sticky Glass Navbar -->
+  <header class="border-b border-slate-800/80 sticky top-0 bg-[#090d14]/90 backdrop-blur-md z-50">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center font-bold text-slate-950 text-xl shadow-lg shadow-emerald-500/20 font-sans">
+          P
+        </div>
+        <span class="font-extrabold text-2xl tracking-tight text-white font-sans">Pixel<span class="text-emerald-400">Academy</span></span>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#why" class="hover:text-emerald-400 transition">কেন শিখবেন?</a>
+        <a href="#curriculum" class="hover:text-emerald-400 transition">কারিকুলাম</a>
+        <a href="#gallery" class="hover:text-emerald-400 transition">কাজের স্যাম্পল</a>
+        <a href="#bonuses" class="hover:text-emerald-400 transition">বোনাস</a>
+        <a href="#instructor" class="hover:text-emerald-400 transition">মেন্টর</a>
+        <a href="#faq" class="hover:text-emerald-400 transition">প্রশ্নোত্তর</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <a href="#pricing" class="bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 font-bold px-6 py-2.5 rounded-full hover:brightness-110 transition shadow-lg shadow-emerald-500/25 text-sm">
+          এনরোল করুন →
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3. Hero Section (With Before/After Slider) -->
+  <section class="max-w-7xl mx-auto px-6 pt-12 pb-20 relative">
+    <div class="absolute top-0 left-1/3 w-96 h-96 bg-emerald-500/10 blur-[130px] pointer-events-none -z-10"></div>
+    
+    <div class="grid lg:grid-cols-12 gap-12 items-center">
+      <!-- Left Content -->
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          ব্যাচ ০৬ রেজিস্ট্রেশন চলছে • মাত্র ১২টি সিট বাকি
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+          প্রফেশনাল <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-200">লাইটরুম এডিটিং</span> শিখুন, আন্তর্জাতিক ক্যারিয়ার গড়ুন।
+        </h1>
+
+        <p class="text-lg text-slate-300 max-w-2xl leading-relaxed">
+          কোনো পূর্ব অভিজ্ঞতা ছাড়াই বেসিক RAW প্রসেসিং থেকে শুরু করে হাই-এন্ড ওয়েডিং কালার গ্রেডিং ও স্কিন রিটাচিং শিখুন। সাথে থাকছে ফাইভার ও আপওয়ার্কে ক্লায়েন্ট পাওয়ার কমপ্লিট রোডম্যাপ।
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a href="#pricing" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-8 py-4 rounded-xl shadow-xl shadow-emerald-500/20 transition flex items-center gap-3 text-base">
+            <span>কোর্সে জয়েন করুন (৫০% ছাড়)</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+          
+          <a href="#curriculum" class="px-6 py-4 rounded-xl border border-slate-700 hover:border-slate-500 bg-slate-900/60 text-slate-200 font-semibold transition flex items-center gap-2.5">
+            কারিকুলাম দেখুন ↓
+          </a>
+        </div>
+
+        <!-- Social Proof Pill -->
+        <div class="pt-4 flex items-center gap-4 border-t border-slate-800/80">
+          <div class="flex -space-x-3">
+            <img class="w-10 h-10 rounded-full border-2 border-slate-900" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" alt="Student">
+            <img class="w-10 h-10 rounded-full border-2 border-slate-900" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Student">
+            <img class="w-10 h-10 rounded-full border-2 border-slate-900" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="Student">
+            <div class="w-10 h-10 rounded-full bg-emerald-950 border-2 border-slate-900 flex items-center justify-center text-xs font-bold text-emerald-400">
+              +1.2k
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center text-amber-400 text-sm">★★★★★ <span class="text-white font-bold ml-1 font-sans">4.9/5</span></div>
+            <p class="text-xs text-slate-400">১২৫০+ শিক্ষার্থী ইতিমধ্যে সফলভাবে সম্পন্ন করেছেন</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Interactive Slider -->
+      <div class="lg:col-span-5">
+        <div class="relative p-2.5 bg-gradient-to-b from-slate-800 to-slate-900/60 rounded-3xl border border-slate-800 shadow-2xl">
+          <div class="slider-container relative rounded-2xl h-[480px] cursor-ew-resize overflow-hidden" id="heroSlider">
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" 
+                 class="absolute top-0 left-0 w-full h-full object-cover" alt="Lightroom Edit">
+            <div class="absolute top-4 right-4 bg-emerald-500 text-slate-950 px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase">
+              LIGHTROOM EDIT
+            </div>
+
+            <div class="resize-img" id="heroResize" style="width: 50%;">
+              <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" 
+                   class="absolute top-0 left-0 max-w-none h-full object-cover filter contrast-75 brightness-90 grayscale-[25%]" 
+                   id="heroRaw" alt="Original RAW">
+              <div class="absolute top-4 left-4 bg-black/80 text-slate-300 px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase">
+                ORIGINAL RAW
+              </div>
+            </div>
+
+            <div class="handle" id="heroHandle">
+              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-emerald-400 text-slate-950 shadow-xl flex items-center justify-center font-bold">
+                ↔
+              </div>
+            </div>
+          </div>
+          <p class="text-center text-xs text-slate-400 pt-3">
+            মাউস দিয়ে দাগটি ডানে-বামে টেনে এডিটিংয়ের আউটপুট দেখুন
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Trust Ribbon -->
+  <section class="border-y border-slate-800 bg-slate-900/40 py-10">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div>
+        <div class="text-3xl font-extrabold text-white font-sans">১২৫০+</div>
+        <p class="text-xs text-slate-400 mt-1">সফল শিক্ষার্থী</p>
+      </div>
+      <div>
+        <div class="text-3xl font-extrabold text-emerald-400 font-sans">১০০%</div>
+        <p class="text-xs text-slate-400 mt-1">প্র্যাকটিক্যাল প্রজেক্ট বেসড</p>
+      </div>
+      <div>
+        <div class="text-3xl font-extrabold text-white font-sans">২৪/৭</div>
+        <p class="text-xs text-slate-400 mt-1">লাইফটাইম সাপোর্ট গ্রুপ</p>
+      </div>
+      <div>
+        <div class="text-3xl font-extrabold text-teal-400 font-sans">Fiverr & Upwork</div>
+        <p class="text-xs text-slate-400 mt-1">মার্কেটপ্লেস রেডি ক্যারিয়ার</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Pain Points vs Transformation (কেন এই কোর্স?) -->
+  <section id="why" class="max-w-7xl mx-auto px-6 py-20">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-emerald-400 text-xs font-bold tracking-widest uppercase">TRANSFORMATION</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">সাধারণ এডিটর বনাম প্রফেশনাল কালারিস্ট</h2>
+      <p class="text-slate-400 text-sm mt-3">ইউটিউবে এলোমেলো ভিডিও দেখে সময় নষ্ট না করে সঠিক গাইডলাইনে শিখুন</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <!-- Old Way -->
+      <div class="p-8 rounded-3xl bg-red-950/20 border border-red-500/20 space-y-4">
+        <div class="flex items-center gap-3 text-red-400 font-bold text-lg">
+          <span class="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-sm">✕</span>
+          সঠিক গাইডলাইন ছাড়া শিখলে
+        </div>
+        <ul class="space-y-3 text-sm text-slate-400">
+          <li class="flex items-start gap-2.5"><span>•</span> স্কিন টোন ন্যাচারাল রাখতে না পারা ও অতিরিক্ত ফ্যাকাশে হওয়া।</li>
+          <li class="flex items-start gap-2.5"><span>•</span> টোন কার্ভ (Tone Curve) এবং কালার থিওরির সঠিক প্রয়োগ না জানা।</li>
+          <li class="flex items-start gap-2.5"><span>•</span> ক্লায়েন্টকে কাজ ডেলিভারি দিলে রিজেক্ট বা ব্যাড রিভিউ পাওয়া।</li>
+          <li class="flex items-start gap-2.5"><span>•</span> ফাইভার বা আপওয়ার্কে সঠিক পোর্টফোলিও তৈরি করতে না পারা।</li>
+        </ul>
+      </div>
+
+      <!-- New Way -->
+      <div class="p-8 rounded-3xl bg-emerald-950/30 border border-emerald-500/30 space-y-4 shadow-xl shadow-emerald-500/5">
+        <div class="flex items-center gap-3 text-emerald-400 font-bold text-lg">
+          <span class="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center text-sm">✓</span>
+          পিক্সেল একাডেমি থেকে শিখলে
+        </div>
+        <ul class="space-y-3 text-sm text-slate-300">
+          <li class="flex items-start gap-2.5"><span>✔</span> কালার থিওরি বুঝে যেকোনো ছবিতে প্রিমিয়াম সিনেমাটিক লুক আনা।</li>
+          <li class="flex items-start gap-2.5"><span>✔</span> দ্রুততম সময়ে ব্যাচ এডিটিং (Bulk Editing) শেষ করার ওয়ার্কফ্লো।</li>
+          <li class="flex items-start gap-2.5"><span>✔</span> হাই-এন্ড ওয়েডিং ও ফ্যাশন ফটোগ্রাফি স্টুডিওর স্ট্যান্ডার্ড রিটাচিং।</li>
+          <li class="flex items-start gap-2.5"><span>✔</span> আন্তর্জাতিক মার্কেটপ্লেসে হাই-পেয়িং ক্লায়েন্ট পাওয়ার কৌশল।</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Visual Gallery (কাজের স্যাম্পল) -->
+  <section id="gallery" class="max-w-7xl mx-auto px-6 py-20 border-t border-slate-800">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <span class="text-emerald-400 text-xs font-bold tracking-widest uppercase">PORTFOLIO</span>
+      <h2 class="text-3xl font-bold text-white mt-2">কোর্সে যে ধরণের এডিটিং শিখবেন</h2>
+      <p class="text-slate-400 text-sm mt-2">আন্তর্জাতিক মানের ওয়েডিং, পোর্ট্রেট ও সিনেমাটিক কালার গ্রেডিং</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="group relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-900">
+        <img class="w-full h-72 object-cover group-hover:scale-105 transition duration-500" src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80" alt="Wedding Editing">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent p-6 flex flex-col justify-end">
+          <span class="text-emerald-400 text-xs font-bold">WEDDING & COUPLES</span>
+          <h4 class="text-white font-bold text-lg">সফট অ্যান্ড এয়ারি কালার গ্রেডিং</h4>
+        </div>
+      </div>
+      <div class="group relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-900">
+        <img class="w-full h-72 object-cover group-hover:scale-105 transition duration-500" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Portrait Retouching">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent p-6 flex flex-col justify-end">
+          <span class="text-emerald-400 text-xs font-bold">PORTRAIT & SKIN</span>
+          <h4 class="text-white font-bold text-lg">ন্যাচারাল স্কিন রিটাচিং ও মাস্কিং</h4>
+        </div>
+      </div>
+      <div class="group relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-900">
+        <img class="w-full h-72 object-cover group-hover:scale-105 transition duration-500" src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" alt="Cinematic Tones">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent p-6 flex flex-col justify-end">
+          <span class="text-emerald-400 text-xs font-bold">CINEMATIC MOODY</span>
+          <h4 class="text-white font-bold text-lg">ডার্ক অ্যান্ড মুডি সিনেমাটিক লুক</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Comprehensive Curriculum -->
+  <section id="curriculum" class="max-w-4xl mx-auto px-6 py-20">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <span class="text-emerald-400 text-xs font-bold tracking-widest uppercase">CURRICULUM</span>
+      <h2 class="text-3xl font-bold text-white mt-2">পূর্ণাঙ্গ কোর্স কারিকুলাম</h2>
+      <p class="text-slate-400 text-sm mt-2">বেসিক লাইটরুম ইন্টারফেস থেকে আন্তর্জাতিক মার্কেটপ্লেসের গাইডলাইন</p>
+    </div>
+
+    <div class="space-y-4">
+      <!-- M1 -->
+      <div class="border border-slate-800 rounded-2xl bg-slate-900/50 overflow-hidden">
+        <button class="w-full p-6 text-left flex justify-between items-center font-bold text-slate-100 hover:text-emerald-400 transition" onclick="toggleAcc(1)">
+          <div class="flex items-center gap-4">
+            <span class="text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded-md font-sans">Module 01</span>
+            <span>লাইটরুম ইন্টারফেস, ক্যাটালগ ও RAW প্রসেসিং</span>
+          </div>
+          <span id="acc-1" class="text-2xl font-sans text-emerald-400">+</span>
+        </button>
+        <div id="acc-body-1" class="hidden p-6 pt-0 text-sm text-slate-400 border-t border-slate-800/60 space-y-2.5">
+          <p>• লাইটরুম ক্লাসিকের সঠিক ক্যাটালগ সেটআপ ও ফাস্ট ইমপোর্ট মেথড।</p>
+          <p>• হিস্টোগ্রাম বিশ্লেষণ ও বেসিক প্যানেলের (Exposure, Shadows, Highlights) নিখুঁত ব্যালেন্স।</p>
+          <p>• হোয়াইট ব্যালেন্স ঠিক করার প্রফেশনাল শর্টকাট টেকনিক।</p>
+        </div>
+      </div>
+
+      <!-- M2 -->
+      <div class="border border-slate-800 rounded-2xl bg-slate-900/50 overflow-hidden">
+        <button class="w-full p-6 text-left flex justify-between items-center font-bold text-slate-100 hover:text-emerald-400 transition" onclick="toggleAcc(2)">
+          <div class="flex items-center gap-4">
+            <span class="text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded-md font-sans">Module 02</span>
+            <span>টোন কার্ভ (Tone Curve) ও কালার গ্রেডিং ম্যাস্টারি</span>
+          </div>
+          <span id="acc-2" class="text-2xl font-sans text-emerald-400">+</span>
+        </button>
+        <div id="acc-body-2" class="hidden p-6 pt-0 text-sm text-slate-400 border-t border-slate-800/60 space-y-2.5">
+          <p>• RGB Curve দিয়ে সিনেমাটিক ম্যাট ব্ল্যাক ও ফেড কালার লুক তৈরি।</p>
+          <p>• HSL প্যানেল ব্যবহার করে কালার শিফট এবং স্কিন টোন প্রটেকশন।</p>
+          <p>• Color Grading হুইল ব্যবহার করে শ্যাডো, মিডটোন ও হাইলাইটস পারফেক্ট করা।</p>
+        </div>
+      </div>
+
+      <!-- M3 -->
+      <div class="border border-slate-800 rounded-2xl bg-slate-900/50 overflow-hidden">
+        <button class="w-full p-6 text-left flex justify-between items-center font-bold text-slate-100 hover:text-emerald-400 transition" onclick="toggleAcc(3)">
+          <div class="flex items-center gap-4">
+            <span class="text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded-md font-sans">Module 03</span>
+            <span>AI মাস্কিং টুলস ও অ্যাডভান্সড স্কিন রিটাচিং</span>
+          </div>
+          <span id="acc-3" class="text-2xl font-sans text-emerald-400">+</span>
+        </button>
+        <div id="acc-body-3" class="hidden p-6 pt-0 text-sm text-slate-400 border-t border-slate-800/60 space-y-2.5">
+          <p>• লাইটরুমের নতুন AI মাস্কিং দিয়ে সাবজেক্ট, ব্যাকগ্রাউন্ড ও স্কিন আলাদা রিটাচ।</p>
+          <p>• টেক্সচার ও ক্ল্যারিটি ব্যবহার করে ন্যাচারাল ডজ অ্যান্ড বার্ন ইফেক্ট।</p>
+          <p>• চোখ উজ্জ্বল করা, দাঁত সাদা করা এবং হেয়ার রিমুভাল টেকনিক।</p>
+        </div>
+      </div>
+
+      <!-- M4 -->
+      <div class="border border-slate-800 rounded-2xl bg-slate-900/50 overflow-hidden">
+        <button class="w-full p-6 text-left flex justify-between items-center font-bold text-slate-100 hover:text-emerald-400 transition" onclick="toggleAcc(4)">
+          <div class="flex items-center gap-4">
+            <span class="text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded-md font-sans">Module 04</span>
+            <span>ফাইভার, আপওয়ার্ক ও ফ্রিল্যান্সিং ক্যারিয়ার রোডম্যাপ</span>
+          </div>
+          <span id="acc-4" class="text-2xl font-sans text-emerald-400">+</span>
+        </button>
+        <div id="acc-body-4" class="hidden p-6 pt-0 text-sm text-slate-400 border-t border-slate-800/60 space-y-2.5">
+          <p>• ফাইভার গিগ তৈরি ও প্রথম অর্ডার পাওয়ার কি-ওয়ার্ড অপটিমাইজেশন।</p>
+          <p>• হাই-পেয়িং ক্লায়েন্টদের জন্য আকর্ষণীয় পোর্টফোলিও মেকিং।</p>
+          <p>• কাজ শেষে ডিরেক্ট ব্যাংকে বা বিকাশে পেমেন্ট নেওয়ার গাইডলাইন।</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Exclusive Bonuses -->
+  <section id="bonuses" class="max-w-7xl mx-auto px-6 py-20">
+    <div class="bg-gradient-to-br from-emerald-950/40 via-slate-900 to-slate-900 border border-emerald-500/30 rounded-3xl p-8 sm:p-14">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-emerald-400 text-xs font-bold tracking-widest uppercase">FREE PERKS</span>
+        <h2 class="text-3xl font-bold text-white mt-2">কোর্সের সাথে সম্পূর্ণ ফ্রি পাচ্ছেন</h2>
+        <p class="text-slate-400 text-sm mt-1">যার মোট বাজারমূল্য ৭,৫০০ টাকারও বেশি</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="p-6 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-3">
+          <span class="text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded font-bold">মূল্য: ২,০০০৳</span>
+          <h4 class="font-bold text-white text-lg">৫০+ প্রিমিয়াম প্রিসেট প্যাক</h4>
+          <p class="text-xs text-slate-400">এক ক্লিকে ওয়েডিং ও সিনেমাটিক কালার গ্রেডিং করার আন্তর্জাতিক প্রিসেট কালেকশন।</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-3">
+          <span class="text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded font-bold">মূল্য: ২,৫০০৳</span>
+          <h4 class="font-bold text-white text-lg">১০০+ স্টুডিও RAW ফাইল</h4>
+          <p class="text-xs text-slate-400">প্র্যাকটিস করার জন্য ইন্টারন্যাশনাল মডেল ও ব্রাইডাল শুটের ফুল রেজ্যুলেশন RAW ছবি।</p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-3">
+          <span class="text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded font-bold">মূল্য: ৩,০০০৳</span>
+          <h4 class="font-bold text-white text-lg">লাইফটাইম ভিআইপি সাপোর্ট</h4>
+          <p class="text-xs text-slate-400">কাজে বা মার্কেটপ্লেসে ক্লায়েন্ট হ্যান্ডেল করতে যেকোনো সমস্যায় সরাসরি মেন্টরের সাপোর্ট।</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Instructor Section -->
+  <section id="instructor" class="max-w-5xl mx-auto px-6 py-20">
+    <div class="bg-slate-900/40 border border-slate-800 rounded-3xl p-8 sm:p-12 grid md:grid-cols-12 gap-8 items-center">
+      <div class="md:col-span-5 text-center">
+        <img class="w-48 h-48 sm:w-56 sm:h-56 rounded-2xl object-cover mx-auto border-2 border-emerald-500/40 shadow-xl shadow-emerald-500/10" 
+             src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop" alt="Instructor Profile">
+        <h3 class="text-xl font-bold text-white mt-4">রাসেল আহমেদ</h3>
+        <p class="text-xs text-emerald-400 font-semibold">ফাউন্ডার, পিক্সেল একাডেমি ও লিড কালারিস্ট</p>
+      </div>
+
+      <div class="md:col-span-7 space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white">আপনার মেন্টর সম্পর্কে জানুন</h2>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          দীর্ঘ ৫+ বছর ধরে আন্তর্জাতিক বিভিন্ন ওয়েডিং স্টুডিও ও এজেন্সির সাথে কাজ করার প্র্যাকটিক্যাল অভিজ্ঞতা থেকেই কোর্সটি তৈরি করা হয়েছে। কোনো মুখস্থ বা অপ্রয়োজনীয় থিওরি নয়—মার্কেটপ্লেসে যা রিয়েল ক্লায়েন্টরা চায়, ঠিক সেটাই আপনাকে হাতে-কলমে শেখাব।
+        </p>
+        <div class="flex gap-6 pt-2 text-xs font-semibold text-slate-300">
+          <div><span class="text-emerald-400 font-bold text-base font-sans">৫+</span> বছর অভিজ্ঞতা</div>
+          <div><span class="text-emerald-400 font-bold text-base font-sans">৫০k+</span> ফটো এডিট</div>
+          <div><span class="text-emerald-400 font-bold text-base font-sans">Top Rated</span> ফ্রিল্যান্সার</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Pricing & Instant Enrollment Card -->
+  <section id="pricing" class="max-w-4xl mx-auto px-6 py-20">
+    <div class="relative bg-gradient-to-b from-slate-900 to-[#0b1019] border-2 border-emerald-500/40 rounded-3xl p-8 sm:p-14 shadow-2xl text-center space-y-8">
+      
+      <div class="inline-block bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 px-4 py-1 rounded-full text-xs font-bold">
+        🔥 স্পেশাল ৫০% ছাড় চলছে
+      </div>
+
+      <div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">কোর্সে এখনই এনরোল করুন</h2>
+        <p class="text-slate-400 text-sm mt-2">এককালীন ফি দিয়ে আজীবন অ্যাক্সেস এবং ভিআইপি সাপোর্ট নিশ্চিত করুন</p>
+      </div>
+
+      <div class="flex items-center justify-center gap-4">
+        <span class="text-slate-500 text-2xl line-through font-sans">৳ ৩,০০০</span>
+        <span class="text-5xl font-extrabold text-emerald-400 font-sans">৳ ১,৪৯০</span>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-3 text-left max-w-md mx-auto text-sm text-slate-300">
+        <div class="flex items-center gap-2">✓ সম্পূর্ণ প্র্যাকটিক্যাল কোর্স</div>
+        <div class="flex items-center gap-2">✓ লাইফটাইম ভিডিও অ্যাক্সেস</div>
+        <div class="flex items-center gap-2">✓ ৫০+ প্রিমিয়াম প্রিসেট প্যাক</div>
+        <div class="flex items-center gap-2">✓ ফাইভার ও আপওয়ার্ক গাইড</div>
+        <div class="flex items-center gap-2">✓ ডেডিকেটেড সাপোর্ট গ্রুপ</div>
+        <div class="flex items-center gap-2">✓ কোর্স কমপ্লিশন সার্টিফিকেট</div>
+      </div>
+
+      <div>
+        <button class="w-full max-w-md bg-gradient-to-r from-emerald-500 to-teal-500 hover:brightness-110 text-slate-950 font-extrabold text-lg py-4 rounded-xl shadow-xl shadow-emerald-500/25 transition">
+          বিকাশ / নগদ দিয়ে এখনই শুরু করুন →
+        </button>
+        <p class="text-xs text-slate-400 mt-3">🔒 শতভাগ নিরাপদ ইনস্ট্যান্ট পেমেন্ট ও অটোমেটিক ব্যাচ অ্যাক্সেস</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. FAQ Accordion -->
+  <section id="faq" class="max-w-4xl mx-auto px-6 py-16">
+    <div class="text-center mb-12">
+      <span class="text-emerald-400 text-xs font-bold tracking-widest uppercase">FAQ</span>
+      <h2 class="text-3xl font-bold text-white mt-2">সাধারণ কিছু জিজ্ঞাসা</h2>
+    </div>
+
+    <div class="space-y-4">
+      <div class="border border-slate-800 rounded-2xl bg-slate-900/40 p-6">
+        <h4 class="font-bold text-white text-base">১. আমার কোনো পূর্ব অভিজ্ঞতা নেই, আমি কি শিখতে পারব?</h4>
+        <p class="text-sm text-slate-400 mt-2">হ্যাঁ, কোর্সটি একদম জিরো থেকে সাজানো হয়েছে। কম্পিউটার কীভাবে অপারেট করতে হয় জানলেই আপনি শিখতে পারবেন।</p>
+      </div>
+      <div class="border border-slate-800 rounded-2xl bg-slate-900/40 p-6">
+        <h4 class="font-bold text-white text-base">২. ক্লাসে কোনো সমস্যা হলে সাপোর্ট কীভাবে পাব?</h4>
+        <p class="text-sm text-slate-400 mt-2">আমাদের একটি ডেডিকেটেড ভিআইপি সাপোর্ট গ্রুপ রয়েছে, যেখানে সরাসরি মেন্টর আপনাদের কাজের ফিডব্যাক এবং সমস্যার সমাধান দেবেন।</p>
+      </div>
+      <div class="border border-slate-800 rounded-2xl bg-slate-900/40 p-6">
+        <h4 class="font-bold text-white text-base">৩. মোবাইল দিয়ে কি কোর্সটি করা সম্ভব?</h4>
+        <p class="text-sm text-slate-400 mt-2">কোর্সটি প্রফেশনাল লাইটরুম ক্লাসিক (কম্পিউটার/ল্যাপটপ) বেইজড। মোবাইল লাইটরুমে অনেক নিয়ম মিললেও মার্কেটপ্লেসে কাজ করতে ল্যাপটপ বা পিসি প্রয়োজন।</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. Footer -->
+  <footer class="border-t border-slate-800 bg-[#070a10] py-12 text-slate-400 text-xs">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <span class="font-bold text-lg text-white font-sans">Pixel<span class="text-emerald-400">Academy</span></span>
+        <span>| সর্বস্বত্ব সংরক্ষিত © ২০২৬</span>
+      </div>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-emerald-400 transition">প্রাইভেসি পলিসি</a>
+        <a href="#" class="hover:text-emerald-400 transition">টার্মস অ্যান্ড কন্ডিশন</a>
+        <a href="#" class="hover:text-emerald-400 transition">রিফান্ড পলিসি</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 13. Mobile Sticky Bottom Enrollment Bar -->
+  <div class="md:hidden fixed bottom-0 left-0 right-0 bg-[#090d14]/95 backdrop-blur-md border-t border-slate-800 p-4 z-40 flex items-center justify-between">
+    <div>
+      <span class="text-xs text-slate-400">৫০% ডিসকাউন্ট প্রাইস</span>
+      <div class="text-lg font-bold text-emerald-400 font-sans">৳ ১,৪৯০</div>
+    </div>
+    <a href="#pricing" class="bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 font-bold px-6 py-2.5 rounded-xl text-sm">
+      ভর্তি হোন →
+    </a>
+  </div>
+
+  <!-- Floating WhatsApp Chat -->
+  <a href="https://wa.me/8801871303786" target="_blank" class="fixed bottom-20 md:bottom-6 right-6 z-50 bg-[#25D366] hover:scale-110 text-white p-3.5 rounded-full shadow-2xl flex items-center gap-2 font-bold text-sm transition">
+    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.698c.969.58 1.961.905 2.806.905 3.18 0 5.766-2.587 5.767-5.767 0-3.18-2.587-5.767-5.767-5.767zm7.986 5.766c-.002 4.412-3.59 7.999-8.002 7.999-1.282 0-2.544-.316-3.673-.918l-4.342 1.139 1.159-4.229c-.663-1.152-1.014-2.463-1.014-3.991 0-4.412 3.59-7.999 8.002-7.999 4.413 0 8.002 3.587 8.002 7.999z"/></svg>
+    <span class="hidden sm:inline">সরাসরি কথা বলুন</span>
+  </a>
+
+  <!-- JavaScript -->
+  <script>
+    // Hero Slider
+    const heroContainer = document.getElementById('heroSlider');
+    const heroResize = document.getElementById('heroResize');
+    const heroHandle = document.getElementById('heroHandle');
+    const heroRaw = document.getElementById('heroRaw');
+
+    function syncHero() {
+      heroRaw.style.width = heroContainer.offsetWidth + 'px';
+    }
+    window.addEventListener('resize', syncHero);
+    syncHero();
+
+    function moveHero(e) {
+      const rect = heroContainer.getBoundingClientRect();
+      let clientX = e.clientX || (e.touches && e.touches[0].clientX);
+      if (!clientX) return;
+
+      let pos = ((clientX - rect.left) / rect.width) * 100;
+      if (pos < 0) pos = 0;
+      if (pos > 100) pos = 100;
+
+      heroResize.style.width = pos + '%';
+      heroHandle.style.left = pos + '%';
+    }
+
+    let isHeroDown = false;
+    heroContainer.addEventListener('mousedown', () => isHeroDown = true);
+    window.addEventListener('mouseup', () => isHeroDown = false);
+    heroContainer.addEventListener('mousemove', (e) => { if (isHeroDown) moveHero(e); });
+    heroContainer.addEventListener('touchstart', () => isHeroDown = true);
+    window.addEventListener('touchend', () => isHeroDown = false);
+    heroContainer.addEventListener('touchmove', (e) => { if (isHeroDown) moveHero(e); });
+
+    // Accordion Toggle
+    function toggleAcc(id) {
+      const body = document.getElementById(`acc-body-${id}`);
+      const icon = document.getElementById(`acc-${id}`);
+      if (body.classList.contains('hidden')) {
+        body.classList.remove('hidden');
+        icon.innerText = '−';
+      } else {
+        body.classList.add('hidden');
+        icon.innerText = '+';
+      }
+    }
+
+    // Countdown Timer (Demo)
+    let time = 8 * 3600 + 45 * 60 + 20;
+    const timerElem = document.getElementById('countdown');
+    setInterval(() => {
+      if (time <= 0) time = 8 * 3600;
+      time--;
+      const h = String(Math.floor(time / 3600)).padStart(2, '0');
+      const m = String(Math.floor((time % 3600) / 60)).padStart(2, '0');
+      const s = String(time % 60).padStart(2, '0');
+      timerElem.innerText = `${h}:${m}:${s}`;
+    }, 1000);
+  </script>
+</body>
+</html>
