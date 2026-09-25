@@ -1,11 +1,17 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router';
+import { Link, NavLink, useLocation } from 'react-router';
 import { BookOpenCheck, CircleUserRound, LogOut, Menu, ShieldCheck, X } from 'lucide-react';
 import Logo from '../components/ui/Logo';
 import { NAV_LINKS } from '../data/homeContent';
 
 const pill =
   'flex items-center gap-1.5 whitespace-nowrap rounded-full border border-slate-700 px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-emerald-500/50 hover:text-white sm:px-4';
+
+// Highlights the account link for the section you're in (e.g. all of /admin/*).
+const accountPill = ({ isActive }) =>
+  isActive
+    ? 'flex items-center gap-1.5 whitespace-nowrap rounded-full border border-emerald-500/60 bg-emerald-500/15 px-3 py-2 text-sm font-semibold text-emerald-300 sm:px-4'
+    : pill;
 
 // Section links jump in-page on the homepage and navigate back to it elsewhere.
 function SectionLink({ href, onHome, ...props }) {
@@ -54,15 +60,15 @@ export default function Navbar({ account = { loggedIn: false } }) {
           {account.loggedIn ? (
             <>
               {account.isAdmin && (
-                <Link to="/admin" className={`${pill} hidden md:flex`}>
+                <NavLink to="/admin" className={(state) => `${accountPill(state)} hidden md:flex`}>
                   <ShieldCheck className="size-4" aria-hidden="true" />
                   অ্যাডমিন
-                </Link>
+                </NavLink>
               )}
-              <Link to="/my-course" className={pill} aria-current={pathname === '/my-course' ? 'page' : undefined}>
+              <NavLink to="/my-course" className={accountPill}>
                 <BookOpenCheck className="size-4" aria-hidden="true" />
                 আমার কোর্স
-              </Link>
+              </NavLink>
               {account.onSignOut && (
                 <button
                   type="button"
@@ -119,9 +125,15 @@ export default function Navbar({ account = { loggedIn: false } }) {
             ))}
             {account.isAdmin && (
               <li>
-                <Link to="/admin" onClick={close} className="block rounded-lg px-3 py-3 text-slate-200 transition hover:bg-slate-800/70 hover:text-emerald-400">
+                <NavLink
+                  to="/admin"
+                  onClick={close}
+                  className={({ isActive }) =>
+                    `block rounded-lg px-3 py-3 transition hover:bg-slate-800/70 hover:text-emerald-400 ${isActive ? 'text-emerald-400' : 'text-slate-200'}`
+                  }
+                >
                   অ্যাডমিন প্যানেল
-                </Link>
+                </NavLink>
               </li>
             )}
             {account.onSignOut && (
