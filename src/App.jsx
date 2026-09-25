@@ -10,6 +10,7 @@ const MemberLayout = lazy(() => import('./pages/MemberLayout'));
 const Checkout = lazy(() => import('./pages/Checkout'));
 const Login = lazy(() => import('./pages/Login'));
 const MyCourse = lazy(() => import('./pages/MyCourse'));
+const Legal = lazy(() => import('./pages/Legal'));
 const AdminLayout = lazy(() => import('./pages/admin/AdminLayout'));
 const AdminOverview = lazy(() => import('./pages/admin/Overview'));
 const AdminOrders = lazy(() => import('./pages/admin/Orders'));
@@ -45,6 +46,8 @@ export default function App() {
             <Route path="checkout" element={<Checkout />} />
             <Route path="login" element={<Login />} />
             <Route path="my-course" element={<MyCourse />} />
+            <Route path="privacy" element={<Legal doc="privacy" />} />
+            <Route path="terms" element={<Legal doc="terms" />} />
             <Route path="admin" element={<AdminLayout />}>
               <Route index element={<AdminOverview />} />
               <Route path="orders" element={<AdminOrders />} />

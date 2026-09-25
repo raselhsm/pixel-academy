@@ -9,6 +9,7 @@ export default function OrderSummary() {
         <div>
           <span className="rounded bg-emerald-500/10 px-2 py-0.5 text-[11px] font-bold text-emerald-400">{COURSE.format}</span>
           <h2 className="mt-1.5 font-bold leading-snug text-white">{COURSE.title}</h2>
+          <p className="text-xs text-slate-400">{COURSE.subtitle}</p>
         </div>
       </div>
 

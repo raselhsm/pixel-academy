@@ -6,8 +6,8 @@ import { supabase } from '../lib/supabase';
 import { fetchMyOrder } from '../lib/orders';
 import { fetchCourseContent } from '../lib/course';
 import { toEmbed } from '../lib/video';
-import { toBnDigits } from '../lib/format';
-import { COURSE } from '../data/homeContent';
+import { toBnDigits, whatsappLink } from '../lib/format';
+import { COURSE, SUPPORT_PHONE } from '../data/homeContent';
 import Spinner from '../components/ui/Spinner';
 import SetupNotice from '../components/ui/SetupNotice';
 import OrderStatus from '../components/checkout/OrderStatus';
@@ -110,7 +110,8 @@ function CoursePlayer({ modules }) {
                       }`}
                     >
                       <CirclePlay className={`mt-0.5 size-4 shrink-0 ${active ? 'text-emerald-400' : 'text-slate-500'}`} aria-hidden="true" />
-                      {l.title}
+                      <span className="flex-1">{l.title}</span>
+                      {l.duration && <span className="shrink-0 font-sans text-xs tabular-nums text-slate-500">{l.duration}</span>}
                     </button>
                   </li>
                 );
@@ -155,6 +156,20 @@ export default function MyCourse() {
         <Link to="/checkout" className="mt-6 inline-block rounded-xl bg-emerald-500 px-6 py-3 font-bold text-slate-950 hover:bg-emerald-400">
           কোর্সটি কিনুন →
         </Link>
+        <div className="mt-8 rounded-2xl border border-slate-800 bg-slate-900/50 p-5 text-left text-sm text-slate-300">
+          <p className="font-semibold text-white">আগের ওয়েবসাইট থেকে কিনেছিলেন?</p>
+          <p className="mt-1 text-slate-400">
+            হোয়াটসঅ্যাপে জানান — যাচাই করে কোনো টাকা ছাড়াই এই অ্যাকাউন্টে অ্যাক্সেস চালু করে দেওয়া হবে।
+          </p>
+          <a
+            href={whatsappLink(SUPPORT_PHONE, `আসসালামু আলাইকুম, আমি আগের ওয়েবসাইট থেকে Lightroom Mastery কোর্সটি কিনেছিলাম। নতুন সাইটে অ্যাকাউন্ট খুলেছি: ${user.email}`)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 inline-block rounded-xl bg-[#25D366] px-5 py-2.5 font-bold text-white hover:brightness-110"
+          >
+            হোয়াটসঅ্যাপে জানান
+          </a>
+        </div>
       </div>
     );
   }

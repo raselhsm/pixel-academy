@@ -5,7 +5,7 @@ import { supabase } from './supabase';
 export async function fetchCourseContent() {
   const { data, error } = await supabase
     .from('modules')
-    .select('id, title, position, lessons(id, module_id, title, position, video_url)')
+    .select('id, title, position, lessons(id, module_id, title, position, video_url, duration)')
     .order('position')
     .order('position', { referencedTable: 'lessons' });
   if (error) throw error;

@@ -1,1 +1,21 @@
-/*  /index.html  200
+# Old WordPress links (ads, Google, bookmarks) → new pages
+/courses/*            /              301
+/course-filter/*      /              301
+/course-filter        /              301
+/blog-grid/*          /              301
+/blog-grid            /              301
+/contact/*            /              301
+/contact              /              301
+/privacy-policy-2/*   /privacy       301
+/privacy-policy-2     /privacy       301
+/term-conditions/*    /terms         301
+/term-conditions      /terms         301
+/dashboard/*          /my-course     301
+/dashboard            /my-course     301
+/cart/*               /checkout      301
+/cart                 /checkout      301
+/wp-login.php         /login         301
+/wp-admin/*           /admin         301
+
+# Single-page app: every other path serves index.html
+/*                    /index.html    200

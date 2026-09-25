@@ -4,7 +4,7 @@ import { Check, LoaderCircle, Star } from 'lucide-react';
 import { useAuth } from '../auth/context';
 import { supabase } from '../lib/supabase';
 import { normalizeBdPhone } from '../lib/format';
-import { COURSE, COURSE_INCLUDES, HERO_IMAGE, PRICE } from '../data/homeContent';
+import { COURSE, COURSE_INCLUDES, HERO_IMAGE, PRICE, SOCIAL_PROOF } from '../data/homeContent';
 import Field from '../components/ui/Field';
 import Spinner from '../components/ui/Spinner';
 import SetupNotice from '../components/ui/SetupNotice';
@@ -64,9 +64,9 @@ function CoursePanel() {
           {Array.from({ length: 5 }, (_, i) => (
             <Star key={i} className="size-4 fill-current" aria-hidden="true" />
           ))}
-          <span className="ml-2 font-sans text-sm font-bold text-white">4.9/5</span>
+          <span className="ml-2 font-sans text-sm font-bold text-white">{SOCIAL_PROOF.rating}/5</span>
         </div>
-        <p className="mt-1 text-sm text-slate-400">১২৫০+ শিক্ষার্থী ইতিমধ্যে কোর্সটি করেছেন</p>
+        <p className="mt-1 text-sm text-slate-400">{SOCIAL_PROOF.students} শিক্ষার্থী ইতিমধ্যে কোর্সটিতে ভর্তি হয়েছেন</p>
         <p className="mt-3 font-sans text-lg font-extrabold text-emerald-400">
           {PRICE.offer} <s className="text-sm font-normal text-slate-500">{PRICE.regular}</s>
         </p>

@@ -55,13 +55,29 @@ triggers, starter curriculum). The live project already has it; run it only on a
 4. Copy `.env.example` to `.env` with the Project URL and publishable key, and add the same
    variables in your hosting provider.
 
+## Moving from the old WordPress site (pixelacademyit.com)
+
+Do these **before** deleting WordPress:
+
+1. **Export the students** who bought on WordPress (Tutor LMS → Students, or WooCommerce →
+   Orders → Export) and paste the list into **/admin/students → পুরনো ওয়েবসাইটের শিক্ষার্থী**.
+   When they sign up here with the same email they're flagged, and **অ্যাক্সেস দিন** gives them
+   the course for free.
+2. **Video links**: copy each lesson's unlisted YouTube link into **/admin/content**.
+3. **Photos**: download anything you want to keep (instructor photo, before/after edits) and
+   add it under `public/`, then set `INSTRUCTOR.photo` / `HERO_BEFORE_IMAGE` in `homeContent.js`.
+4. **Deploy** the new site and point the `pixelacademyit.com` domain at it. Old WordPress URLs
+   (`/courses/...`, `/dashboard/`, `/privacy-policy-2/`, …) redirect to the new pages via
+   `public/_redirects`.
+
 ## Things to edit
 
 All copy, price, bKash/Nagad number and the discount deadline live in
 [`src/data/homeContent.js`](src/data/homeContent.js):
 
 - `PRICE.amount` — the Taka amount students must send
-- `OFFER_ENDS_AT` — the real end of the discount (countdowns hide after it)
+- `OFFER_ENDS_AT` — set a real deadline to show countdowns; `null` hides them
+- `INSTRUCTOR`, `SOCIAL_PROOF`, `TRUST_METRICS` — keep these numbers true
 - `PAYMENT.number`, `PAYMENT.verifyTime`
 
 Optional: set `VITE_META_PIXEL_ID` to track `ViewContent`, `InitiateCheckout` and
@@ -69,5 +85,5 @@ Optional: set `VITE_META_PIXEL_ID` to track `ViewContent`, `InitiateCheckout` an
 
 ## Deploying
 
-It's a single-page app, so every path must serve `index.html`.
-`vercel.json` (Vercel) and `public/_redirects` (Netlify) already do this.
+Hosted on Netlify. `public/_redirects` sends old WordPress links to the new pages and serves
+`index.html` for every other path (it's a single-page app).

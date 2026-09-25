@@ -1,21 +1,42 @@
-// All homepage copy lives here so sections stay purely presentational.
+// All site copy lives here so sections stay purely presentational.
+// Numbers match the real course (previously sold on pixelacademyit.com).
 
 export const COURSE = {
-  title: 'প্রফেশনাল লাইটরুম এডিটিং মাস্টারক্লাস',
+  title: 'Lightroom Mastery',
+  subtitle: 'প্রফেশনাল ফটো এডিটিং ও ফ্রিল্যান্সিং কোর্স',
   format: 'রেকর্ডেড কোর্স',
+  lessons: '১৩টি লেসন',
+  duration: '৮ ঘণ্টা ২০ মিনিট',
 };
 
 export const PRICE = {
-  amount: 1490, // Taka actually charged; checkout and the admin panel use this.
-  regular: '৳ ৩,০০০',
-  offer: '৳ ১,৪৯০',
-  discountLabel: '৫০%',
+  amount: 4990, // Taka actually charged; checkout and the admin panel use this.
+  regular: '৳ ৬,৪৯০',
+  offer: '৳ ৪,৯৯০',
+  discountLabel: '৳১,৫০০',
 };
 
-// Real end of the discount. The countdowns hide themselves once it passes.
-export const OFFER_ENDS_AT = '2026-10-10T23:59:59+06:00';
+// End of a limited-time offer, e.g. '2026-10-31T23:59:59+06:00'. Countdowns
+// only show while a real deadline is set and hide themselves after it passes.
+export const OFFER_ENDS_AT = null;
 
-export const SUPPORT_PHONE = '01871303786';
+export const SOCIAL_PROOF = {
+  rating: '5.0',
+  reviews: '৪টি রিভিউ',
+  students: '৭৮+',
+  // First letters of real students' names (Maruf, Tanvir, Eamin, Rabby, Fahad).
+  initials: ['ম', 'ত', 'ই', 'র'],
+};
+
+export const CONTACT = {
+  phone: '01871303786',
+  email: 'pixelacademyit@gmail.com',
+  address: 'West Atadi, Araihazar, Narayanganj 1450',
+  facebook: 'https://www.facebook.com/pixelacademyit',
+  youtube: 'https://www.youtube.com/@pixelacademyit',
+};
+
+export const SUPPORT_PHONE = CONTACT.phone;
 export const WHATSAPP_URL = 'https://wa.me/8801871303786';
 
 export const PAYMENT = {
@@ -29,148 +50,145 @@ export const PAYMENT = {
 };
 
 export const COURSE_INCLUDES = [
+  '১৩টি রেকর্ডেড লেসন (৮ ঘণ্টা ২০ মিনিট)',
   'লাইফটাইম অ্যাক্সেস — নিজের সময়ে শিখুন',
-  'মোবাইল ও ল্যাপটপ দুটোতেই দেখা যাবে',
   '৫০+ প্রিমিয়াম প্রিসেট প্যাক',
-  '১০০+ স্টুডিও RAW প্র্যাকটিস ফাইল',
+  '১০০+ RAW প্র্যাকটিস ফাইল',
   'প্রাইভেট সাপোর্ট গ্রুপ',
   'কোর্স কমপ্লিশন সার্টিফিকেট',
 ];
 
 export const HOW_TO_BUY = [
   { title: 'কোর্সটি কিনুন বাটনে ক্লিক করুন', text: 'নাম, মোবাইল নম্বর ও ইমেইল দিয়ে অ্যাকাউন্ট খুলুন।' },
-  { title: 'বিকাশ / নগদে Send Money করুন', text: '01871303786 নম্বরে ১,৪৯০ টাকা পাঠান।' },
+  { title: 'বিকাশ / নগদে Send Money করুন', text: '01871303786 নম্বরে ৪,৯৯০ টাকা পাঠান।' },
   { title: 'TrxID দিয়ে অর্ডার কনফার্ম করুন', text: 'যাচাই হলেই লগইন করে কোর্স দেখা শুরু করুন।' },
 ];
 
 export const NAV_LINKS = [
   { href: '#why', label: 'কেন শিখবেন?' },
   { href: '#curriculum', label: 'কারিকুলাম' },
-  { href: '#gallery', label: 'কাজের স্যাম্পল' },
+  { href: '#gallery', label: 'এডিটিং স্টাইল' },
   { href: '#bonuses', label: 'বোনাস' },
   { href: '#instructor', label: 'মেন্টর' },
   { href: '#faq', label: 'প্রশ্নোত্তর' },
 ];
 
+// Hero before/after. Put your own edit in /public (e.g. /hero-before.jpg and
+// /hero-after.jpg) and set both paths; until then one photo is shown with a
+// flat "RAW-like" filter on the left side.
 export const HERO_IMAGE =
   'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80';
-
-export const STUDENT_AVATARS = [
-  'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop',
-  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop',
-  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop',
-];
+export const HERO_BEFORE_IMAGE = null;
 
 export const TRUST_METRICS = [
-  { value: '১২৫০+', label: 'সফল শিক্ষার্থী', accent: false },
-  { value: '১০০%', label: 'প্র্যাকটিক্যাল প্রজেক্ট বেসড', accent: true },
-  { value: '২৪/৭', label: 'লাইফটাইম সাপোর্ট গ্রুপ', accent: false },
-  { value: 'Fiverr & Upwork', label: 'মার্কেটপ্লেস রেডি ক্যারিয়ার', accent: true },
+  { value: '৭৮+', label: 'শিক্ষার্থী কোর্সটিতে ভর্তি হয়েছেন', accent: false },
+  { value: '৮ ঘণ্টা+', label: 'রেকর্ডেড ভিডিও লেসন', accent: true },
+  { value: '৫০০+', label: 'ফাইভার অর্ডার সম্পন্ন করেছেন মেন্টর', accent: false },
+  { value: '$১ লাখ+', label: 'মেন্টরের ফ্রিল্যান্সিং আয়', accent: true },
 ];
 
 export const PAIN_POINTS = [
-  'স্কিন টোন ন্যাচারাল রাখতে না পারা ও অতিরিক্ত ফ্যাকাশে হওয়া।',
-  'টোন কার্ভ (Tone Curve) এবং কালার থিওরির সঠিক প্রয়োগ না জানা।',
-  'ক্লায়েন্টকে কাজ ডেলিভারি দিলে রিজেক্ট বা ব্যাড রিভিউ পাওয়া।',
-  'ফাইভার বা আপওয়ার্কে সঠিক পোর্টফোলিও তৈরি করতে না পারা।',
+  'ইউটিউবের এলোমেলো টিউটোরিয়াল দেখে পুরো ওয়ার্কফ্লো বুঝতে না পারা।',
+  'শত শত ওয়েডিং ছবি থেকে বাছাই (Culling) করতে দিনের পর দিন লেগে যাওয়া।',
+  'কালার ও স্কিন টোন ঠিক না হওয়ায় ক্লায়েন্টের রিজেক্ট বা ব্যাড রিভিউ পাওয়া।',
+  'ফাইভারে অ্যাকাউন্ট ও গিগ ঠিকভাবে সাজাতে না পারায় অর্ডার না পাওয়া।',
 ];
 
 export const OUTCOMES = [
-  'কালার থিওরি বুঝে যেকোনো ছবিতে প্রিমিয়াম সিনেমাটিক লুক আনা।',
-  'দ্রুততম সময়ে ব্যাচ এডিটিং (Bulk Editing) শেষ করার ওয়ার্কফ্লো।',
-  'হাই-এন্ড ওয়েডিং ও ফ্যাশন ফটোগ্রাফি স্টুডিওর স্ট্যান্ডার্ড রিটাচিং।',
-  'আন্তর্জাতিক মার্কেটপ্লেসে হাই-পেয়িং ক্লায়েন্ট পাওয়ার কৌশল।',
+  'লাইটরুমের প্রতিটি টুল বেসিক থেকে অ্যাডভান্সড পর্যন্ত হাতে-কলমে ব্যবহার।',
+  'দ্রুত Culling, ক্রপিং ও প্রফেশনাল কালার কারেকশনের ওয়ার্কফ্লো।',
+  'নিজের প্রিসেট বানিয়ে ওয়েডিং প্রজেক্ট দ্রুত শেষ করে ক্লায়েন্টকে ডেলিভারি।',
+  'ফাইভার অ্যাকাউন্ট খোলা, গিগ পাবলিশ এবং প্রাইস ও পেমেন্ট হ্যান্ডেল করা।',
 ];
 
+// Illustrative photos of the editing styles taught; replace with your own work.
 export const GALLERY = [
   {
-    tag: 'WEDDING & COUPLES',
-    title: 'সফট অ্যান্ড এয়ারি কালার গ্রেডিং',
+    tag: 'WEDDING EDITING',
+    title: 'ওয়েডিং ও ইভেন্ট ফটো এডিটিং',
     image: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80',
   },
   {
-    tag: 'PORTRAIT & SKIN',
-    title: 'ন্যাচারাল স্কিন রিটাচিং ও মাস্কিং',
+    tag: 'COLOR CORRECTION',
+    title: 'ন্যাচারাল স্কিন টোন ও কালার কারেকশন',
     image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80',
   },
   {
-    tag: 'CINEMATIC MOODY',
-    title: 'ডার্ক অ্যান্ড মুডি সিনেমাটিক লুক',
+    tag: 'CUSTOM PRESETS',
+    title: 'নিজের প্রিসেট দিয়ে এক রকম লুক',
     image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80',
   },
 ];
 
 export const CURRICULUM = [
   {
-    title: 'লাইটরুম ইন্টারফেস, ক্যাটালগ ও RAW প্রসেসিং',
+    title: 'লাইটরুম বেসিক',
     lessons: [
-      'লাইটরুম ক্লাসিকের সঠিক ক্যাটালগ সেটআপ ও ফাস্ট ইমপোর্ট মেথড।',
-      'হিস্টোগ্রাম বিশ্লেষণ ও বেসিক প্যানেলের (Exposure, Shadows, Highlights) নিখুঁত ব্যালেন্স।',
-      'হোয়াইট ব্যালেন্স ঠিক করার প্রফেশনাল শর্টকাট টেকনিক।',
+      { title: 'Lightroom Download & Installation', duration: '2:53' },
+      { title: 'Lightroom Interface', duration: '20:24' },
+      { title: 'Lightroom Basic Tool', duration: '10:44' },
+      { title: 'Lightroom Other Tools', duration: '24:22' },
     ],
   },
   {
-    title: 'টোন কার্ভ (Tone Curve) ও কালার গ্রেডিং ম্যাস্টারি',
+    title: 'প্রফেশনাল এডিটিং ওয়ার্কফ্লো',
     lessons: [
-      'RGB Curve দিয়ে সিনেমাটিক ম্যাট ব্ল্যাক ও ফেড কালার লুক তৈরি।',
-      'HSL প্যানেল ব্যবহার করে কালার শিফট এবং স্কিন টোন প্রটেকশন।',
-      'Color Grading হুইল ব্যবহার করে শ্যাডো, মিডটোন ও হাইলাইটস পারফেক্ট করা।',
+      { title: 'Culling / Filtering Images', duration: '55:02' },
+      { title: 'Cropping', duration: '29:54' },
+      { title: 'Color Correction', duration: '35:04' },
+      { title: 'Preset Creation & Import', duration: '6:07' },
+      { title: 'Export Settings', duration: '7:13' },
     ],
   },
   {
-    title: 'AI মাস্কিং টুলস ও অ্যাডভান্সড স্কিন রিটাচিং',
-    lessons: [
-      'লাইটরুমের নতুন AI মাস্কিং দিয়ে সাবজেক্ট, ব্যাকগ্রাউন্ড ও স্কিন আলাদা রিটাচ।',
-      'টেক্সচার ও ক্ল্যারিটি ব্যবহার করে ন্যাচারাল ডজ অ্যান্ড বার্ন ইফেক্ট।',
-      'চোখ উজ্জ্বল করা, দাঁত সাদা করা এবং হেয়ার রিমুভাল টেকনিক।',
-    ],
+    title: 'রিয়েল ওয়েডিং প্রজেক্ট',
+    lessons: [{ title: 'Wedding / Real Project', duration: '19:55' }],
   },
   {
-    title: 'ফাইভার, আপওয়ার্ক ও ফ্রিল্যান্সিং ক্যারিয়ার রোডম্যাপ',
+    title: 'ফ্রিল্যান্সিং ও ফাইভার',
     lessons: [
-      'ফাইভার গিগ তৈরি ও প্রথম অর্ডার পাওয়ার কি-ওয়ার্ড অপটিমাইজেশন।',
-      'হাই-পেয়িং ক্লায়েন্টদের জন্য আকর্ষণীয় পোর্টফোলিও মেকিং।',
-      'কাজ শেষে ডিরেক্ট ব্যাংকে বা বিকাশে পেমেন্ট নেওয়ার গাইডলাইন।',
+      { title: 'Price / Delivery / Payment', duration: '8:27' },
+      { title: 'Fiverr Account Creation', duration: '9:12' },
+      { title: 'Fiverr Gig Publishing', duration: '42:32' },
     ],
   },
 ];
 
 export const BONUSES = [
   {
-    value: '২,০০০৳',
     title: '৫০+ প্রিমিয়াম প্রিসেট প্যাক',
-    description: 'এক ক্লিকে ওয়েডিং ও সিনেমাটিক কালার গ্রেডিং করার আন্তর্জাতিক প্রিসেট কালেকশন।',
+    description: 'এক ক্লিকে ওয়েডিং ও সিনেমাটিক কালার গ্রেডিং করার প্রিসেট কালেকশন।',
   },
   {
-    value: '২,৫০০৳',
-    title: '১০০+ স্টুডিও RAW ফাইল',
-    description: 'প্র্যাকটিস করার জন্য ইন্টারন্যাশনাল মডেল ও ব্রাইডাল শুটের ফুল রেজ্যুলেশন RAW ছবি।',
+    title: '১০০+ RAW প্র্যাকটিস ফাইল',
+    description: 'কোর্সের সাথে সাথে প্র্যাকটিস করার জন্য ফুল রেজ্যুলেশন RAW ছবি।',
   },
   {
-    value: '৩,০০০৳',
-    title: 'লাইফটাইম ভিআইপি সাপোর্ট',
-    description: 'কাজে বা মার্কেটপ্লেসে ক্লায়েন্ট হ্যান্ডেল করতে যেকোনো সমস্যায় সরাসরি মেন্টরের সাপোর্ট।',
+    title: 'প্রাইভেট সাপোর্ট গ্রুপ',
+    description: 'কাজে বা মার্কেটপ্লেসে ক্লায়েন্ট হ্যান্ডেল করতে সমস্যা হলে সরাসরি মেন্টরের সাপোর্ট।',
   },
 ];
 
 export const INSTRUCTOR = {
-  name: 'রাসেল আহমেদ',
-  role: 'ফাউন্ডার, পিক্সেল একাডেমি ও লিড কালারিস্ট',
-  photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop',
-  bio: 'দীর্ঘ ৫+ বছর ধরে আন্তর্জাতিক বিভিন্ন ওয়েডিং স্টুডিও ও এজেন্সির সাথে কাজ করার প্র্যাকটিক্যাল অভিজ্ঞতা থেকেই কোর্সটি তৈরি করা হয়েছে। কোনো মুখস্থ বা অপ্রয়োজনীয় থিওরি নয়—মার্কেটপ্লেসে যা রিয়েল ক্লায়েন্টরা চায়, ঠিক সেটাই আপনাকে হাতে-কলমে শেখাব।',
+  name: 'রাসেল',
+  role: 'ফাউন্ডার, পিক্সেল একাডেমি আইটি • Fiverr Level 2 Seller',
+  // Path to a real photo in /public, e.g. '/rasel.jpg'. Without one, a monogram shows.
+  photo: null,
+  initial: 'র',
+  bio: 'ফাইভারে ৫-স্টার রিভিউসহ ৫০০+ অর্ডার সম্পন্ন করেছেন, ফ্রিল্যান্সিং থেকে লাইফটাইম আয় $১,০০,০০০+। বর্তমানে ৩০+ প্রফেশনাল এডিটরের একটি টিম পরিচালনা করছেন। রিয়েল ক্লায়েন্টদের কাজ যে ওয়ার্কফ্লোতে করা হয়, এই কোর্সে ঠিক সেটাই হাতে-কলমে শেখানো হয়েছে।',
   stats: [
-    { value: '৫+', label: 'বছর অভিজ্ঞতা' },
-    { value: '৫০k+', label: 'ফটো এডিট' },
-    { value: 'Top Rated', label: 'ফ্রিল্যান্সার' },
+    { value: '৫০০+', label: 'ফাইভার অর্ডার' },
+    { value: '$১০০k+', label: 'লাইফটাইম আয়' },
+    { value: '৩০+', label: 'এডিটরের টিম' },
   ],
 };
 
 export const PRICING_FEATURES = [
-  'সম্পূর্ণ রেকর্ডেড কোর্স',
+  '১৩টি রেকর্ডেড লেসন (৮ ঘণ্টা+)',
   'লাইফটাইম ভিডিও অ্যাক্সেস',
-  '৫০+ প্রিমিয়াম প্রিসেট প্যাক',
-  'ফাইভার ও আপওয়ার্ক গাইড',
-  'ডেডিকেটেড সাপোর্ট গ্রুপ',
+  '৫০+ প্রিসেট ও ১০০+ RAW ফাইল',
+  'ফাইভার অ্যাকাউন্ট ও গিগ গাইড',
+  'প্রাইভেট সাপোর্ট গ্রুপ',
   'কোর্স কমপ্লিশন সার্টিফিকেট',
 ];
 
@@ -181,15 +199,23 @@ export const FAQS = [
   },
   {
     question: 'কোর্সটি কি লাইভ নাকি রেকর্ডেড? কতদিন দেখতে পারব?',
-    answer: 'এটি সম্পূর্ণ রেকর্ডেড কোর্স। একবার কিনলে লাইফটাইম অ্যাক্সেস — যখন খুশি, যতবার খুশি দেখতে পারবেন।',
+    answer: 'এটি সম্পূর্ণ রেকর্ডেড কোর্স (১৩টি লেসন, মোট ৮ ঘণ্টা ২০ মিনিট)। একবার কিনলে লাইফটাইম অ্যাক্সেস — যখন খুশি, যতবার খুশি দেখতে পারবেন।',
   },
   {
     question: 'আমার কোনো পূর্ব অভিজ্ঞতা নেই, আমি কি শিখতে পারব?',
-    answer: 'হ্যাঁ, কোর্সটি একদম জিরো থেকে সাজানো হয়েছে। কম্পিউটার কীভাবে অপারেট করতে হয় জানলেই আপনি শিখতে পারবেন।',
+    answer: 'হ্যাঁ, কোর্সটি একদম জিরো থেকে সাজানো — লাইটরুম ইনস্টল করা থেকে শুরু। কম্পিউটার চালাতে জানলেই আপনি শিখতে পারবেন।',
   },
   {
-    question: 'ক্লাসে কোনো সমস্যা হলে সাপোর্ট কীভাবে পাব?',
-    answer: 'আমাদের একটি ডেডিকেটেড ভিআইপি সাপোর্ট গ্রুপ রয়েছে, যেখানে সরাসরি মেন্টর আপনাদের কাজের ফিডব্যাক এবং সমস্যার সমাধান দেবেন।',
+    question: 'প্রতিদিন কতটুকু সময় দিতে হবে?',
+    answer: 'দিনে ২-৪ ঘণ্টা সময় দিয়ে নিয়মিত প্র্যাকটিস করলে ৩-৪ মাসের মধ্যে ক্লায়েন্টের কাজ করার মতো দক্ষ হয়ে ওঠা সম্ভব। তবে ফলাফল আপনার প্র্যাকটিসের উপর নির্ভর করবে।',
+  },
+  {
+    question: 'কোনো সমস্যা হলে সাপোর্ট কীভাবে পাব?',
+    answer: 'কোর্সের সাথে একটি প্রাইভেট সাপোর্ট গ্রুপ রয়েছে, যেখানে সরাসরি মেন্টর আপনার কাজের ফিডব্যাক এবং সমস্যার সমাধান দেবেন।',
+  },
+  {
+    question: 'আগের ওয়েবসাইট থেকে কোর্সটি কিনেছিলাম, এখন কীভাবে দেখব?',
+    answer: 'যে ইমেইল দিয়ে আগে কিনেছিলেন, সেই ইমেইল দিয়ে এখানে অ্যাকাউন্ট খুলুন এবং হোয়াটসঅ্যাপে (01871303786) জানান। আমরা যাচাই করে কোনো টাকা ছাড়াই অ্যাক্সেস চালু করে দেব।',
   },
   {
     question: 'পেমেন্ট করেছি কিন্তু এখনো অ্যাক্সেস পাইনি, কী করব?',
@@ -197,12 +223,11 @@ export const FAQS = [
   },
   {
     question: 'মোবাইল দিয়ে কি কোর্সটি করা সম্ভব?',
-    answer: 'কোর্সটি প্রফেশনাল লাইটরুম ক্লাসিক (কম্পিউটার/ল্যাপটপ) বেইজড। মোবাইল লাইটরুমে অনেক নিয়ম মিললেও মার্কেটপ্লেসে কাজ করতে ল্যাপটপ বা পিসি প্রয়োজন।',
+    answer: 'ভিডিওগুলো মোবাইলেও দেখা যাবে, তবে কোর্সটি লাইটরুম ক্লাসিক (কম্পিউটার/ল্যাপটপ) বেইজড। মার্কেটপ্লেসে কাজ করতে ল্যাপটপ বা পিসি প্রয়োজন।',
   },
 ];
 
 export const FOOTER_LINKS = [
-  { href: '#', label: 'প্রাইভেসি পলিসি' },
-  { href: '#', label: 'টার্মস অ্যান্ড কন্ডিশন' },
-  { href: '#', label: 'রিফান্ড পলিসি' },
+  { href: '/privacy', label: 'প্রাইভেসি পলিসি' },
+  { href: '/terms', label: 'টার্মস অ্যান্ড কন্ডিশন' },
 ];

@@ -5,7 +5,7 @@ const clamp = (n) => Math.min(100, Math.max(0, n));
 
 // The "before" layer is clipped with clip-path, so both images share the same
 // box and never need their widths re-synced on resize.
-export default function BeforeAfterSlider({ image, alt, className = '' }) {
+export default function BeforeAfterSlider({ image, beforeImage, alt, className = '' }) {
   const [pos, setPos] = useState(50);
   const frameRef = useRef(null);
 
@@ -70,10 +70,10 @@ export default function BeforeAfterSlider({ image, alt, className = '' }) {
         aria-hidden="true"
       >
         <img
-          src={image}
+          src={beforeImage ?? image}
           alt=""
           draggable={false}
-          className="absolute inset-0 size-full object-cover brightness-90 contrast-75 grayscale-[25%]"
+          className={`absolute inset-0 size-full object-cover ${beforeImage ? '' : 'brightness-90 contrast-75 grayscale-[25%]'}`}
         />
         <span className="pointer-events-none absolute left-4 top-4 rounded-full bg-black/80 px-3 py-1 font-sans text-[11px] font-bold uppercase tracking-wider text-slate-300">
           Original RAW
