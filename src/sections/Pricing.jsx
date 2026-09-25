@@ -3,6 +3,7 @@ import { Check, Flame, Lock } from 'lucide-react';
 import { useCountdown } from '../hooks/useCountdown';
 import { toBnDigits } from '../lib/format';
 import { HOW_TO_BUY, OFFER_ENDS_AT, PRICE, PRICING_FEATURES } from '../data/homeContent';
+import { useCourseOutline } from '../hooks/useCourseOutline';
 
 function TimeBox({ value, label }) {
   return (
@@ -15,6 +16,8 @@ function TimeBox({ value, label }) {
 
 export default function Pricing() {
   const left = useCountdown(OFFER_ENDS_AT);
+  const { lessonCount, atLeastLabel } = useCourseOutline();
+  const features = [`${toBnDigits(lessonCount)}টি রেকর্ডেড ভিডিও লেসন (${atLeastLabel})`, ...PRICING_FEATURES];
 
   return (
     <section id="pricing" className="mx-auto max-w-4xl scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20">
@@ -55,7 +58,7 @@ export default function Pricing() {
         </div>
 
         <ul className="mx-auto grid max-w-md gap-3 text-left text-sm text-slate-300 sm:grid-cols-2">
-          {PRICING_FEATURES.map((feature) => (
+          {features.map((feature) => (
             <li key={feature} className="flex items-center gap-2">
               <Check className="size-4 shrink-0 text-emerald-400" strokeWidth={3} aria-hidden="true" />
               {feature}

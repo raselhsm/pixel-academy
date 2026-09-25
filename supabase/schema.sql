@@ -4,7 +4,7 @@
 --   profiles  one row per account (name, phone, email, is_admin)
 --   orders    bKash/Nagad payments students submit; admins approve or reject
 --   modules   course sections, in order
---   lessons   videos inside a module; only visible with an approved order
+--   lessons   videos inside a module; titles are public, video links need an approved order
 --
 -- Helper functions live in the `private` schema, which the API doesn't expose.
 
@@ -207,10 +207,20 @@ create policy "modules: admin updates" on public.modules
 create policy "modules: admin deletes" on public.modules
   for delete to authenticated using ((select private.is_admin()));
 
+-- A lesson without a video is a draft: only admins see it until a link is added.
 -- Video links are only visible to students with an approved order (and admins).
 create policy "lessons: paid students and admins" on public.lessons
   for select to authenticated
-  using ((select private.has_course_access()) or (select private.is_admin()));
+  using (((select private.has_course_access()) and video_url is not null) or (select private.is_admin()));
+
+-- Visitors can read the curriculum (titles, lengths) for the sales page, but
+-- not the video links: they only get SELECT on the outline columns.
+revoke select on public.lessons from anon;
+grant select (id, module_id, title, position, duration) on public.lessons to anon;
+
+create policy "lessons: visitors read the outline" on public.lessons
+  for select to anon
+  using (video_url is not null);
 create policy "lessons: admin inserts" on public.lessons
   for insert to authenticated with check ((select private.is_admin()));
 create policy "lessons: admin updates" on public.lessons

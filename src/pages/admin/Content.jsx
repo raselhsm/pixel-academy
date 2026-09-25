@@ -65,7 +65,7 @@ function LessonRow({ lesson, index, isFirst, isLast, onMove, onSave, onDelete })
             <CircleAlert className="size-3.5" /> সঠিক লিংক দিন (https:// দিয়ে শুরু)
           </span>
         ) : !videoUrl.trim() ? (
-          <span className="mt-1 block text-xs text-amber-300">ভিডিও এখনো যোগ হয়নি — শিক্ষার্থীরা "শীঘ্রই আসছে" দেখবে</span>
+          <span className="mt-1 block text-xs text-amber-300">খসড়া — ভিডিও লিংক না দেওয়া পর্যন্ত সাইটে দেখাবে না</span>
         ) : (
           <a href={videoUrl.trim()} target="_blank" rel="noopener noreferrer" className="mt-1 inline-flex items-center gap-1 text-xs text-slate-400 hover:text-white">
             <ExternalLink className="size-3" /> লিংক খুলে দেখুন
