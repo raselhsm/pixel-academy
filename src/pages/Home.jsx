@@ -8,7 +8,7 @@ import UrgencyBar from '../sections/UrgencyBar';
 import Navbar from '../sections/Navbar';
 import Hero from '../sections/Hero';
 import TrustMetrics from '../sections/TrustMetrics';
-import Transformation from '../sections/Transformation';
+import ForWhom from '../sections/ForWhom';
 import Gallery from '../sections/Gallery';
 import Curriculum from '../sections/Curriculum';
 import Bonuses from '../sections/Bonuses';
@@ -42,11 +42,11 @@ export default function Home() {
         <main>
           <Hero />
           <TrustMetrics />
-          <Transformation />
-          <Gallery />
-          <Curriculum />
-          <Bonuses />
+          <ForWhom />
           <Instructor />
+          <Curriculum />
+          <Gallery />
+          <Bonuses />
           <Reviews />
           <Pricing />
           <Guarantee />
