@@ -6,6 +6,7 @@ export const COURSE = {
   title: 'Lightroom Mastery',
   subtitle: 'প্রফেশনাল ফটো এডিটিং ও ফ্রিল্যান্সিং কোর্স',
   format: 'রেকর্ডেড কোর্স',
+  language: 'সব ক্লাস বাংলায়', // confirmed by the owner 2026-09-26
 };
 
 export const PRICE = {
@@ -52,6 +53,7 @@ export const PAYMENT = {
 
 // The lesson count and total length are added in front from the live curriculum.
 export const COURSE_INCLUDES = [
+  'সব ক্লাস বাংলায় — সহজ ভাষায় ধাপে ধাপে',
   'লাইফটাইম অ্যাক্সেস — নিজের সময়ে শিখুন',
   '৫০+ প্রিমিয়াম প্রিসেট প্যাক',
   '১০০+ RAW প্র্যাকটিস ফাইল',
@@ -257,6 +259,10 @@ export const FAQS = [
   {
     question: 'কোর্সটি কি লাইভ নাকি রেকর্ডেড? কতদিন দেখতে পারব?',
     answer: 'এটি সম্পূর্ণ রেকর্ডেড কোর্স। একবার কিনলে লাইফটাইম অ্যাক্সেস — যখন খুশি, যতবার খুশি দেখতে পারবেন।',
+  },
+  {
+    question: 'ক্লাসগুলো কি বাংলায়?',
+    answer: 'হ্যাঁ, সব ক্লাস বাংলায়। লাইটরুমের টুলের নাম ইংরেজিতে থাকলেও সবকিছু সহজ বাংলায় ধাপে ধাপে বুঝিয়ে দেওয়া হয়েছে।',
   },
   {
     question: 'আমার কোনো পূর্ব অভিজ্ঞতা নেই, আমি কি শিখতে পারব?',
