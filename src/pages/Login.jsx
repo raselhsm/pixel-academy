@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, Navigate, useNavigate, useSearchParams } from 'react-router';
 import { useCourseIncludes } from '../hooks/useCourseOutline';
-import { Check, LoaderCircle, Star } from 'lucide-react';
+import { Check, LoaderCircle } from 'lucide-react';
 import { useAuth } from '../auth/context';
 import { supabase } from '../lib/supabase';
 import { normalizeBdPhone } from '../lib/format';
@@ -63,13 +63,8 @@ function CoursePanel() {
         </ul>
       </div>
       <div className="mt-10 rounded-2xl border border-slate-800 bg-slate-950/40 p-4">
-        <div className="flex items-center gap-0.5 text-amber-400">
-          {Array.from({ length: 5 }, (_, i) => (
-            <Star key={i} className="size-4 fill-current" aria-hidden="true" />
-          ))}
-          <span className="ml-2 font-sans text-sm font-bold text-white">{SOCIAL_PROOF.rating}/5</span>
-        </div>
-        <p className="mt-1 text-sm text-slate-400">{SOCIAL_PROOF.students} শিক্ষার্থী ইতিমধ্যে কোর্সটিতে ভর্তি হয়েছেন</p>
+        <p className="font-semibold leading-snug text-white">{SOCIAL_PROOF.headline}</p>
+        <p className="mt-1 text-sm text-slate-400">{SOCIAL_PROOF.sub}</p>
         <p className="mt-3 font-sans text-lg font-extrabold text-emerald-400">
           {PRICE.offer} <s className="text-sm font-normal text-slate-500">{PRICE.regular}</s>
         </p>

@@ -7,20 +7,16 @@ export default function Instructor() {
   return (
     <section id="instructor" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20">
       <div className="grid gap-8 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-10 lg:grid-cols-12 lg:gap-12 lg:p-12">
-        <div className="lg:col-span-5">
-          <div className="relative mx-auto aspect-[4/5] max-w-sm overflow-hidden rounded-2xl border border-emerald-500/30 bg-gradient-to-br from-slate-800 via-slate-900 to-emerald-950 shadow-xl shadow-emerald-500/10">
-            {photo ? (
+        <div className="order-last lg:order-first lg:col-span-5">
+          {/* Big portrait only with a real photo; otherwise a small monogram sits by the name. */}
+          {photo && (
+            <div className="relative mx-auto aspect-[4/5] max-w-sm overflow-hidden rounded-2xl border border-emerald-500/30 shadow-xl shadow-emerald-500/10">
               <img src={photo} alt={name} loading="lazy" className="size-full object-cover object-top" />
-            ) : (
-              // Monogram until a real photo is added in homeContent.js.
-              <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center font-heading text-[7rem] font-extrabold text-emerald-300/20">
-                {initial}
-              </span>
-            )}
-          </div>
+            </div>
+          )}
 
           {/* Lightroom's Metadata panel, as a nod to the course subject. */}
-          <dl className="mx-auto mt-5 max-w-sm overflow-hidden rounded-xl border border-slate-800 bg-slate-950/60 font-sans text-sm">
+          <dl className={`mx-auto max-w-sm ${photo ? 'mt-5' : ''} overflow-hidden rounded-xl border border-slate-800 bg-slate-950/60 font-sans text-sm`}>
             <div className="border-b border-slate-800 bg-slate-900/80 px-4 py-2 text-[11px] font-bold uppercase tracking-wider text-slate-400">
               Metadata
             </div>
@@ -34,10 +30,17 @@ export default function Instructor() {
         </div>
 
         <div className="space-y-5 lg:col-span-7 lg:pt-2">
-          <span className="font-sans text-xs font-bold uppercase tracking-[0.2em] text-emerald-400">Your Mentor</span>
-          <div>
-            <h2 className="text-3xl font-bold text-white sm:text-4xl">{name}</h2>
-            <p className="mt-1 text-sm font-semibold text-emerald-400">{role}</p>
+          <span className="inline-block rounded-full bg-emerald-500/10 px-3 py-1 text-sm font-semibold text-emerald-400">আপনার মেন্টর</span>
+          <div className="flex items-center gap-4">
+            {!photo && (
+              <span aria-hidden="true" className="flex size-16 shrink-0 items-center justify-center rounded-full border-2 border-emerald-500/40 bg-gradient-to-br from-emerald-900/60 to-slate-900 font-heading text-2xl font-extrabold text-emerald-300">
+                {initial}
+              </span>
+            )}
+            <div>
+              <h2 className="text-3xl font-bold text-white sm:text-4xl">{name}</h2>
+              <p className="mt-1 text-sm font-semibold text-emerald-400">{role}</p>
+            </div>
           </div>
           {bio.map((paragraph) => (
             <p key={paragraph} className="text-base leading-relaxed text-slate-300">

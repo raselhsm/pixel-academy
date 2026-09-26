@@ -19,11 +19,13 @@ export const PRICE = {
 // only show while a real deadline is set and hide themselves after it passes.
 export const OFFER_ENDS_AT = null;
 
+// Strongest proof first: the owner's in-person students (confirmed 2026-09-26).
+// 42 students also took the course on the old site (Tutor LMS).
 export const SOCIAL_PROOF = {
-  rating: '5.0',
-  reviews: '৪টি রিভিউ',
-  students: '৪০+', // 42 students took it on the old site (Tutor LMS, Sept 2026)
-  // First letters of real students' names (Maruf, Tanvir, Eamin, Rabby, Fahad).
+  headline: 'অফিসে শেখা ৯২ জনের ৭৭+ জন এখন নিজের ক্লায়েন্টের কাজ করেন',
+  sub: 'অনলাইনে আরও ৪০+ জন কোর্সটি করেছেন',
+  badge: '৭৭+',
+  // First letters of real students' names (Maruf, Tanvir, Eamin, Rabby).
   initials: ['ম', 'ত', 'ই', 'র'],
 };
 
@@ -102,11 +104,11 @@ export const HOW_TO_BUY = [
 ];
 
 export const NAV_LINKS = [
-  { href: '#why', label: 'কেন শিখবেন?' },
-  { href: '#curriculum', label: 'কারিকুলাম' },
-  { href: '#gallery', label: 'এডিটিং স্টাইল' },
-  { href: '#bonuses', label: 'বোনাস' },
+  { href: '#for-whom', label: 'কাদের জন্য' },
   { href: '#instructor', label: 'মেন্টর' },
+  { href: '#curriculum', label: 'কারিকুলাম' },
+  { href: '#bonuses', label: 'বোনাস' },
+  { href: '#pricing', label: 'দাম' },
   { href: '#faq', label: 'প্রশ্নোত্তর' },
 ];
 
@@ -129,34 +131,35 @@ export const TRUST_METRICS = [
   { value: '২০১৮', label: 'থেকে বিদেশি ক্লায়েন্টের কাজ', accent: true },
 ];
 
-export const PAIN_POINTS = [
-  'ইউটিউবের এলোমেলো টিউটোরিয়াল দেখে পুরো ওয়ার্কফ্লো বুঝতে না পারা।',
-  'শত শত ওয়েডিং ছবি থেকে বাছাই (Culling) করতে দিনের পর দিন লেগে যাওয়া।',
-  'কালার ও স্কিন টোন ঠিক না হওয়ায় ক্লায়েন্টের রিজেক্ট বা ব্যাড রিভিউ পাওয়া।',
-  'ফাইভারে অ্যাকাউন্ট ও গিগ ঠিকভাবে সাজাতে না পারায় অর্ডার না পাওয়া।',
+// Who the course is for, from the old course page's target audience.
+export const FOR_WHOM = [
+  'মোবাইলে ছবি এডিট করেন, এবার প্রফেশনালি শিখে আয় করতে চান',
+  'চাকরি বা পড়াশোনার পাশাপাশি বাড়তি আয় করতে চান',
+  'বাইরে গিয়ে কাজ করা সম্ভব নয়, ঘরে বসে আয় করতে চান',
+  'কোনো অভিজ্ঞতা নেই — একদম শুরু থেকে শিখতে চান',
 ];
 
-export const OUTCOMES = [
-  'লাইটরুমের প্রতিটি টুল বেসিক থেকে অ্যাডভান্সড পর্যন্ত হাতে-কলমে ব্যবহার।',
-  'দ্রুত Culling, ক্রপিং ও প্রফেশনাল কালার কারেকশনের ওয়ার্কফ্লো।',
-  'নিজের প্রিসেট বানিয়ে ওয়েডিং প্রজেক্ট দ্রুত শেষ করে ক্লায়েন্টকে ডেলিভারি।',
-  'ফাইভার অ্যাকাউন্ট খোলা, গিগ পাবলিশ এবং প্রাইস ও পেমেন্ট হ্যান্ডেল করা।',
+// Being honest about who it isn't for builds trust with the right buyers.
+export const NOT_FOR = [
+  'রাতারাতি আয়ের শর্টকাট খুঁজছেন',
+  'দিনে ২-৪ ঘণ্টা প্র্যাকটিসের সময় দিতে পারবেন না',
+  'কম্পিউটার বা ল্যাপটপ নেই (লাইটরুম ক্লাসিক কম্পিউটারে চলে)',
 ];
 
 // Illustrative photos of the editing styles taught; replace with your own work.
 export const GALLERY = [
   {
-    tag: 'WEDDING EDITING',
+    label: 'ওয়েডিং',
     title: 'ওয়েডিং ও ইভেন্ট ফটো এডিটিং',
     image: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80',
   },
   {
-    tag: 'COLOR CORRECTION',
+    label: 'কালার কারেকশন',
     title: 'ন্যাচারাল স্কিন টোন ও কালার কারেকশন',
     image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80',
   },
   {
-    tag: 'CUSTOM PRESETS',
+    label: 'কাস্টম প্রিসেট',
     title: 'নিজের প্রিসেট দিয়ে এক রকম লুক',
     image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80',
   },

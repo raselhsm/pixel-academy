@@ -1,7 +1,7 @@
-import { ChevronDown, MonitorPlay, PlayCircle, Star } from 'lucide-react';
+import { ChevronDown, MonitorPlay, PlayCircle } from 'lucide-react';
 import { useOpenFreePreview } from '../lib/freePreview';
 import CourseCard from './CourseCard';
-import { COURSE, SOCIAL_PROOF } from '../data/homeContent';
+import { COURSE, INSTRUCTOR, SOCIAL_PROOF } from '../data/homeContent';
 
 const HIGHLIGHTS = ['নিজের সময়ে শিখুন', 'মোবাইল ও ল্যাপটপে দেখুন', 'প্রিসেট ও RAW ফাইল ফ্রি'];
 
@@ -24,16 +24,16 @@ export default function Hero() {
           </div>
 
           <h1 className="text-[2rem] font-extrabold leading-tight text-balance text-white sm:text-5xl lg:text-6xl">
-            প্রফেশনাল{' '}
+            ঘরে বসে{' '}
             <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-200 bg-clip-text text-transparent">
-              লাইটরুম এডিটিং
+              লাইটরুম ফটো এডিটিং
             </span>{' '}
-            শিখুন, আন্তর্জাতিক ক্যারিয়ার গড়ুন।
+            শিখুন, ফ্রিল্যান্সিংয়ে আয়ের পথ তৈরি করুন
           </h1>
 
           <p className="max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
-            কোনো পূর্ব অভিজ্ঞতা ছাড়াই লাইটরুমের বেসিক থেকে কালিং, কালার কারেকশন, প্রিসেট তৈরি ও রিয়েল ওয়েডিং
-            প্রজেক্ট শিখুন। সাথে থাকছে ফাইভারে অ্যাকাউন্ট খুলে গিগ পাবলিশ করে ক্লায়েন্ট পাওয়ার গাইড।
+            একদম শুরু থেকে প্রফেশনাল ওয়েডিং ফটো এডিটিং, তারপর ফাইভারে অ্যাকাউন্ট খুলে কাজ পাওয়া পর্যন্ত — শেখাচ্ছেন
+            ২০১৮ সাল থেকে বিদেশি ক্লায়েন্টের কাজ করা <span className="font-semibold text-white">{INSTRUCTOR.name}</span>।
           </p>
         </div>
 
@@ -64,18 +64,12 @@ export default function Hero() {
                 </span>
               ))}
               <div className="flex size-10 items-center justify-center rounded-full border-2 border-slate-900 bg-emerald-950 text-xs font-bold text-emerald-400">
-                {SOCIAL_PROOF.students}
+                {SOCIAL_PROOF.badge}
               </div>
             </div>
-            <div>
-              <div className="flex items-center gap-0.5 text-sm text-amber-400">
-                {Array.from({ length: 5 }, (_, i) => (
-                  <Star key={i} className="size-3.5 fill-current" aria-hidden="true" />
-                ))}
-                <span className="ml-1.5 font-sans font-bold text-white">{SOCIAL_PROOF.rating}/5</span>
-                <span className="ml-1 text-xs text-slate-400">({SOCIAL_PROOF.reviews})</span>
-              </div>
-              <p className="text-xs text-slate-400">{SOCIAL_PROOF.students} শিক্ষার্থী ইতিমধ্যে কোর্সটিতে ভর্তি হয়েছেন</p>
+            <div className="min-w-0 flex-1">
+              <p className="text-sm font-semibold leading-snug text-white">{SOCIAL_PROOF.headline}</p>
+              <p className="mt-0.5 text-xs text-slate-400">{SOCIAL_PROOF.sub}</p>
             </div>
           </div>
 

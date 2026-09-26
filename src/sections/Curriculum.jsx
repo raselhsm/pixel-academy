@@ -1,10 +1,11 @@
+import { Link } from 'react-router';
 import { CheckCircle2, CirclePlay } from 'lucide-react';
 import Accordion, { AccordionItem } from '../components/ui/Accordion';
 import SectionHeading from '../components/ui/SectionHeading';
 import { useCourseOutline } from '../hooks/useCourseOutline';
 import { toBnDigits } from '../lib/format';
 import { useOpenFreePreview } from '../lib/freePreview';
-import { FREE_PREVIEW, REQUIREMENTS } from '../data/homeContent';
+import { FREE_PREVIEW, PRICE, REQUIREMENTS } from '../data/homeContent';
 
 export default function Curriculum() {
   const { modules, lessonsLabel, durationLabel } = useCourseOutline();
@@ -13,7 +14,7 @@ export default function Curriculum() {
   return (
     <section id="curriculum" className="mx-auto max-w-4xl scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20">
       <SectionHeading
-        eyebrow="Curriculum"
+        eyebrow="কারিকুলাম"
         title="পূর্ণাঙ্গ কোর্স কারিকুলাম"
         subtitle={`লাইটরুম ইনস্টল থেকে ফাইভারে গিগ পাবলিশ পর্যন্ত • ${lessonsLabel} • ${durationLabel}`}
       />
@@ -50,6 +51,18 @@ export default function Curriculum() {
           </AccordionItem>
         ))}
       </Accordion>
+
+      <div className="mt-8 flex flex-col items-center gap-3 text-center">
+        <Link
+          to="/checkout"
+          className="flex min-h-14 w-full max-w-md items-center justify-center rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 px-8 text-lg font-extrabold text-slate-950 shadow-lg shadow-emerald-500/20 transition hover:brightness-110"
+        >
+          সব লেসন পেতে ভর্তি হন — {PRICE.offer}
+        </Link>
+        <button type="button" onClick={openFreePreview} className="text-sm font-semibold text-emerald-400 hover:underline">
+          আগে একটা ক্লাস ফ্রি দেখে নিন ▶
+        </button>
+      </div>
 
       <div className="mt-10 rounded-2xl border border-slate-800 bg-slate-900/40 p-5 sm:p-6">
         <h3 className="font-bold text-white">শুরু করতে যা লাগবে</h3>

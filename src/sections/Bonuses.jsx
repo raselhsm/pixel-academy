@@ -7,7 +7,7 @@ export default function Bonuses() {
     <section id="bonuses" className="mx-auto max-w-7xl scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20">
       <div className="rounded-3xl border border-emerald-500/30 bg-gradient-to-br from-emerald-950/40 via-slate-900 to-slate-900 p-6 sm:p-10 lg:p-14">
         <SectionHeading
-          eyebrow="Free Perks"
+          eyebrow="ফ্রি বোনাস"
           title="কোর্সের সাথে সম্পূর্ণ ফ্রি পাচ্ছেন"
           subtitle="কোনো অতিরিক্ত খরচ ছাড়াই, কোর্সের সাথেই"
         />

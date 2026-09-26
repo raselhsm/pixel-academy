@@ -47,7 +47,7 @@ export default function Reviews() {
   return (
     <section id="reviews" className="mx-auto max-w-6xl scroll-mt-24 border-t border-slate-800 px-4 py-16 sm:px-6 sm:py-20">
       <SectionHeading
-        eyebrow="Reviews"
+        eyebrow="রিভিউ"
         title="স্টুডেন্টরা নিজেরাই বলছে"
         subtitle="সবগুলো আসল স্টুডেন্টের আসল মেসেজ আর ভিডিও, তাদের অনুমতি নিয়ে দেওয়া।"
       />
