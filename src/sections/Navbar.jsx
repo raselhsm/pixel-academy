@@ -2,15 +2,23 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router';
 import { BookOpenCheck, CircleUserRound, LogOut, Menu, ShieldCheck, X } from 'lucide-react';
 import Logo from '../components/ui/Logo';
-import { NAV_LINKS } from '../data/homeContent';
+import { NAV_LINKS, WHATSAPP_URL } from '../data/homeContent';
 
 const pill =
-  'flex items-center gap-1.5 whitespace-nowrap rounded-full border border-slate-700 px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-emerald-500/50 hover:text-white sm:px-4';
+  'flex items-center gap-1.5 whitespace-nowrap rounded-xl border border-slate-700 bg-slate-800/60 px-3 py-2 text-xs font-bold text-slate-200 transition hover:border-emerald-500 hover:text-white sm:px-4';
+
+function WhatsAppIcon() {
+  return (
+    <svg className="size-4 fill-emerald-400" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.5-1.4-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.12-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.49-.4-.42-.56-.43h-.47c-.17 0-.44.06-.67.31-.23.25-.89.87-.89 2.12s.91 2.46 1.04 2.63c.12.17 1.79 2.74 4.34 3.84.61.26 1.08.42 1.45.54.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3" />
+    </svg>
+  );
+}
 
 // Highlights the account link for the section you're in (e.g. all of /admin/*).
 const accountPill = ({ isActive }) =>
   isActive
-    ? 'flex items-center gap-1.5 whitespace-nowrap rounded-full border border-emerald-500/60 bg-emerald-500/15 px-3 py-2 text-sm font-semibold text-emerald-300 sm:px-4'
+    ? 'flex items-center gap-1.5 whitespace-nowrap rounded-xl border border-emerald-500/60 bg-emerald-500/15 px-3 py-2 text-xs font-bold text-emerald-300 sm:px-4'
     : pill;
 
 // Section links jump in-page on the homepage and navigate back to it elsewhere.
@@ -36,8 +44,8 @@ export default function Navbar({ account = { loggedIn: false } }) {
   const showBuy = pathname !== '/checkout';
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-800/80 bg-[#090d14]/90 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:h-20">
+    <header className="sticky top-0 z-50 border-b border-slate-800/80 bg-[#0B0F17]/80 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3.5 sm:px-6 lg:px-8 lg:py-4">
         {onHome ? (
           <a href="#top" aria-label="Pixel Academy হোম">
             <Logo />
@@ -57,6 +65,10 @@ export default function Navbar({ account = { loggedIn: false } }) {
         </nav>
 
         <div className="flex items-center gap-2">
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className={`${pill} hidden sm:flex`} aria-label="হোয়াটসঅ্যাপ হেল্পলাইন">
+            <WhatsAppIcon />
+            হেল্পলাইন
+          </a>
           {account.loggedIn ? (
             <>
               {account.isAdmin && (
@@ -90,7 +102,7 @@ export default function Navbar({ account = { loggedIn: false } }) {
           {showBuy && (
             <Link
               to="/checkout"
-              className="hidden whitespace-nowrap rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 px-6 py-2.5 text-sm font-bold text-slate-950 shadow-lg shadow-emerald-500/25 transition hover:brightness-110 sm:inline-flex"
+              className="hidden whitespace-nowrap rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 px-5 py-2 text-sm font-extrabold text-slate-950 shadow-lg shadow-emerald-500/25 transition hover:brightness-110 lg:inline-flex"
             >
               কোর্সটি কিনুন →
             </Link>
@@ -109,7 +121,7 @@ export default function Navbar({ account = { loggedIn: false } }) {
       </div>
 
       {menuOpen && (
-        <nav id="mobile-menu" aria-label="মোবাইল মেনু" className="border-t border-slate-800 bg-[#090d14] xl:hidden">
+        <nav id="mobile-menu" aria-label="মোবাইল মেনু" className="border-t border-slate-800 bg-[#0B0F17] xl:hidden">
           <ul className="mx-auto grid max-w-7xl gap-1 px-4 py-3 sm:px-6">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>

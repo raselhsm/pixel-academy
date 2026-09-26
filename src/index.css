@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  /* `font-sans` is used for Latin text and figures; Bangla copy uses the body font. */
-  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  /* `font-sans` is used for Latin text and figures; Bangla copy (and headings) use Hind Siliguri. */
+  --font-sans: 'Plus Jakarta Sans', 'Hind Siliguri', ui-sans-serif, system-ui, sans-serif;
   --font-bangla: 'Hind Siliguri', 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
-  --font-heading: 'Anek Bangla', 'Hind Siliguri', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Hind Siliguri', 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
@@ -18,17 +18,42 @@
     }
   }
 
-  h1,
-  h2,
-  h3 {
-    font-family: var(--font-heading);
-  }
-
   body {
-    @apply bg-[#090d14] font-bangla text-slate-100 antialiased selection:bg-emerald-500 selection:text-white;
+    @apply bg-[#0B0F17] font-bangla text-slate-100 antialiased selection:bg-emerald-500 selection:text-slate-950;
   }
 
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-emerald-400;
+  }
+}
+
+@utility glow-emerald {
+  box-shadow: 0 0 35px -5px rgba(16, 185, 129, 0.25);
+}
+
+@utility glow-emerald-lg {
+  box-shadow: 0 0 60px -10px rgba(16, 185, 129, 0.35);
+}
+
+/* Soft pulse behind play buttons. */
+@utility pulse-ring {
+  animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-ring {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-ring {
+    animation: none;
   }
 }

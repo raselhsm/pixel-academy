@@ -106,10 +106,9 @@ export const HOW_TO_BUY = [
 ];
 
 export const NAV_LINKS = [
-  { href: '#for-whom', label: 'কাদের জন্য' },
   { href: '#instructor', label: 'মেন্টর' },
+  { href: '#showcase', label: 'এডিটিং স্টাইল' },
   { href: '#curriculum', label: 'কারিকুলাম' },
-  { href: '#bonuses', label: 'বোনাস' },
   { href: '#pricing', label: 'দাম' },
   { href: '#faq', label: 'প্রশ্নোত্তর' },
 ];
@@ -117,6 +116,33 @@ export const NAV_LINKS = [
 // Intro video in the hero card: an unlisted YouTube link, e.g.
 // 'https://youtu.be/XXXXXXXXXXX'. While it's null the before/after slider shows
 // there instead; once set, the slider moves to the editing-styles section.
+export const HERO = {
+  badge: '১০০% বাংলায় রেকর্ডেড কোর্স • লাইফটাইম অ্যাক্সেস',
+  checklist: [
+    '৫০+ প্রিমিয়াম প্রিসেট প্যাক ফ্রি',
+    '১০০+ RAW প্র্যাকটিস ফাইল',
+    'ফাইভার অ্যাকাউন্ট ও গিগ পাবলিশ গাইড',
+    'প্রাইভেট সাপোর্ট গ্রুপ',
+  ],
+};
+
+// Stats strip under the hero. Confirmed by the owner (Sept 2026) and the old site.
+export const STATS = [
+  { value: '৯২ জন', label: 'অফিসে সরাসরি শিখেছেন', sub: 'অফলাইন ক্লাস থেকে' },
+  { value: '৭৭+', label: 'এখন ক্লায়েন্টের কাজ করেন', sub: 'অফলাইন স্টুডেন্টদের মধ্যে' },
+  { value: '৫০০+', label: 'ফাইভার অর্ডার', sub: '৫-স্টার রিভিউসহ', star: true },
+  { value: '$২১,০০০+', label: 'ফাইভারে আয়', sub: '$১,০০,০০০+ লাইফটাইম আয়', accent: true },
+];
+
+// What each module leads to, written from its real lessons. Matched by position;
+// modules added later in /admin/content simply show without one.
+export const MODULE_OUTCOMES = [
+  'লাইটরুম ক্লাসিক ইনস্টল থেকে শুরু করে ইন্টারফেস, বেসিক আর বাকি সব টুল আত্মবিশ্বাসের সাথে ব্যবহার।',
+  'শত শত ছবি থেকে দ্রুত বাছাই (Culling), ক্রপিং, প্রফেশনাল কালার কারেকশন, নিজের প্রিসেট তৈরি আর ক্লায়েন্টের জন্য সঠিক এক্সপোর্ট।',
+  'একটা আসল ওয়েডিং প্রজেক্ট শুরু থেকে ডেলিভারি পর্যন্ত এডিট করা দেখে নিজে প্র্যাকটিস।',
+  'কাজের দাম, ডেলিভারি আর পেমেন্ট ঠিক করা, ফাইভার অ্যাকাউন্ট খোলা আর গিগ পাবলিশ করা।',
+];
+
 export const PROMO_VIDEO_URL = 'https://youtu.be/MA0IYwbQCIs';
 
 // Hero before/after. Put your own edit in /public (e.g. /hero-before.jpg and
@@ -126,44 +152,32 @@ export const HERO_IMAGE =
   'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80';
 export const HERO_BEFORE_IMAGE = null;
 
-export const TRUST_METRICS = [
-  { value: '৯২ জন', label: 'অফিসে সরাসরি শিখেছেন', accent: false },
-  { value: '৭৭+', label: 'স্টুডেন্ট এখন ক্লায়েন্টের কাজ করেন', accent: true },
-  { value: '৪০+', label: 'অনলাইনে কোর্সটি করেছেন', accent: false },
-  { value: '২০১৮', label: 'থেকে বিদেশি ক্লায়েন্টের কাজ', accent: true },
-];
 
-// Who the course is for, from the old course page's target audience.
-export const FOR_WHOM = [
-  'মোবাইলে ছবি এডিট করেন, এবার প্রফেশনালি শিখে আয় করতে চান',
-  'চাকরি বা পড়াশোনার পাশাপাশি বাড়তি আয় করতে চান',
-  'বাইরে গিয়ে কাজ করা সম্ভব নয়, ঘরে বসে আয় করতে চান',
-  'কোনো অভিজ্ঞতা নেই — একদম শুরু থেকে শিখতে চান',
-];
 
-// Being honest about who it isn't for builds trust with the right buyers.
-export const NOT_FOR = [
-  'রাতারাতি আয়ের শর্টকাট খুঁজছেন',
-  'দিনে ২-৪ ঘণ্টা প্র্যাকটিসের সময় দিতে পারবেন না',
-  'কম্পিউটার বা ল্যাপটপ নেই (লাইটরুম ক্লাসিক কম্পিউটারে চলে)',
-];
 
-// Illustrative photos of the editing styles taught; replace with your own work.
-export const GALLERY = [
+// Editing styles taught, each tied to real lessons. Photos are illustrative;
+// replace with your own before/after work when you have it.
+export const SHOWCASE = [
   {
-    label: 'ওয়েডিং',
+    tag: 'ওয়েডিং স্পেশাল',
     title: 'ওয়েডিং ও ইভেন্ট ফটো এডিটিং',
+    text: 'রিয়েল ওয়েডিং প্রজেক্টে শত শত ছবি বাছাই থেকে ডেলিভারি পর্যন্ত পুরো ওয়ার্কফ্লো।',
+    lesson: 'Wedding / Real Project',
     image: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80',
   },
   {
-    label: 'কালার কারেকশন',
-    title: 'ন্যাচারাল স্কিন টোন ও কালার কারেকশন',
+    tag: 'কালার কারেকশন',
+    title: 'ন্যাচারাল স্কিন টোন ও কালার',
+    text: 'হোয়াইট ব্যালেন্স, এক্সপোজার আর কালার ঠিক করে প্রফেশনাল, ন্যাচারাল লুক।',
+    lesson: 'Color Correction',
     image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80',
   },
   {
-    label: 'কাস্টম প্রিসেট',
-    title: 'নিজের প্রিসেট দিয়ে এক রকম লুক',
-    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80',
+    tag: 'কাস্টম প্রিসেট',
+    title: 'নিজের প্রিসেট, এক ক্লিকে এক রকম লুক',
+    text: 'নিজের প্রিসেট বানিয়ে পুরো ইভেন্টের ছবিতে দ্রুত একই কালার টোন।',
+    lesson: 'Preset Creation & Import',
+    image: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80',
   },
 ];
 
@@ -203,20 +217,6 @@ export const CURRICULUM = [
   },
 ];
 
-export const BONUSES = [
-  {
-    title: '৫০+ প্রিমিয়াম প্রিসেট প্যাক',
-    description: 'এক ক্লিকে ওয়েডিং ও সিনেমাটিক কালার গ্রেডিং করার প্রিসেট কালেকশন।',
-  },
-  {
-    title: '১০০+ RAW প্র্যাকটিস ফাইল',
-    description: 'কোর্সের সাথে সাথে প্র্যাকটিস করার জন্য ফুল রেজ্যুলেশন RAW ছবি।',
-  },
-  {
-    title: 'প্রাইভেট সাপোর্ট গ্রুপ',
-    description: 'কাজে বা মার্কেটপ্লেসে ক্লায়েন্ট হ্যান্ডেল করতে সমস্যা হলে সরাসরি মেন্টরের সাপোর্ট।',
-  },
-];
 
 // Facts confirmed by the owner (Sept 2026) plus the old site's Fiverr record.
 export const INSTRUCTOR = {
@@ -242,14 +242,6 @@ export const INSTRUCTOR = {
   ],
   quote: 'আমি নিজে প্রতিদিন বিদেশি ক্লায়েন্টের কাজ করি। এই কোর্সে ঠিক সেই ওয়ার্কফ্লোটাই শেখাই — কোনো থিওরি না, যেটা দিয়ে আসলে কাজ হয়।',
 };
-// The first line (lessons + length) comes from the live curriculum.
-export const PRICING_FEATURES = [
-  'লাইফটাইম ভিডিও অ্যাক্সেস',
-  '৫০+ প্রিসেট ও ১০০+ RAW ফাইল',
-  'ফাইভার অ্যাকাউন্ট ও গিগ গাইড',
-  'প্রাইভেট সাপোর্ট গ্রুপ',
-  'কোর্স কমপ্লিশন সার্টিফিকেট',
-];
 
 export const FAQS = [
   {

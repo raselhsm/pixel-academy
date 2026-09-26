@@ -28,15 +28,26 @@ const toSeconds = (duration) =>
     .map(Number)
     .reduce((total, part) => (Number.isFinite(part) ? total * 60 + part : NaN), 0) || 0;
 
-export function summarize(modules) {
-  const lessons = modules.flatMap((m) => m.lessons);
-  const minutes = Math.round(lessons.reduce((sum, l) => sum + toSeconds(l.duration), 0) / 60);
+const totalMinutes = (lessons) => Math.round(lessons.reduce((sum, l) => sum + toSeconds(l.duration), 0) / 60);
+
+// '৪ ঘণ্টা ৩২ মিনিট', '৫৮ মিনিট'
+export function formatMinutes(minutes) {
   const hours = Math.floor(minutes / 60);
   const rest = minutes % 60;
+  return [hours && `${toBnDigits(hours)} ঘণ্টা`, rest && `${toBnDigits(rest)} মিনিট`].filter(Boolean).join(' ') || '০ মিনিট';
+}
+
+export const moduleLength = (module) => formatMinutes(totalMinutes(module.lessons));
+
+export function summarize(modules) {
+  const lessons = modules.flatMap((m) => m.lessons);
+  const minutes = totalMinutes(lessons);
+  const hours = Math.floor(minutes / 60);
   return {
     lessonCount: lessons.length,
     lessonsLabel: `${toBnDigits(lessons.length)}টি লেসন`,
-    durationLabel: [hours && `${toBnDigits(hours)} ঘণ্টা`, rest && `${toBnDigits(rest)} মিনিট`].filter(Boolean).join(' '),
+    durationLabel: formatMinutes(minutes),
+    hours,
     // For "X+" style claims: whole hours, or minutes when under an hour.
     atLeastLabel: hours ? `${toBnDigits(hours)} ঘণ্টা+` : `${toBnDigits(minutes)} মিনিট+`,
   };

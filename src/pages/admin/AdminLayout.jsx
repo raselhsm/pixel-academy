@@ -22,7 +22,7 @@ const linkClass = ({ isActive }) =>
 // Admin-only header: no marketing links, buy button, footer or WhatsApp.
 function AdminHeader({ email, onSignOut }) {
   return (
-    <header className="sticky top-0 z-40 border-b border-slate-800/80 bg-[#090d14]/90 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-slate-800/80 bg-[#0B0F17]/90 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6">
         <Link to="/admin" className="flex items-center gap-3" aria-label="অ্যাডমিন ওভারভিউ">
           <Logo />

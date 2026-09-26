@@ -7,17 +7,13 @@ import { PRICE } from '../data/homeContent';
 import UrgencyBar from '../sections/UrgencyBar';
 import Navbar from '../sections/Navbar';
 import Hero from '../sections/Hero';
-import TrustMetrics from '../sections/TrustMetrics';
-import ForWhom from '../sections/ForWhom';
-import Gallery from '../sections/Gallery';
+import ProofSection from '../sections/ProofSection';
+import Showcase from '../sections/Showcase';
 import Curriculum from '../sections/Curriculum';
-import Bonuses from '../sections/Bonuses';
-import Instructor from '../sections/Instructor';
 import Reviews from '../sections/Reviews';
 import Pricing from '../sections/Pricing';
 import Guarantee from '../sections/Guarantee';
 import FAQ from '../sections/FAQ';
-import FinalCTA from '../sections/FinalCTA';
 import Footer from '../sections/Footer';
 import MobileStickyBar from '../sections/MobileStickyBar';
 import WhatsAppButton from '../sections/WhatsAppButton';
@@ -41,17 +37,13 @@ export default function Home() {
         <Navbar account={{ loggedIn }} />
         <main>
           <Hero />
-          <TrustMetrics />
-          <ForWhom />
-          <Instructor />
+          <ProofSection />
+          <Showcase />
           <Curriculum />
-          <Gallery />
-          <Bonuses />
           <Reviews />
           <Pricing />
           <Guarantee />
           <FAQ />
-          <FinalCTA />
         </main>
         <Footer />
         <MobileStickyBar />
