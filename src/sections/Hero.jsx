@@ -20,7 +20,7 @@ export default function Hero() {
         <div className="space-y-5 lg:col-span-7 lg:pt-6">
           <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-semibold text-emerald-400">
             <MonitorPlay className="size-4" aria-hidden="true" />
-            {COURSE.format} • আজই শুরু করুন, নিজের সময়ে শিখুন
+            বাংলায় {COURSE.format} • নিজের সময়ে শিখুন
           </div>
 
           <h1 className="text-[2rem] font-extrabold leading-tight text-balance text-white sm:text-5xl lg:text-6xl">
