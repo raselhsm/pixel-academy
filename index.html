@@ -1,35 +1,1794 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="bn" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#090d14" />
+    <meta name="theme-color" content="#0B0F17" />
+    <title>Lightroom Mastery — প্রফেশনাল ফটো এডিটিং ও ফ্রিল্যান্সিং কোর্স | Pixel Academy</title>
     <meta
       name="description"
-      content="Lightroom Mastery: কোনো অভিজ্ঞতা ছাড়াই প্রফেশনাল লাইটরুম ফটো এডিটিং শিখুন বাংলায়, শেখাচ্ছেন ২০১৮ সাল থেকে বিদেশি ক্লায়েন্টের কাজ করা এডিটর মোঃ রাসেল মিয়া। রেকর্ডেড লেসন, প্রিসেট, RAW ফাইল ও ফাইভার গাইড; লাইফটাইম অ্যাক্সেস, ৭ দিনের মানি-ব্যাক গ্যারান্টি।"
+      content="কোনো পূর্ব অভিজ্ঞতা ছাড়াই লাইটরুম দিয়ে প্রফেশনাল ফটো এডিটিং শিখুন এবং মার্কেটপ্লেসে আয় শুরু করুন। Fiverr Level 2 Seller মোঃ রাসেল মিয়ার প্র্যাকটিক্যাল কোর্স।"
     />
-    <title>Lightroom Mastery কোর্স | Pixel Academy IT</title>
-    <link rel="canonical" href="https://pixelacademyit.com/" />
 
-    <!-- Link previews on Facebook, WhatsApp and Messenger -->
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Pixel Academy IT" />
-    <meta property="og:url" content="https://pixelacademyit.com/" />
-    <meta property="og:title" content="Lightroom Mastery — প্রফেশনাল ফটো এডিটিং ও ফ্রিল্যান্সিং কোর্স" />
-    <meta property="og:description" content="সব ক্লাস বাংলায়: রেকর্ডেড ভিডিও লেসন, ৫০+ প্রিসেট, ১০০+ RAW ফাইল ও ফাইভার গাইড। ৳৪,৯৯০, লাইফটাইম অ্যাক্সেস।" />
-    <meta property="og:locale" content="bn_BD" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wdth,wght@100,500..800&family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="preconnect" href="https://images.unsplash.com" />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                dark: '#0B0F17',
+                card: '#111827',
+                cardSoft: '#0F172A',
+                border: '#1F2937',
+                borderLight: '#374151',
+                emerald: '#10B981',
+                emeraldGlow: 'rgba(16, 185, 129, 0.25)',
+                emeraldHover: '#059669',
+                amber: '#F59E0B',
+              },
+            },
+            fontFamily: {
+              bengali: ['"Hind Siliguri"', 'sans-serif'],
+              sans: ['"Plus Jakarta Sans"', '"Hind Siliguri"', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        font-family: 'Hind Siliguri', sans-serif;
+        background-color: #0B0F17;
+        color: #F3F4F6;
+        overflow-x: hidden;
+      }
+      .font-numeric {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+      }
+      .glow-emerald {
+        box-shadow: 0 0 35px -5px rgba(16, 185, 129, 0.25);
+      }
+      .glow-emerald-lg {
+        box-shadow: 0 0 60px -10px rgba(16, 185, 129, 0.35);
+      }
+      .pulse-ring {
+        animation: pulseRing 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+      @keyframes pulseRing {
+        0%, 100% {
+          transform: scale(1);
+          opacity: 0.8;
+        }
+        50% {
+          transform: scale(1.15);
+          opacity: 0.3;
+        }
+      }
+    </style>
   </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+  <body class="bg-[#0B0F17] text-slate-100 antialiased selection:bg-emerald-500 selection:text-slate-950">
+
+    <!-- ==========================================
+         1. TOP BAR: URGENT ALERT BANNER
+         ========================================== -->
+    <header class="sticky top-0 z-50 border-b border-emerald-500/20 bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-600 px-3 py-2.5 text-slate-950 shadow-lg backdrop-blur-md">
+      <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-2 text-xs sm:text-sm">
+        <div class="flex items-center gap-2 font-bold tracking-tight">
+          <span class="flex size-2 rounded-full bg-amber-300 animate-ping"></span>
+          <span>⚡ সীমিত সময়ের অফার: প্রথম ২০ জনের জন্য ৫০% ডিসকাউন্ট!</span>
+        </div>
+
+        <div class="flex items-center gap-3 font-semibold">
+          <div class="flex items-center gap-1.5 text-slate-950 font-bold">
+            <span>শেষ হতে বাকি:</span>
+            <div class="flex items-center gap-1 font-numeric">
+              <span id="countdown-hours" class="rounded bg-slate-950 px-2 py-0.5 font-bold text-emerald-400">04</span>:
+              <span id="countdown-minutes" class="rounded bg-slate-950 px-2 py-0.5 font-bold text-emerald-400">28</span>:
+              <span id="countdown-seconds" class="rounded bg-slate-950 px-2 py-0.5 font-bold text-emerald-400">51</span>
+            </div>
+          </div>
+
+          <a
+            href="#pricing"
+            class="hidden rounded-lg bg-slate-950 px-3 py-1 font-bold text-emerald-300 transition-all hover:bg-black hover:text-white sm:inline-flex"
+          >
+            অফার নিন →
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Background Decorative Glows -->
+    <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+      <div class="absolute -top-40 left-1/2 -translate-x-1/2 size-[650px] rounded-full bg-emerald-500/10 blur-[140px]"></div>
+      <div class="absolute top-[600px] -left-40 size-[500px] rounded-full bg-teal-500/10 blur-[130px]"></div>
+      <div class="absolute top-[1200px] -right-40 size-[500px] rounded-full bg-emerald-500/10 blur-[130px]"></div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <nav class="border-b border-slate-800/80 bg-[#0B0F17]/80 backdrop-blur-xl">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+        <a href="#" class="flex items-center gap-3">
+          <div class="flex size-10 items-center justify-center rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 shadow-lg shadow-emerald-500/30">
+            <span class="font-numeric text-xl font-black text-slate-950">P</span>
+          </div>
+          <div>
+            <span class="block text-lg font-bold tracking-tight text-white">Pixel Academy</span>
+            <span class="block text-[11px] font-medium text-emerald-400">Lightroom & Freelancing</span>
+          </div>
+        </a>
+
+        <div class="flex items-center gap-4">
+          <div class="hidden items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3.5 py-1 text-xs font-semibold text-emerald-300 sm:flex">
+            <span class="size-2 rounded-full bg-emerald-400"></span>
+            ব্যাচ ০১ অ্যাডমিশন চলছে
+          </div>
+          <a
+            href="https://wa.me/8801871303786"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-800/60 px-4 py-2 text-xs font-bold text-slate-200 transition hover:border-emerald-500 hover:text-white"
+          >
+            <svg class="size-4 fill-emerald-400" viewBox="0 0 24 24">
+              <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.5-1.4-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.12-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.49-.4-.42-.56-.43h-.47c-.17 0-.44.06-.67.31-.23.25-.89.87-.89 2.12s.91 2.46 1.04 2.63c.12.17 1.79 2.74 4.34 3.84.61.26 1.08.42 1.45.54.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3"/>
+            </svg>
+            হেল্পলাইন
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ==========================================
+         2. HERO SECTION (2 COLUMNS DESKTOP, 1 MOBILE)
+         ========================================== -->
+    <main>
+      <section class="relative mx-auto max-w-7xl px-4 pb-16 pt-8 sm:px-6 sm:pb-24 sm:pt-14 lg:px-8">
+        <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
+          
+          <!-- LEFT COLUMN: HIGH-CONVERTING OUTCOME COPY -->
+          <div class="space-y-6 lg:col-span-7">
+            <!-- Admission Status Badge -->
+            <div class="inline-flex items-center gap-2.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-semibold text-emerald-400 shadow-sm shadow-emerald-500/20">
+              <span class="size-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>নতুন ব্যাচে ভর্তি চলছে • ১০০% বাংলায় লাইফটাইম অ্যাক্সেস</span>
+            </div>
+
+            <!-- Primary Outcome Headline -->
+            <h1 class="text-3xl font-extrabold leading-[1.25] tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
+              কোনো পূর্ব অভিজ্ঞতা ছাড়াই <br class="hidden sm:inline" />
+              <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-200 bg-clip-text text-transparent">
+                লাইটরুম দিয়ে প্রফেশনাল ফটো এডিটিং
+              </span>
+              শিখুন এবং মার্কেটপ্লেসে আয় শুরু করুন
+            </h1>
+
+            <!-- Subtext Highlighting 0 to Fiverr Level 2 Roadmap -->
+            <p class="max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
+              জিরো থেকে শুরু করে হাই-এন্ড ওয়েডিং কালার গ্রেডিং, সিগনেচার প্রিসেট তৈরি এবং ফাইভারে 
+              <span class="font-bold text-white underline decoration-emerald-500 underline-offset-4">Level 2 Seller</span> 
+              হওয়ার কমপ্লিট রোডম্যাপ। দেশি ও আন্তর্জাতিক ক্লায়েন্টদের কাজ পাওয়ার বাস্তবসম্মত টেকনিক শিখুন সরাসরি মেন্টর 
+              <span class="font-bold text-white">মোঃ রাসেল মিয়া</span>-এর কাছ থেকে।
+            </p>
+
+            <!-- Value Checkmarks Grid -->
+            <div class="grid gap-2.5 sm:grid-cols-2 pt-2">
+              <div class="flex items-center gap-2 text-sm text-slate-200">
+                <div class="flex size-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400">
+                  <svg class="size-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <span>৫০+ প্রিমিয়াম প্রিসেট প্যাক ফ্রি</span>
+              </div>
+              <div class="flex items-center gap-2 text-sm text-slate-200">
+                <div class="flex size-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400">
+                  <svg class="size-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <span>১০০+ হাই-রেজ্যুলেশন RAW ফাইল</span>
+              </div>
+              <div class="flex items-center gap-2 text-sm text-slate-200">
+                <div class="flex size-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400">
+                  <svg class="size-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <span>ফাইভার গিগ এসইও ও র‍্যাঙ্কিং গাইড</span>
+              </div>
+              <div class="flex items-center gap-2 text-sm text-slate-200">
+                <div class="flex size-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400">
+                  <svg class="size-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <span>প্রাইভেট ভিআইপি লাইফটাইম সাপোর্ট</span>
+              </div>
+            </div>
+
+            <!-- Price & Primary CTA Block -->
+            <div class="space-y-4 pt-4">
+              <div class="flex items-baseline gap-3">
+                <span class="font-numeric text-4xl font-extrabold text-emerald-400 sm:text-5xl">৳ ৪,৯৯০</span>
+                <span class="font-numeric text-xl text-slate-500 line-through sm:text-2xl">৳ ১১,৫০০</span>
+                <span class="rounded-full bg-red-500/15 px-3 py-1 text-xs font-bold text-red-300 border border-red-500/30">
+                  ৳৬,৫১০ ছাড়
+                </span>
+              </div>
+
+              <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+                <a
+                  href="#pricing"
+                  class="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-500 px-8 py-4 text-center text-lg font-extrabold text-slate-950 shadow-xl shadow-emerald-500/25 transition-all duration-300 hover:brightness-110 active:scale-[0.98]"
+                >
+                  <span>এখনই ভর্তি হন - ৳ ৪,৯৯০</span>
+                  <svg class="size-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                  </svg>
+                </a>
+
+                <button
+                  type="button"
+                  onclick="openVideoModal()"
+                  class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-800/80 px-6 py-4 text-base font-bold text-slate-200 transition hover:border-emerald-500 hover:text-emerald-400"
+                >
+                  <svg class="size-5 fill-emerald-400" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  ফ্রি ক্লাস দেখুন
+                </button>
+              </div>
+
+              <!-- Trust Icons Strip -->
+              <div class="flex flex-wrap items-center gap-y-2 gap-x-5 pt-2 text-xs text-slate-400">
+                <div class="flex items-center gap-1.5">
+                  <span class="font-bold text-[#e2136e]">বিকাশ</span> ও 
+                  <span class="font-bold text-[#F7941D]">নগদ</span> এক্সেপ্টেড
+                </div>
+                <div class="flex items-center gap-1 text-emerald-400 font-semibold">
+                  <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                  ৭ দিনের ১০০% মানি-ব্যাক গ্যারান্টি
+                </div>
+                <div class="flex items-center gap-1 text-slate-400">
+                  <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                  ইনস্ট্যান্ট অ্যাক্সেস
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN: POLISHED VIDEO THUMBNAIL CARD -->
+          <div class="lg:col-span-5">
+            <div class="relative mx-auto max-w-lg lg:max-w-none">
+              <!-- Glow background -->
+              <div class="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-emerald-500/30 to-teal-500/20 blur-xl opacity-75"></div>
+
+              <!-- Main Card Container -->
+              <div class="relative overflow-hidden rounded-3xl border border-slate-700/80 bg-slate-900/90 shadow-2xl backdrop-blur-md">
+                
+                <!-- Video Thumbnail Area -->
+                <div class="relative aspect-video w-full overflow-hidden bg-slate-950 group cursor-pointer" onclick="openVideoModal()">
+                  <img
+                    src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80"
+                    alt="Lightroom Photo Editing Course Preview"
+                    class="size-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80"
+                  />
+                  <!-- Dark Gradient Overlay -->
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+
+                  <!-- Overlay Badge Top Left -->
+                  <div class="absolute left-3.5 top-3.5 inline-flex items-center gap-1.5 rounded-full border border-emerald-400/30 bg-slate-950/80 px-3 py-1 text-xs font-semibold text-emerald-300 backdrop-blur-md">
+                    <span class="size-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    কোর্স প্রিভিউ ভিডিও ▶ (২ মিনিট)
+                  </div>
+
+                  <!-- Overlay Badge Top Right: Active Learners -->
+                  <div class="absolute right-3.5 top-3.5 rounded-full bg-red-500/20 border border-red-500/30 px-2.5 py-1 text-[11px] font-bold text-red-300 backdrop-blur-md">
+                    🔥 ৭৪ জন দেখছেন
+                  </div>
+
+                  <!-- Centered Glowing Play Button -->
+                  <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="relative flex items-center justify-center">
+                      <div class="pulse-ring absolute size-20 rounded-full bg-emerald-500/40"></div>
+                      <div class="flex size-16 items-center justify-center rounded-full bg-gradient-to-tr from-emerald-500 to-teal-400 text-slate-950 shadow-xl shadow-emerald-500/50 transition-transform duration-300 group-hover:scale-110">
+                        <svg class="size-7 fill-slate-950 translate-x-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Bottom Label inside video -->
+                  <div class="absolute bottom-3 inset-x-3 text-center">
+                    <span class="rounded-lg bg-black/70 px-3 py-1 text-xs font-semibold text-slate-200 backdrop-blur-sm">
+                      ▶ ক্লিক করে কোর্সের ভেতরের প্রিভিউ দেখুন
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Video Metadata Strip -->
+                <div class="space-y-4 p-5 sm:p-6">
+                  <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                    <div>
+                      <span class="text-xs text-slate-400">কোর্সের ধরন</span>
+                      <p class="text-sm font-bold text-white">১০০% বাংলায় রেকর্ডেড মাস্টারক্লাস</p>
+                    </div>
+                    <div class="text-right">
+                      <span class="text-xs text-slate-400">মেয়াদ ও অ্যাক্সেস</span>
+                      <p class="text-sm font-bold text-emerald-400">লাইফটাইম আনলিমিটেড</p>
+                    </div>
+                  </div>
+
+                  <!-- Metadata Icons Grid -->
+                  <div class="grid grid-cols-3 gap-2 text-center text-xs">
+                    <div class="rounded-xl border border-slate-800 bg-slate-950/60 p-2.5">
+                      <span class="font-numeric block text-base font-extrabold text-white">২০+</span>
+                      <span class="text-[11px] text-slate-400">লেসন</span>
+                    </div>
+                    <div class="rounded-xl border border-slate-800 bg-slate-950/60 p-2.5">
+                      <span class="font-numeric block text-base font-extrabold text-white">১২+</span>
+                      <span class="text-[11px] text-slate-400">ঘণ্টা কনটেন্ট</span>
+                    </div>
+                    <div class="rounded-xl border border-slate-800 bg-slate-950/60 p-2.5">
+                      <span class="font-numeric block text-base font-extrabold text-emerald-400">৫০+</span>
+                      <span class="text-[11px] text-slate-400">প্রিসেট প্যাক</span>
+                    </div>
+                  </div>
+
+                  <!-- Quick Action Button in card -->
+                  <a
+                    href="#pricing"
+                    class="flex w-full items-center justify-center gap-2 rounded-xl bg-slate-800 py-3 text-sm font-bold text-white transition hover:bg-emerald-500 hover:text-slate-950"
+                  >
+                    <span>কোর্সের সম্পূর্ণ সিলেবাস দেখুন</span>
+                    <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==========================================
+           3. SOCIAL PROOF STRIP & STATS COUNTERS
+           ========================================== -->
+      <section class="border-y border-slate-800/80 bg-slate-950/60 py-12 backdrop-blur-md">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          
+          <!-- 4 STATS COUNTERS GRID -->
+          <div class="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
+            
+            <!-- Stat 1 -->
+            <div class="relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50 p-5 text-center transition hover:border-emerald-500/40">
+              <div class="font-numeric text-3xl font-extrabold text-white sm:text-4xl">৯২+</div>
+              <p class="mt-1 text-sm font-semibold text-emerald-400">সফল শিক্ষার্থী</p>
+              <p class="mt-0.5 text-xs text-slate-400">অফলাইন ও অনলাইন ব্যাচ থেকে</p>
+            </div>
+
+            <!-- Stat 2 -->
+            <div class="relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50 p-5 text-center transition hover:border-emerald-500/40">
+              <div class="font-numeric text-3xl font-extrabold text-white sm:text-4xl">৭৮+</div>
+              <p class="mt-1 text-sm font-semibold text-emerald-400">দেশে ক্লায়েন্টের কাজ</p>
+              <p class="mt-0.5 text-xs text-slate-400">ইউএস, ইউকে ও ইউরোপে ক্লায়েন্ট</p>
+            </div>
+
+            <!-- Stat 3 -->
+            <div class="relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50 p-5 text-center transition hover:border-emerald-500/40">
+              <div class="flex items-center justify-center gap-1">
+                <span class="font-numeric text-3xl font-extrabold text-white sm:text-4xl">৫.০</span>
+                <span class="text-amber-400 text-2xl">★</span>
+              </div>
+              <p class="mt-1 text-sm font-semibold text-emerald-400">৫-স্টার রেটিং</p>
+              <p class="mt-0.5 text-xs text-slate-400">ফাইভারে ৫০০+ পজিটিভ রিভিউ</p>
+            </div>
+
+            <!-- Stat 4 -->
+            <div class="relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50 p-5 text-center transition hover:border-emerald-500/40">
+              <div class="font-numeric text-3xl font-extrabold text-emerald-400 sm:text-4xl">$২১,০০০+</div>
+              <p class="mt-1 text-sm font-semibold text-white">ফাইভারে অর্জিত আয়</p>
+              <p class="mt-0.5 text-xs text-slate-400">$১,০০,০০০+ লাইফটাইম ক্যারিয়ার</p>
+            </div>
+
+          </div>
+
+          <!-- ==========================================
+               INSTRUCTOR PROFILE & VISUAL PROOF CARDS
+               ========================================== -->
+          <div class="mt-14 rounded-3xl border border-slate-800 bg-gradient-to-b from-slate-900/90 to-[#0B0F17] p-6 sm:p-10 lg:p-12 shadow-2xl">
+            
+            <!-- Instructor Header Info -->
+            <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between border-b border-slate-800/80 pb-8">
+              <div class="flex items-center gap-5">
+                <!-- Avatar / Monogram with Level 2 Badge -->
+                <div class="relative">
+                  <div class="flex size-20 items-center justify-center rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-400 text-3xl font-black text-slate-950 shadow-lg shadow-emerald-500/25">
+                    রা
+                  </div>
+                  <div class="absolute -bottom-2 -right-2 rounded-full border-2 border-slate-900 bg-emerald-500 px-2 py-0.5 text-[10px] font-extrabold text-slate-950">
+                    Level 2
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex flex-wrap items-center gap-2.5">
+                    <h2 class="text-2xl font-bold text-white sm:text-3xl">মোঃ রাসেল মিয়া</h2>
+                    <span class="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-0.5 text-xs font-bold text-emerald-400">
+                      Fiverr Level 2 Seller
+                    </span>
+                  </div>
+                  <p class="mt-1 text-sm text-slate-400">
+                    প্রফেশনাল ফটো এডিটর ও কালারিস্ট • ২০১৮ সাল থেকে কর্মরত
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-3">
+                <div class="rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2 text-center">
+                  <span class="text-xs text-slate-400">অর্ডার সম্পন্ন</span>
+                  <p class="font-numeric font-bold text-white">৫০০+ অর্ডার</p>
+                </div>
+                <div class="rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2 text-center">
+                  <span class="text-xs text-slate-400">টিম মেম্বার</span>
+                  <p class="font-numeric font-bold text-emerald-400">৩০+ প্রফেশনাল এডিটর</p>
+                </div>
+                <div class="rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2 text-center">
+                  <span class="text-xs text-slate-400">সরাসরি শেখা স্টুডেন্ট</span>
+                  <p class="font-numeric font-bold text-white">৭৭+ জন এখন উপার্জনক্ষম</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bio Quote -->
+            <p class="mt-6 text-base leading-relaxed text-slate-300 sm:text-lg italic">
+              &ldquo;আমি নিজে প্রতিদিন আমেরিকা, ইউকে ও কানাডার ওয়েডিং ফটোগ্রাফারদের ছবি এডিট করি। এই কোর্সে কোনো অবাস্তব থিওরি নেই — আমি ফাইভারে যেভাবে ক্লায়েন্টদের কাজ করে ডলার আয় করি, ঠিক সেই রিয়েল-লাইফ ওয়ার্কফ্লোটাই প্রতিটি ক্লাসে হাতে ধরে শিখিয়েছি।&rdquo;
+            </p>
+
+            <!-- 3 VISUAL PROOF CARDS GRID -->
+            <div class="mt-10 grid gap-6 md:grid-cols-3">
+              
+              <!-- VISUAL CARD 1: FIVERR REVENUE & PERFORMANCE DASHBOARD -->
+              <div class="flex flex-col justify-between rounded-2xl border border-emerald-500/30 bg-slate-950/80 p-5 shadow-xl transition hover:border-emerald-500">
+                <div>
+                  <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <div class="flex items-center gap-2">
+                      <span class="flex size-7 items-center justify-center rounded-md bg-[#1dbf73] font-numeric text-xs font-black text-white">fi</span>
+                      <span class="font-bold text-white text-sm">Fiverr Seller Hub</span>
+                    </div>
+                    <span class="rounded bg-emerald-500/20 px-2 py-0.5 text-[11px] font-bold text-emerald-300 border border-emerald-500/30">
+                      Level 2 Verified
+                    </span>
+                  </div>
+
+                  <div class="mt-4">
+                    <span class="text-xs text-slate-400">Net Earned on Fiverr</span>
+                    <div class="font-numeric text-3xl font-extrabold text-emerald-400">$21,480.00</div>
+                    <span class="text-[11px] text-slate-500">From 500+ completed buyer orders</span>
+                  </div>
+
+                  <div class="mt-4 space-y-2 border-t border-slate-800 pt-3 text-xs">
+                    <div class="flex justify-between text-slate-300">
+                      <span>Order Completion Rate:</span>
+                      <span class="font-numeric font-bold text-emerald-400">100%</span>
+                    </div>
+                    <div class="flex justify-between text-slate-300">
+                      <span>On-Time Delivery:</span>
+                      <span class="font-numeric font-bold text-emerald-400">100%</span>
+                    </div>
+                    <div class="flex justify-between text-slate-300">
+                      <span>Positive Rating:</span>
+                      <span class="font-numeric font-bold text-amber-400">100% (5.0 ★)</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-4 rounded-xl bg-slate-900 p-2.5 text-center text-[11px] font-semibold text-slate-400">
+                  ✓ অফিশিয়াল ফাইভার আর্নিং হিস্ট্রি থেকে ভেরিফাইড
+                </div>
+              </div>
+
+              <!-- VISUAL CARD 2: INTERNATIONAL CLIENT 5-STAR REVIEW -->
+              <div class="flex flex-col justify-between rounded-2xl border border-slate-800 bg-slate-950/80 p-5 shadow-xl transition hover:border-emerald-500/40">
+                <div>
+                  <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <div class="flex items-center gap-2">
+                      <div class="flex size-7 items-center justify-center rounded-full bg-slate-800 text-xs font-bold text-white">
+                        DM
+                      </div>
+                      <div>
+                        <p class="text-xs font-bold text-white">David Miller Photography</p>
+                        <p class="text-[10px] text-slate-400">New York, United States 🇺🇸</p>
+                      </div>
+                    </div>
+                    <span class="text-amber-400 text-xs">★★★★★</span>
+                  </div>
+
+                  <p class="mt-4 text-xs leading-relaxed text-slate-300">
+                    &ldquo;Russel is hands down the best Lightroom colorist on Fiverr! Delivered 140 wedding RAW photos with jaw-dropping skin tones and rich film warmth. Fast turnaround, zero revisions needed. Ordered 15 times already!&rdquo;
+                  </p>
+
+                  <div class="mt-4 rounded-xl border border-slate-800/80 bg-slate-900/60 p-2.5 text-xs text-slate-400">
+                    <div class="flex justify-between">
+                      <span class="text-slate-300 font-semibold">Service:</span>
+                      <span class="text-emerald-400 font-semibold">Wedding Photo Editing</span>
+                    </div>
+                    <div class="flex justify-between mt-1 text-[11px]">
+                      <span>Order Value:</span>
+                      <span class="font-numeric font-bold text-white">$150.00</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-4 text-center text-[11px] font-medium text-emerald-400">
+                  ★ ইউএস ক্লায়েন্টের অরিজিনাল ৫-স্টার ফিডব্যাক
+                </div>
+              </div>
+
+              <!-- VISUAL CARD 3: STUDENT WHATSAPP CHAT PROOFS -->
+              <div class="flex flex-col justify-between rounded-2xl border border-emerald-500/20 bg-slate-950/80 p-5 shadow-xl transition hover:border-emerald-500/40">
+                <div>
+                  <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <div class="flex items-center gap-2">
+                      <div class="flex size-7 items-center justify-center rounded-full bg-[#25D366] text-slate-950 font-bold text-xs">
+                        WA
+                      </div>
+                      <div>
+                        <p class="text-xs font-bold text-white">Pixel Academy VIP Support</p>
+                        <p class="text-[10px] text-emerald-400">সফল স্টুডেন্টদের লাইভ মেসেজ</p>
+                      </div>
+                    </div>
+                    <span class="flex size-2 rounded-full bg-emerald-400"></span>
+                  </div>
+
+                  <div class="mt-3 space-y-2.5">
+                    <!-- Chat Bubble 1 -->
+                    <div class="rounded-xl rounded-tl-none bg-slate-900 border border-slate-800 p-2.5 text-xs">
+                      <span class="block font-bold text-emerald-400 text-[11px]">তানভীর আহমেদ (নারায়ণগঞ্জ):</span>
+                      <p class="mt-0.5 text-slate-300 leading-snug">
+                        &ldquo;ভাইয়া আলহামদুলিল্লাহ! ফাইভারে আমার $50 এর ১ম অর্ডার কমপ্লিট হলো এবং ৫-স্টার পেয়েছি! সাপোর্ট গ্রুপের ট্রিকসটা কাজে লেগেছে। ❤️&rdquo;
+                      </p>
+                    </div>
+
+                    <!-- Chat Bubble 2 -->
+                    <div class="rounded-xl rounded-tl-none bg-slate-900 border border-slate-800 p-2.5 text-xs">
+                      <span class="block font-bold text-emerald-400 text-[11px]">মোঃ মারুফ হোসেন (ঢাকা):</span>
+                      <p class="mt-0.5 text-slate-300 leading-snug">
+                        &ldquo;রাসেল ভাই, ইউএস বায়ার প্রিসেট দেখে মহা খুশি! পুরো ৬০টা ছবির এডিট ১ চান্সেই অ্যাপ্রুভ করেছে।&rdquo;
+                      </p>
+                    </div>
+
+                    <!-- Chat Bubble 3 -->
+                    <div class="rounded-xl rounded-tl-none bg-slate-900 border border-slate-800 p-2.5 text-xs">
+                      <span class="block font-bold text-emerald-400 text-[11px]">ইয়ামিন ভূঁইয়া (নরসিংদী):</span>
+                      <p class="mt-0.5 text-slate-300 leading-snug">
+                        &ldquo;ভাই আজকে নগদে $120 এর পেমেন্ট উইথড্র দিয়েছি। পরিবারের জন্য কিছু করতে পেরে শান্তি লাগতেছে।&rdquo;
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-4 text-center text-[11px] font-semibold text-emerald-400">
+                  💬 প্রাইভেট ভিআইপি গ্রুপ থেকে সংগৃহীত
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==========================================
+           4. INTERACTIVE BEFORE/AFTER LIGHTROOM SLIDER & FILTER PRESETS
+           ========================================== -->
+      <section id="showcase" class="mx-auto max-w-6xl scroll-mt-20 px-4 py-16 sm:px-6 sm:py-24 lg:px-8 border-t border-slate-800/80">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto space-y-3">
+          <div class="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-semibold text-emerald-400">
+            <span>✨ চোখে দেখে বিশ্বাস করুন • ভিজ্যুয়াল প্রমাণ</span>
+          </div>
+          <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+            সাধারণ RAW ছবিকে বানান <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-200 bg-clip-text text-transparent">সিনেমাটিক মাস্টারপিস</span>
+          </h2>
+          <p class="text-base text-slate-300 leading-relaxed">
+            স্লাইডারের গোল হ্যান্ডেলটি স্পর্শ করে ডানে ও বামে টেনে দেখুন লাইটরুমের সঠিক কালার কারেকশনের পর ছবির কোয়ালিটি কেমন আমূল পরিবর্তন হয়:
+          </p>
+        </div>
+
+        <!-- The Interactive Before/After Comparison Box -->
+        <div class="mt-10 mx-auto max-w-4xl">
+          <div
+            id="before-after-slider"
+            class="relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden rounded-3xl border-2 border-slate-700/80 bg-slate-900 shadow-2xl shadow-emerald-500/10 select-none cursor-ew-resize touch-none ring-1 ring-white/10"
+            role="slider"
+            aria-label="আগে ও পরে তুলনা স্লাইডার"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="50"
+          >
+            <!-- Background Image: Edited (After) -->
+            <img
+              id="slider-after-img"
+              src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=85"
+              alt="Lightroom Pro Edit Result"
+              draggable="false"
+              class="absolute inset-0 size-full object-cover"
+            />
+            <span class="pointer-events-none absolute right-4 top-4 z-10 rounded-full bg-emerald-500 px-3.5 py-1 text-xs font-extrabold uppercase tracking-wider text-slate-950 shadow-md">
+              Lightroom Edit (ফাইনাল এডিট)
+            </span>
+
+            <!-- Clipped Overlay: Original RAW (Before) -->
+            <div
+              id="slider-clip-layer"
+              class="absolute inset-0 size-full overflow-hidden"
+              style="clip-path: inset(0 calc(100% - 50%) 0 0);"
+            >
+              <img
+                id="slider-before-img"
+                src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=85"
+                alt="Original Camera RAW"
+                draggable="false"
+                class="absolute inset-0 size-full object-cover brightness-[0.85] contrast-[0.72] saturate-[0.55]"
+              />
+              <span class="pointer-events-none absolute left-4 top-4 z-10 rounded-full bg-slate-950/80 border border-slate-700 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-slate-300 shadow-md backdrop-blur-md">
+                Original RAW (ক্যামেরা শট)
+              </span>
+            </div>
+
+            <!-- Draggable Split Divider Line & Handle -->
+            <div
+              id="slider-divider-line"
+              class="pointer-events-none absolute inset-y-0 w-0.5 -translate-x-1/2 bg-emerald-400 shadow-[0_0_15px_rgba(52,211,153,0.9)]"
+              style="left: 50%;"
+            >
+              <div class="absolute left-1/2 top-1/2 flex size-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gradient-to-tr from-emerald-500 to-teal-400 text-slate-950 shadow-2xl ring-4 ring-emerald-400/30">
+                <svg class="size-6 stroke-slate-950" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l-4 3 4 3m8-6l4 3-4 3"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interaction Hint -->
+          <div class="mt-3 flex items-center justify-center gap-2 text-xs text-slate-400">
+            <svg class="size-4 text-emerald-400 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l-4 3 4 3m8-6l4 3-4 3"/>
+            </svg>
+            <span>আঙুল দিয়ে স্পর্শ করে বা মাউস দিয়ে ডানে-বামে ড্র্যাগ করে পার্থক্য দেখুন</span>
+          </div>
+        </div>
+
+        <!-- 3 Filter Preset Sample Cards Below Slider -->
+        <div class="mt-12 grid gap-6 md:grid-cols-3">
+          
+          <!-- Card 1: Wedding -->
+          <div class="group relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 p-4 transition-all duration-300 hover:border-emerald-500/50 hover:bg-slate-900">
+            <div class="relative h-48 w-full overflow-hidden rounded-xl">
+              <img
+                src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80"
+                alt="Wedding Photo Editing"
+                class="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <span class="absolute left-3 top-3 rounded-full bg-emerald-500/90 px-2.5 py-0.5 text-[11px] font-extrabold text-slate-950">
+                ওয়েডিং স্পেশাল
+              </span>
+            </div>
+            <div class="mt-4 space-y-1.5">
+              <h3 class="font-bold text-white text-base">ন্যাচারাল স্কিন ও গোল্ডেন ওয়ার্মথ</h3>
+              <p class="text-xs leading-relaxed text-slate-300">
+                ইউএস ও ইউরোপের ফটোগ্রাফারদের সবচেয়ে পছন্দের কালার টোন। কোনো ফেক প্লাস্টিক লুক ছাড়া নিখুঁত স্কিন গ্লো।
+              </p>
+              <div class="pt-2 flex items-center justify-between text-[11px]">
+                <span class="text-emerald-400 font-semibold">✓ কোর্সে অন্তর্ভুক্ত</span>
+                <span class="text-slate-400">প্রিসেট প্যাক #০১</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Skin Retouch -->
+          <div class="group relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 p-4 transition-all duration-300 hover:border-emerald-500/50 hover:bg-slate-900">
+            <div class="relative h-48 w-full overflow-hidden rounded-xl">
+              <img
+                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80"
+                alt="High-End Skin Retouching"
+                class="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <span class="absolute left-3 top-3 rounded-full bg-emerald-500/90 px-2.5 py-0.5 text-[11px] font-extrabold text-slate-950">
+                ম্যাগাজিন কোয়ালিটি
+              </span>
+            </div>
+            <div class="mt-4 space-y-1.5">
+              <h3 class="font-bold text-white text-base">ফ্ললেস পোর ও স্পিড রিটাচিং</h3>
+              <p class="text-xs leading-relaxed text-slate-300">
+                স্কিনের আসল টেক্সচার বজায় রেখে দাগ ও আনইভেন টোন দূর করার দ্রুত লাইটরুম সিলেক্টিভ মাস্কিং টেকনিক।
+              </p>
+              <div class="pt-2 flex items-center justify-between text-[11px]">
+                <span class="text-emerald-400 font-semibold">✓ কোর্সে অন্তর্ভুক্ত</span>
+                <span class="text-slate-400">প্রিসেট প্যাক #০২</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Cinematic Mood -->
+          <div class="group relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 p-4 transition-all duration-300 hover:border-emerald-500/50 hover:bg-slate-900">
+            <div class="relative h-48 w-full overflow-hidden rounded-xl">
+              <img
+                src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80"
+                alt="Cinematic Color Grading"
+                class="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <span class="absolute left-3 top-3 rounded-full bg-emerald-500/90 px-2.5 py-0.5 text-[11px] font-extrabold text-slate-950">
+                মুভি কালার গ্রেডিং
+              </span>
+            </div>
+            <div class="mt-4 space-y-1.5">
+              <h3 class="font-bold text-white text-base">ড্রামাটিক সিনেমাটিক গ্রেড</h3>
+              <p class="text-xs leading-relaxed text-slate-300">
+                টিমলেস টিল ও অরেঞ্জ টোনে ড্রামাটিক ডেপথ, হাইলাইট ও শেডো কন্ট্রোলের মাধ্যমে ফিল্মি লুক তৈরির সূত্র।
+              </p>
+              <div class="pt-2 flex items-center justify-between text-[11px]">
+                <span class="text-emerald-400 font-semibold">✓ কোর্সে অন্তর্ভুক্ত</span>
+                <span class="text-slate-400">প্রিসেট প্যাক #০৩</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ==========================================
+           5. OUTCOME-BASED 4-MODULE CURRICULUM SECTION
+           ========================================== -->
+      <section id="curriculum" class="mx-auto max-w-4xl scroll-mt-20 px-4 py-16 sm:px-6 sm:py-24 lg:px-8 border-t border-slate-800/80">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto space-y-3">
+          <div class="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-semibold text-emerald-400">
+            <span>📚 পূর্ণাঙ্গ সিলেবাস • ২০+ ভিডিও লেসন</span>
+          </div>
+          <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+            প্র্যাকটিক্যাল কারিকুলাম — জিরো থেকে মার্কেটপ্লেসে ডলার আয়
+          </h2>
+          <p class="text-base text-slate-300 leading-relaxed">
+            কোনো অপ্রয়োজনীয় থিওরি নয়, প্রতিটি মডিউল সাজানো হয়েছে নির্দিষ্ট ফ্রিল্যান্সিং আউটকাম ও বাস্তব ক্লায়েন্ট ওয়ার্কফ্লো মাথায় রেখে:
+          </p>
+        </div>
+
+        <!-- 4-Module Accordion Container -->
+        <div class="mt-10 space-y-4">
+          
+          <!-- MODULE 1 (Default Open) -->
+          <div class="module-item overflow-hidden rounded-2xl border border-emerald-500/40 bg-slate-900/80 shadow-lg transition-all duration-300">
+            <button
+              type="button"
+              onclick="toggleModule(this)"
+              class="flex w-full items-center justify-between p-5 sm:p-6 text-left"
+              aria-expanded="true"
+            >
+              <div class="flex items-center gap-4">
+                <span class="flex size-9 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 font-numeric text-xs font-extrabold text-emerald-400 border border-emerald-500/30">
+                  01
+                </span>
+                <div>
+                  <h3 class="font-bold text-white text-base sm:text-lg">
+                    Module 1: লাইটরুম সেটআপ এবং সিক্রেট ফাস্ট এডিটিং ওয়ার্কফ্লো
+                  </h3>
+                  <span class="text-xs text-slate-400">৪টি লেসন • ৪২ মিনিট</span>
+                </div>
+              </div>
+              <div class="chevron-icon flex size-8 shrink-0 items-center justify-center rounded-full bg-slate-800 text-slate-300 transition-transform duration-300 rotate-180">
+                <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              </div>
+            </button>
+
+            <div class="module-content px-5 pb-5 sm:px-6 sm:pb-6 transition-all duration-300">
+              <!-- Outcome Badge -->
+              <div class="mb-4 rounded-xl border border-emerald-500/20 bg-emerald-950/20 p-3 text-xs text-emerald-300 leading-relaxed">
+                🎯 <strong class="font-bold text-white">মডিউল আউটকাম:</strong> লাইটরুম ক্লাসিক সফটওয়্যার পারফেক্ট সেটআপ, প্রি-ক্যাটালগ অর্গানাইজেশন এবং শর্টকাটের মাধ্যমে এডিটিং স্পিড ৩ গুণ বাড়ানো।
+              </div>
+
+              <!-- Lesson List -->
+              <ul class="divide-y divide-slate-800/80 text-sm">
+                <!-- Lesson 1 (Free Preview) -->
+                <li class="flex items-center justify-between gap-3 py-3">
+                  <div class="flex items-center gap-3">
+                    <svg class="size-4 shrink-0 fill-emerald-400" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <span class="text-white font-medium">01. Lightroom Download & Pro Installation Guide</span>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <button
+                      type="button"
+                      onclick="openVideoModal()"
+                      class="rounded-full bg-emerald-500/20 border border-emerald-500/40 px-3 py-0.5 text-xs font-bold text-emerald-300 transition hover:bg-emerald-500 hover:text-slate-950 cursor-pointer"
+                    >
+                      ▶ ফ্রি ক্লাস (Free Preview)
+                    </button>
+                    <span class="font-numeric text-xs text-slate-500">০২:৫৩</span>
+                  </div>
+                </li>
+                <!-- Lesson 2 -->
+                <li class="flex items-center justify-between gap-3 py-3">
+                  <div class="flex items-center gap-3">
+                    <svg class="size-4 shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    <span class="text-slate-300">02. Lightroom Interface & Essential Keyboard Shortcuts</span>
+                  </div>
+                  <span class="font-numeric text-xs text-slate-500">২০:২৪</span>
+                </li>
+                <!-- Lesson 3 -->
+                <li class="flex items-center justify-between gap-3 py-3">
+                  <div class="flex items-center gap-3">
+                    <svg class="size-4 shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    <span class="text-slate-300">03. Basic Panel Controls: Exposure, Highlights & Contrast</span>
+                  </div>
+                  <span class="font-numeric text-xs text-slate-500">১০:৪৪</span>
+                </li>
+                <!-- Lesson 4 -->
+                <li class="flex items-center justify-between gap-3 py-3">
+                  <div class="flex items-center gap-3">
+                    <svg class="size-4 shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    <span class="text-slate-300">04. Advanced Selective Masking & Adjustment Brushes</span>
+                  </div>
+                  <span class="font-numeric text-xs text-slate-500">২৪:২২</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- MODULE 2 (Collapsed) -->
+          <div class="module-item overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 shadow-lg transition-all duration-300 hover:border-slate-700">
+            <button
+              type="button"
+              onclick="toggleModule(this)"
+              class="flex w-full items-center justify-between p-5 sm:p-6 text-left"
+              aria-expanded="false"
+            >
+              <div class="flex items-center gap-4">
+                <span class="flex size-9 shrink-0 items-center justify-center rounded-xl bg-slate-800 font-numeric text-xs font-extrabold text-slate-300 border border-slate-700">
+                  02
+                </span>
+                <div>
+                  <h3 class="font-bold text-white text-base sm:text-lg">
+                    Module 2: ৫০০+ ওয়েডিং ছবি ৩০ মিনিটে বাল্ক এডিট করার টেকনিক
+                  </h3>
+                  <span class="text-xs text-slate-400">৪টি লেসন • ১ ঘণ্টা ৩০ মিনিট</span>
+                </div>
+              </div>
+              <div class="chevron-icon flex size-8 shrink-0 items-center justify-center rounded-full bg-slate-800 text-slate-300 transition-transform duration-300">
+                <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              </div>
+            </button>
+
+            <div class="module-content hidden px-5 pb-5 sm:px-6 sm:pb-6 transition-all duration-300">
+              <!-- Outcome Badge -->
+              <div class="mb-4 rounded-xl border border-emerald-500/20 bg-emerald-950/20 p-3 text-xs text-emerald-300 leading-relaxed">
+                🎯 <strong class="font-bold text-white">মডিউল আউটকাম:</strong> হাজার হাজার ছবির ইভেন্ট অ্যালবাম চোখের পলকে ফিল্টারিং, ব্যাচ সিঙ্কিং ও কোয়ালিটি ড্রপ ছাড়া এক্সপোর্ট ডেলিভারি দেওয়ার পূর্ণাঙ্গ পদ্ধতি।
+              </div>
+
+              <ul class="divide-y divide-slate-800/80 text-sm">
+                <li class="flex items-center justify-between gap-3 py-3">
+                  <div class="flex items-center gap-3">
+                    <svg class="size-4 shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    <span class="text-slate-300">01. Culling & Smart Filtering: চোখের পলকে সেরা ছবি বাছাই</span>
+                  </div>
+                  <span class="font-numeric text-xs text-slate-500">৫৫:০২</span>
+                </li>
+                <li class="flex items-center justify-between gap-3 py-3">
+                  <div class="flex items-center gap-3">
+                    <svg class="size-4 shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    <span class="text-slate-300">02. Composition & Cropping Mastery: রুল অফ থার্ডস দিয়ে পারফেক্ট ফ্রেম</span>
+                  </div>
+                  <span class="font-numeric text-xs text-slate-500">২৯:৫৪</span>
+                </li>
+                <li class="flex items-center justify-between gap-3 py-3">
+                  <div class="flex items-center gap-3">
+                    <svg class="size-4 shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    <span class="text-slate-300">03. Batch Sync Settings: এক ক্লিকে ৫০০ ছবিতে কালার অ্যাপ্লাই</span>
+                  </div>
+                  <span class="font-numeric text-xs text-slate-500">৩৫:০৪</span>
+                </li>
+                <li class="flex items-center justify-between gap-3 py-3">
+                  <div class="flex items-center gap-3">
+                    <svg class="size-4 shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    <span class="text-slate-300">04. High-Res Export Settings: জিরো কোয়ালিটি ড্রপ এক্সপোর্ট সিক্রেট</span>
+                  </div>
+                  <span class="font-numeric text-xs text-slate-500">০৭:১৩</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- MODULE 3 (Collapsed) -->
+          <div class="module-item overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 shadow-lg transition-all duration-300 hover:border-slate-700">
+            <button
+              type="button"
+              onclick="toggleModule(this)"
+              class="flex w-full items-center justify-between p-5 sm:p-6 text-left"
+              aria-expanded="false"
+            >
+              <div class="flex items-center gap-4">
+                <span class="flex size-9 shrink-0 items-center justify-center rounded-xl bg-slate-800 font-numeric text-xs font-extrabold text-slate-300 border border-slate-700">
+                  03
+                </span>
+                <div>
+                  <h3 class="font-bold text-white text-base sm:text-lg">
+                    Module 3: সিনেমাটিক কালার গ্রেডিং ও হাই-এন্ড স্কিন রিটাচিং
+                  </h3>
+                  <span class="text-xs text-slate-400">৪টি লেসন • ১ ঘণ্টা ১৫ মিনিট</span>
+                </div>
+              </div>
+              <div class="chevron-icon flex size-8 shrink-0 items-center justify-center rounded-full bg-slate-800 text-slate-300 transition-transform duration-300">
+                <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              </div>
+            </button>
+
+            <div class="module-content hidden px-5 pb-5 sm:px-6 sm:pb-6 transition-all duration-300">
+              <!-- Outcome Badge -->
+              <div class="mb-4 rounded-xl border border-emerald-500/20 bg-emerald-950/20 p-3 text-xs text-emerald-300 leading-relaxed">
+                🎯 <strong class="font-bold text-white">মডিউল আউটকাম:</strong> আন্তর্জাতিক ওয়েডিং ফটোগ্রাফারদের পছন্দসই সিগনেচার সিনেমাটিক কালার টোন তৈরি এবং প্রিমিয়াম ম্যাগাজিন স্কিন রিটাচিং মাস্টারি।
+              </div>
+
+              <ul class="divide-y divide-slate-800/80 text-sm">
+                <li class="flex items-center justify-between gap-3 py-3">
+                  <div class="flex items-center gap-3">
+                    <svg class="size-4 shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    <span class="text-slate-300">01. Color Grading & HSL Panel: সিনেমাটিক টিল ও অরেঞ্জ লুক</span>
+                  </div>
+                  <span class="font-numeric text-xs text-slate-500">২০:১৫</span>
+                </li>
+                <li class="flex items-center justify-between gap-3 py-3">
+                  <div class="flex items-center gap-3">
+                    <svg class="size-4 shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    <span class="text-slate-300">02. Flawless Natural Skin Retouching: টেক্সচার বজায় রেখে গ্লো</span>
+                  </div>
+                  <span class="font-numeric text-xs text-slate-500">২৮:৪০</span>
+                </li>
+                <li class="flex items-center justify-between gap-3 py-3">
+                  <div class="flex items-center gap-3">
+                    <svg class="size-4 shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    <span class="text-slate-300">03. Create Your Signature Presets: নিজস্ব প্রিমিয়াম প্রিসেট প্যাক তৈরি</span>
+                  </div>
+                  <span class="font-numeric text-xs text-slate-500">০৬:০৭</span>
+                </li>
+                <li class="flex items-center justify-between gap-3 py-3">
+                  <div class="flex items-center gap-3">
+                    <svg class="size-4 shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    <span class="text-slate-300">04. Real Wedding Project Walkthrough: ফুল ক্লায়েন্ট অ্যালবাম এডিটিং</span>
+                  </div>
+                  <span class="font-numeric text-xs text-slate-500">১৯:৫৫</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- MODULE 4 (Collapsed) -->
+          <div class="module-item overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 shadow-lg transition-all duration-300 hover:border-slate-700">
+            <button
+              type="button"
+              onclick="toggleModule(this)"
+              class="flex w-full items-center justify-between p-5 sm:p-6 text-left"
+              aria-expanded="false"
+            >
+              <div class="flex items-center gap-4">
+                <span class="flex size-9 shrink-0 items-center justify-center rounded-xl bg-slate-800 font-numeric text-xs font-extrabold text-slate-300 border border-slate-700">
+                  04
+                </span>
+                <div>
+                  <h3 class="font-bold text-white text-base sm:text-lg">
+                    Module 4: ফাইভারে গিগ র্যাঙ্কিং এবং সরাসরি ক্লায়েন্ট পাওয়ার রোডম্যাপ
+                  </h3>
+                  <span class="text-xs text-slate-400">৪টি লেসন • ১ ঘণ্টা ২৫ মিনিট</span>
+                </div>
+              </div>
+              <div class="chevron-icon flex size-8 shrink-0 items-center justify-center rounded-full bg-slate-800 text-slate-300 transition-transform duration-300">
+                <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              </div>
+            </button>
+
+            <div class="module-content hidden px-5 pb-5 sm:px-6 sm:pb-6 transition-all duration-300">
+              <!-- Outcome Badge -->
+              <div class="mb-4 rounded-xl border border-emerald-500/20 bg-emerald-950/20 p-3 text-xs text-emerald-300 leading-relaxed">
+                🎯 <strong class="font-bold text-white">মডিউল আউটকাম:</strong> ফাইভার প্রোফাইল সেটআপ, ১ম পেজে গিগ র‍্যাঙ্ক করানোর এসইও সিক্রেটস, বায়ারদের কনভিন্স করার মেসেজ টেমপ্লেট ও বাংলাদেশে বিকাশে টাকা উত্তোলন।
+              </div>
+
+              <ul class="divide-y divide-slate-800/80 text-sm">
+                <li class="flex items-center justify-between gap-3 py-3">
+                  <div class="flex items-center gap-3">
+                    <svg class="size-4 shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    <span class="text-slate-300">01. Service Pricing & Delivery Strategy: সঠিক প্যাকেজ ও কাস্টম অফার</span>
+                  </div>
+                  <span class="font-numeric text-xs text-slate-500">০৮:২৭</span>
+                </li>
+                <li class="flex items-center justify-between gap-3 py-3">
+                  <div class="flex items-center gap-3">
+                    <svg class="size-4 shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    <span class="text-slate-300">02. High-Converting Fiverr Profile Setup: বায়ার আকর্ষণের প্রফেশনাল বায়ো</span>
+                  </div>
+                  <span class="font-numeric text-xs text-slate-500">০৯:১২</span>
+                </li>
+                <li class="flex items-center justify-between gap-3 py-3">
+                  <div class="flex items-center gap-3">
+                    <svg class="size-4 shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    <span class="text-slate-300">03. Fiverr Gig Publishing & 1st Page SEO Ranking: গোপন এসইও ট্রিকস</span>
+                  </div>
+                  <span class="font-numeric text-xs text-slate-500">৪২:৩২</span>
+                </li>
+                <li class="flex items-center justify-between gap-3 py-3">
+                  <div class="flex items-center gap-3">
+                    <svg class="size-4 shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    <span class="text-slate-300">04. Client Messaging Templates & Payout Withdrawal to bKash/Bank</span>
+                  </div>
+                  <span class="font-numeric text-xs text-slate-500">২৫:১৮</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Curriculum CTA -->
+        <div class="mt-10 text-center space-y-3">
+          <a
+            href="#pricing"
+            class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 px-8 py-4 text-base font-extrabold text-slate-950 shadow-xl shadow-emerald-500/25 transition hover:brightness-110 active:scale-[0.98]"
+          >
+            <span>সবগুলো মডিউলের লাইফটাইম অ্যাক্সেস পেতে ভর্তি হন — ৳ ৪,৯৯০</span>
+            <svg class="size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+          <div>
+            <button
+              type="button"
+              onclick="openVideoModal()"
+              class="text-xs font-semibold text-emerald-400 hover:underline"
+            >
+              ভর্তি হওয়ার আগে একটি ক্লাস ফ্রি দেখে নিন ▶
+            </button>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ==========================================
+           6. VALUE-STACKED PRICING SECTION
+           ========================================== -->
+      <section id="pricing" class="mx-auto max-w-4xl scroll-mt-20 px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+        <div class="relative space-y-8 rounded-3xl border-2 border-emerald-500/40 bg-gradient-to-b from-slate-900 to-[#0B0F17] p-6 text-center shadow-2xl shadow-emerald-500/10 sm:p-10 lg:p-14">
+          
+          <div class="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1 text-xs font-bold text-emerald-400">
+            🔥 সীমিত সময়ের বিশেষ অফার: প্রথম ২০ জনের জন্য ৫০% ডিসকাউন্ট!
+          </div>
+
+          <div>
+            <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+              আজই কোর্সে ভর্তি হয়ে আপনার আসন নিশ্চিত করুন
+            </h2>
+            <p class="mt-2 text-sm text-slate-400">
+              এককালীন পেমেন্টে লাইফটাইম অ্যাক্সেস • কোনো গোপন বা মাসিক ফি নেই
+            </p>
+          </div>
+
+          <!-- Value Stack Breakdown Table -->
+          <div class="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/70 text-left">
+            <div class="flex items-center justify-between border-b border-slate-800 bg-slate-900/80 px-4 py-3 sm:px-6">
+              <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">
+                ✨ কোর্সের সাথে যা যা পাচ্ছেন
+              </span>
+              <span class="text-xs font-bold text-slate-400">প্রকৃত বাজারমূল্য</span>
+            </div>
+
+            <div class="divide-y divide-slate-800/60 px-4 sm:px-6">
+              <!-- Item 1 -->
+              <div class="flex items-center justify-between gap-4 py-3 text-sm">
+                <span class="flex items-center gap-2.5 text-slate-200">
+                  <span class="text-emerald-400 font-bold">✓</span>
+                  <span>লাইটরুম মাস্টারক্লাস (লাইফটাইম অ্যাক্সেস)</span>
+                </span>
+                <span class="font-numeric text-xs font-semibold text-slate-400 line-through sm:text-sm">৳ ৬,০০০</span>
+              </div>
+              <!-- Item 2 -->
+              <div class="flex items-center justify-between gap-4 py-3 text-sm">
+                <span class="flex items-center gap-2.5 text-slate-200">
+                  <span class="text-emerald-400 font-bold">✓</span>
+                  <span>৫০+ প্রিমিয়াম প্রিসেট প্যাক</span>
+                </span>
+                <span class="font-numeric text-xs font-semibold text-slate-400 line-through sm:text-sm">৳ ১,৫০০</span>
+              </div>
+              <!-- Item 3 -->
+              <div class="flex items-center justify-between gap-4 py-3 text-sm">
+                <span class="flex items-center gap-2.5 text-slate-200">
+                  <span class="text-emerald-400 font-bold">✓</span>
+                  <span>১০০+ হাই-রেজুলেশন RAW প্র্যাকটিস ফাইল</span>
+                </span>
+                <span class="font-numeric text-xs font-semibold text-slate-400 line-through sm:text-sm">৳ ২,০০০</span>
+              </div>
+              <!-- Item 4 -->
+              <div class="flex items-center justify-between gap-4 py-3 text-sm">
+                <span class="flex items-center gap-2.5 text-slate-200">
+                  <span class="text-emerald-400 font-bold">✓</span>
+                  <span>ভিআইপি প্রাইভেট সাপোর্ট গ্রুপ ও সরাসরি মেন্টরিং</span>
+                </span>
+                <span class="font-numeric text-xs font-semibold text-slate-400 line-through sm:text-sm">৳ ২,০০০</span>
+              </div>
+              <!-- Bonus Item -->
+              <div class="flex items-center justify-between gap-4 py-3 text-sm">
+                <span class="flex items-center gap-2.5 text-slate-200">
+                  <span class="text-emerald-400 font-bold">✓</span>
+                  <span>কোর্স কমপ্লিশন প্রফেশনাল ভেরিফাইড সার্টিফিকেট</span>
+                </span>
+                <span class="text-xs font-bold text-emerald-400">সম্পূর্ণ ফ্রি</span>
+              </div>
+            </div>
+
+            <!-- Total Slashed vs Special Ad Price -->
+            <div class="border-t-2 border-dashed border-slate-800 bg-emerald-950/30 px-4 py-4 sm:px-6">
+              <div class="flex items-center justify-between text-sm text-slate-400">
+                <span>সর্বমোট প্রকৃত বাজারমূল্য:</span>
+                <span class="font-numeric text-base line-through">৳ ১১,৫০০</span>
+              </div>
+              <div class="mt-2 flex items-baseline justify-between">
+                <span class="text-base font-bold text-white sm:text-lg">
+                  স্পেশাল অ্যাড ডিসকাউন্ট মূল্য:
+                </span>
+                <div class="flex items-baseline gap-2">
+                  <span class="font-numeric text-3xl font-extrabold text-emerald-400 sm:text-4xl">
+                    ৳ ৪,৯৯০
+                  </span>
+                  <span class="rounded bg-red-500/20 px-2 py-0.5 text-xs font-bold text-red-300 border border-red-500/30">
+                    ৳৬,৫১০ সাশ্রয়
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Checkout Trigger CTA -->
+          <div class="space-y-4">
+            <button
+              type="button"
+              onclick="openCheckoutModal()"
+              class="inline-flex w-full max-w-md items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-500 py-4 text-lg font-extrabold text-slate-950 shadow-2xl shadow-emerald-500/30 transition hover:brightness-110 active:scale-[0.98] cursor-pointer"
+            >
+              <span>বিকাশ / নগদ দিয়ে অ্যাডমিশন নিন</span>
+              <svg class="size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </button>
+
+            <p class="text-xs text-slate-400 flex items-center justify-center gap-1.5">
+              <svg class="size-3.5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+              পেমেন্ট কনফার্মেশনের সাথে সাথেই অ্যাকাউন্টে লগইন অ্যাক্সেস পেয়ে যাবেন
+            </p>
+
+            <div class="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-950/40 px-4 py-1.5 text-xs font-semibold text-emerald-300">
+              <svg class="size-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              ৭ দিনের ১০০% মানি-ব্যাক গ্যারান্টি • কোনো ঝুঁকি নেই
+            </div>
+          </div>
+
+          <!-- 3-Step Buying Guide -->
+          <div class="border-t border-slate-800 pt-8 text-left">
+            <h3 class="mb-5 text-center text-lg font-bold text-white">ভর্তি হওয়ার সহজ ৩টি ধাপ</h3>
+            <div class="grid gap-4 sm:grid-cols-3">
+              <div class="rounded-2xl border border-slate-800 bg-slate-950/40 p-4">
+                <span class="flex size-8 items-center justify-center rounded-full bg-emerald-500 font-numeric text-sm font-extrabold text-slate-950">1</span>
+                <p class="mt-3 font-bold text-white">বিকাশ/নগদে Send Money</p>
+                <p class="mt-1 text-xs text-slate-400">01871303786 নম্বরে ৪,৯৯০ টাকা পাঠান।</p>
+              </div>
+              <div class="rounded-2xl border border-slate-800 bg-slate-950/40 p-4">
+                <span class="flex size-8 items-center justify-center rounded-full bg-emerald-500 font-numeric text-sm font-extrabold text-slate-950">2</span>
+                <p class="mt-3 font-bold text-white">অর্ডার ফর্মে TrxID দিন</p>
+                <p class="mt-1 text-xs text-slate-400">নাম, মোবাইল নম্বর ও TrxID দিয়ে সাবমিট করুন।</p>
+              </div>
+              <div class="rounded-2xl border border-slate-800 bg-slate-950/40 p-4">
+                <span class="flex size-8 items-center justify-center rounded-full bg-emerald-500 font-numeric text-sm font-extrabold text-slate-950">3</span>
+                <p class="mt-3 font-bold text-white">ইনস্ট্যান্ট অ্যাক্সেস</p>
+                <p class="mt-1 text-xs text-slate-400">যাচাই হওয়ামাত্রই অ্যাকাউন্টে সব লেসন আনলক হবে।</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==========================================
+           7. 7-DAY 100% MONEY-BACK GUARANTEE SHIELD BOX
+           ========================================== -->
+      <section id="guarantee" class="mx-auto max-w-4xl scroll-mt-20 px-4 py-12 sm:px-6 lg:px-8">
+        <div class="relative overflow-hidden rounded-3xl border-2 border-emerald-500/40 bg-gradient-to-br from-emerald-950/30 via-slate-900 to-[#0B0F17] p-8 sm:p-12 shadow-2xl">
+          <!-- Background Shield Accent Glow -->
+          <div class="absolute -right-16 -top-16 size-64 rounded-full bg-emerald-500/10 blur-[90px] pointer-events-none"></div>
+
+          <div class="flex flex-col items-center gap-8 text-center sm:flex-row sm:text-left">
+            <!-- Shield Graphic -->
+            <div class="flex size-28 shrink-0 items-center justify-center rounded-3xl border-2 border-emerald-400/50 bg-emerald-500/10 shadow-2xl shadow-emerald-500/25 ring-8 ring-emerald-500/10">
+              <svg class="size-16 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+            </div>
+
+            <!-- Guarantee Copy -->
+            <div class="space-y-3">
+              <div class="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/15 px-3 py-1 text-xs font-bold text-emerald-300">
+                🛡️ ১০০% ঝুঁকিমুক্ত সিদ্ধান্ত
+              </div>
+              <h2 class="text-2xl font-extrabold text-white sm:text-3xl">
+                কোনো প্রশ্ন ছাড়াই ৭ দিনে পুরো টাকা ফেরত
+              </h2>
+              <p class="text-sm leading-relaxed text-slate-300 sm:text-base">
+                আমরা কোর্সের কনটেন্ট কোয়ালিটি নিয়ে শতভাগ নিশ্চিত। আগামী ৭ দিন আপনি ক্লাসগুলো দেখুন, শেখানো নিয়মে প্র্যাকটিস করুন। যদি আপনার মনে হয় এই কোর্স আপনার প্রত্যাশা পূরণ করছে না, তবে কোনো দ্বিধা ছাড়াই আমাদের হোয়াটসঅ্যাপে মেসেজ দিন। কোনো কৈফিয়ত বা জেরা ছাড়াই ৩ কার্যদিবসের মধ্যে আপনার পাঠানো সম্পূর্ণ ৪,৯৯০ টাকা আপনার বিকাশ বা নগদে ফেরত দেওয়া হবে।
+              </p>
+              <div class="pt-2 flex flex-wrap items-center justify-center sm:justify-start gap-4 text-xs font-semibold text-emerald-400">
+                <span>✓ ১০০% মানি-ব্যাক প্রতিশ্রুতি</span>
+                <span>✓ কোনো হিডেন শর্ত নেই</span>
+                <span>✓ বিকাশ/নগদে ডিরেক্ট রিফান্ড</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           8. 6-QUESTION INTERACTIVE FAQ ACCORDION
+           ========================================== -->
+      <section id="faq" class="mx-auto max-w-4xl scroll-mt-20 px-4 py-16 sm:px-6 sm:py-24 lg:px-8 border-t border-slate-800/80">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-2xl mx-auto space-y-3">
+          <div class="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-semibold text-emerald-400">
+            <span>❓ সচরাচর জিজ্ঞাসিত প্রশ্নাবলী</span>
+          </div>
+          <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+            সাধারণ কিছু জিজ্ঞাসা ও উত্তর
+          </h2>
+          <p class="text-sm text-slate-300">
+            কোর্সটিতে ভর্তি হওয়ার আগে শিক্ষার্থীদের মনে আসা সবচেয়ে কমন প্রশ্নের খোলামেলা উত্তর:
+          </p>
+        </div>
+
+        <!-- 6 FAQ Accordion Items -->
+        <div class="mt-10 space-y-4">
+          
+          <!-- FAQ 1 -->
+          <div class="faq-item overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 transition-all duration-300 hover:border-slate-700">
+            <button
+              type="button"
+              onclick="toggleFaq(this)"
+              class="flex w-full items-center justify-between p-5 text-left font-bold text-white text-base sm:text-lg"
+              aria-expanded="false"
+            >
+              <span>১. আমার তো কোনো দামি ক্যামেরা নেই, আমি কি ফটো এডিটিং শিখতে পারব?</span>
+              <span class="faq-icon ml-4 flex size-7 shrink-0 items-center justify-center rounded-full bg-slate-800 text-slate-300 transition-transform duration-300">
+                <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              </span>
+            </button>
+            <div class="faq-content hidden px-5 pb-5 text-sm leading-relaxed text-slate-300 border-t border-slate-800/60 pt-3">
+              অবশ্যই পারবেন! ফটো এডিটিংয়ের কাজ শেখার জন্য নিজের ক্যামেরা থাকা একেবারেই জরুরি নয়। আন্তর্জাতিক বা লোকাল ক্লায়েন্টরাই আপনাকে তাদের তোলা RAW ছবি দিয়ে দেবে। আর কোর্সে হাতে-কলমে প্র্যাকটিস করার জন্য আমরাই আপনাকে ১০০+ হাই-রেজ্যুলেশন RAW ছবি সরবরাহ করব। আপনার শুধু একটি সাধারণ কম্পিউটার বা ল্যাপটপ থাকলেই চলবে।
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 transition-all duration-300 hover:border-slate-700">
+            <button
+              type="button"
+              onclick="toggleFaq(this)"
+              class="flex w-full items-center justify-between p-5 text-left font-bold text-white text-base sm:text-lg"
+              aria-expanded="false"
+            >
+              <span>২. আমি তো ইংরেজিতে দুর্বল, ফাইভারে বিদেশি ক্লায়েন্টের সাথে কীভাবে কথা বলব?</span>
+              <span class="faq-icon ml-4 flex size-7 shrink-0 items-center justify-center rounded-full bg-slate-800 text-slate-300 transition-transform duration-300">
+                <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              </span>
+            </button>
+            <div class="faq-content hidden px-5 pb-5 text-sm leading-relaxed text-slate-300 border-t border-slate-800/60 pt-3">
+              ফটো এডিটিং মূলত একটি ভিজ্যুয়াল কাজ। ক্লায়েন্টদের দীর্ঘ কোনো চিঠি লিখতে হয় না। শুধু কাজের রিকোয়ারমেন্টস বুঝলেই হয়। তাছাড়া কোর্সের ৪র্থ মডিউলে বায়ারদের সাথে কথা বলার জন্য পরীক্ষিত রেডিমেড মেসেজ টেমপ্লেট দিয়ে দেওয়া হয়েছে, যা আপনি সরাসরি কপি-পেস্ট করে বিদেশি বায়ারদের সাথে আত্মবিশ্বাসের সাথে ডিল করতে পারবেন।
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 transition-all duration-300 hover:border-slate-700">
+            <button
+              type="button"
+              onclick="toggleFaq(this)"
+              class="flex w-full items-center justify-between p-5 text-left font-bold text-white text-base sm:text-lg"
+              aria-expanded="false"
+            >
+              <span>৩. আমার কম্পিউটার বা ল্যাপটপের কনফিগারেশন কম, লাইটরুম কি স্মুথলি চলবে?</span>
+              <span class="faq-icon ml-4 flex size-7 shrink-0 items-center justify-center rounded-full bg-slate-800 text-slate-300 transition-transform duration-300">
+                <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              </span>
+            </button>
+            <div class="faq-content hidden px-5 pb-5 text-sm leading-relaxed text-slate-300 border-t border-slate-800/60 pt-3">
+              হ্যাঁ, চলবে। লাইটরুম ক্লাসিক চালানোর জন্য খুব দামি গেমিং পিসির প্রয়োজন হয় না। Core i3 বা Ryzen 3 প্রসেসর এবং 8GB RAM সম্বলিত যে কোনো সাধারণ ল্যাপটপ বা ডেস্কটপেই আপনি অনায়াসে কাজ করতে পারবেন। কোর্সের প্রথম ক্লাসেই কম বাজেটের পিসিতে কীভাবে লাইটরুম ফাস্ট চালাতে হয় তা দেখানো হয়েছে।
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 transition-all duration-300 hover:border-slate-700">
+            <button
+              type="button"
+              onclick="toggleFaq(this)"
+              class="flex w-full items-center justify-between p-5 text-left font-bold text-white text-base sm:text-lg"
+              aria-expanded="false"
+            >
+              <span>৪. কোর্সটি কি লাইভ ক্লাস নাকি রেকর্ডেড? কতদিন ভিডিও দেখতে পারব?</span>
+              <span class="faq-icon ml-4 flex size-7 shrink-0 items-center justify-center rounded-full bg-slate-800 text-slate-300 transition-transform duration-300">
+                <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              </span>
+            </button>
+            <div class="faq-content hidden px-5 pb-5 text-sm leading-relaxed text-slate-300 border-t border-slate-800/60 pt-3">
+              এটি সম্পূর্ণ প্রফেশনাল স্টুডিও কোয়ালিটি প্রি-রেকর্ডেড কোর্স। একবার ভর্তি হলে আপনি আজীবন (লাইফটাইম) অ্যাক্সেস পাবেন। আপনার পড়াশোনা বা চাকরির পাশাপাশি নিজের সুবিধাজনক সময়ে যতবার খুশি ক্লাসগুলো দেখতে পারবেন এবং রিভিশন দিতে পারবেন।
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="faq-item overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 transition-all duration-300 hover:border-slate-700">
+            <button
+              type="button"
+              onclick="toggleFaq(this)"
+              class="flex w-full items-center justify-between p-5 text-left font-bold text-white text-base sm:text-lg"
+              aria-expanded="false"
+            >
+              <span>৫. পেমেন্ট সম্পন্ন করার পর কীভাবে ক্লাসে জয়েন করব?</span>
+              <span class="faq-icon ml-4 flex size-7 shrink-0 items-center justify-center rounded-full bg-slate-800 text-slate-300 transition-transform duration-300">
+                <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              </span>
+            </button>
+            <div class="faq-content hidden px-5 pb-5 text-sm leading-relaxed text-slate-300 border-t border-slate-800/60 pt-3">
+              বিকাশ বা নগদে Send Money করে আমাদের অর্ডার ফর্মে TrxID দিয়ে সাবমিট করার সাথে সাথেই সিস্টেম স্বয়ংক্রিয়ভাবে আপনার পেমেন্ট ভেরিফাই করবে। ভেরিফিকেশন সম্পন্ন হওয়ামাত্রই আপনার অ্যাকাউন্টে সব লেসন ও ভিআইপি সাপোর্ট গ্রুপের লিংক আনলক হয়ে যাবে। কোনো জটিলতা নেই!
+            </div>
+          </div>
+
+          <!-- FAQ 6 -->
+          <div class="faq-item overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 transition-all duration-300 hover:border-slate-700">
+            <button
+              type="button"
+              onclick="toggleFaq(this)"
+              class="flex w-full items-center justify-between p-5 text-left font-bold text-white text-base sm:text-lg"
+              aria-expanded="false"
+            >
+              <span>৬. কোর্স শেষ করার পর কাজ পেতে আমাকে প্রতিদিন কতটা সময় দিতে হবে?</span>
+              <span class="faq-icon ml-4 flex size-7 shrink-0 items-center justify-center rounded-full bg-slate-800 text-slate-300 transition-transform duration-300">
+                <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              </span>
+            </button>
+            <div class="faq-content hidden px-5 pb-5 text-sm leading-relaxed text-slate-300 border-t border-slate-800/60 pt-3">
+              প্রতিদিন নিয়মিত ১.৫ থেকে ২ ঘণ্টা সময় দিয়ে মনোযোগের সাথে প্র্যাকটিস করলে ২-৩ মাসের মধ্যেই ক্লায়েন্টের কাজ নিখুঁতভাবে করার দক্ষতা তৈরি হয়ে যাবে। আমাদের সফল স্টুডেন্টদের ৭৭+ জন এই নিয়মে নিয়মিত প্র্যাকটিস করেই মার্কেটপ্লেসে সফল হয়েছেন।
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ==========================================
+           FOOTER
+           ========================================== -->
+      <footer class="border-t border-slate-800/80 bg-slate-950 py-12 text-slate-400 text-xs">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div class="flex items-center gap-3">
+            <div class="flex size-9 items-center justify-center rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 font-bold text-slate-950">
+              P
+            </div>
+            <div>
+              <p class="font-bold text-white text-sm">Pixel Academy IT</p>
+              <p class="text-[11px] text-slate-500">প্রফেশনাল স্কিল ডেভেলপমেন্ট ইনস্টিটিউট</p>
+            </div>
+          </div>
+
+          <div class="text-center sm:text-right">
+            <p>হেল্পলাইন / হোয়াটসঅ্যাপ: <a href="tel:01871303786" class="font-numeric font-bold text-emerald-400">01871303786</a></p>
+            <p class="mt-1 text-[11px] text-slate-500">© 2026 Pixel Academy IT. সর্বস্বত্ব সংরক্ষিত।</p>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <!-- ==========================================
+         9. PERSISTENT MOBILE STICKY CONVERSION BAR
+         (Only visible on mobile screens)
+         ========================================== -->
+    <div
+      id="mobile-sticky-bar"
+      class="fixed inset-x-0 bottom-0 z-40 flex items-center justify-between border-t border-emerald-500/25 bg-[#0B0F17]/95 px-3 py-2.5 shadow-2xl backdrop-blur-lg md:hidden"
+    >
+      <div class="flex items-center gap-2.5">
+        <img
+          src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=120&q=80"
+          alt="Course Thumbnail"
+          class="size-11 rounded-lg object-cover border border-emerald-500/30 shrink-0"
+        />
+        <div>
+          <div class="flex items-baseline gap-1.5 font-numeric">
+            <span class="text-lg font-extrabold text-white">৳ ৪,৯৯০</span>
+            <s class="text-[11px] text-slate-500 line-through">৳ ১১,৫০০</s>
+          </div>
+          <span class="block text-[10px] font-semibold text-emerald-400">
+            🛡️ ৭ দিনের মানি-ব্যাক গ্যারান্টি
+          </span>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        onclick="openCheckoutModal()"
+        class="rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 px-4 py-2.5 text-xs font-black text-slate-950 shadow-lg shadow-emerald-500/30 active:scale-95 cursor-pointer"
+      >
+        এখনই কিনুন →
+      </button>
+    </div>
+
+    <!-- ==========================================
+         10. AUTOMATED CHECKOUT / ORDER FORM MODAL
+         ========================================== -->
+    <div
+      id="checkout-modal"
+      class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 p-4 backdrop-blur-md overflow-y-auto"
+    >
+      <div class="relative w-full max-w-lg overflow-hidden rounded-3xl border border-emerald-500/30 bg-[#0B0F17] shadow-2xl shadow-emerald-500/10 p-6 sm:p-8 my-8 text-left">
+        
+        <!-- Close Button -->
+        <button
+          type="button"
+          onclick="closeCheckoutModal()"
+          class="absolute right-4 top-4 flex size-9 items-center justify-center rounded-full bg-slate-800 text-white hover:bg-slate-700"
+          aria-label="বন্ধ করুন"
+        >
+          ✕
+        </button>
+
+        <!-- Modal Header -->
+        <div>
+          <div class="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-0.5 text-xs font-bold text-emerald-400 mb-2">
+            ⚡ লাইফটাইম অ্যাক্সেস অ্যাডমিশন
+          </div>
+          <h3 class="text-2xl font-extrabold text-white">
+            অর্ডার ফর্ম ও পেমেন্ট কনফার্মেশন
+          </h3>
+          <p class="text-xs text-slate-400 mt-1">
+            বিকাশ বা নগদে Send Money করে ফর্মটি পূরণ করুন:
+          </p>
+        </div>
+
+        <!-- Payment Instructions Box -->
+        <div class="mt-4 rounded-2xl border border-slate-800 bg-slate-900/90 p-4 text-xs space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-slate-400">অ্যাডমিশন ফি:</span>
+            <span class="font-numeric text-base font-extrabold text-emerald-400">৳ ৪,৯৯০</span>
+          </div>
+          <div class="flex items-center justify-between border-t border-slate-800/80 pt-2">
+            <span class="text-slate-300">বিকাশ / নগদ পার্সোনাল নম্বর:</span>
+            <span class="font-numeric font-bold text-white bg-slate-800 px-2 py-0.5 rounded text-sm select-all">01871303786</span>
+          </div>
+          <div class="text-[11px] text-amber-300 bg-amber-500/10 border border-amber-500/20 p-2 rounded-lg">
+            ⚠️ 01871303786 নম্বরে 'Send Money' করুন এবং মেসেজ থেকে প্রাপ্ত TrxID নিচে লিখুন।
+          </div>
+        </div>
+
+        <!-- Order Form -->
+        <form id="order-form" onsubmit="handleOrderSubmit(event)" class="mt-5 space-y-3.5 text-xs">
+          <div>
+            <label class="block font-semibold text-slate-300 mb-1">আপনার পুরো নাম *</label>
+            <input
+              type="text"
+              id="student-name"
+              required
+              placeholder="যেমন: তানভীর আহমেদ"
+              class="w-full rounded-xl border border-slate-700 bg-slate-900 px-3.5 py-2.5 text-sm text-white placeholder-slate-500 outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+            />
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block font-semibold text-slate-300 mb-1">মোবাইল নম্বর *</label>
+              <input
+                type="tel"
+                id="student-phone"
+                required
+                placeholder="01XXXXXXXXX"
+                class="w-full rounded-xl border border-slate-700 bg-slate-900 px-3.5 py-2.5 text-sm text-white font-numeric placeholder-slate-500 outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+              />
+            </div>
+            <div>
+              <label class="block font-semibold text-slate-300 mb-1">ইমেইল এড্রেস *</label>
+              <input
+                type="email"
+                id="student-email"
+                required
+                placeholder="you@email.com"
+                class="w-full rounded-xl border border-slate-700 bg-slate-900 px-3.5 py-2.5 text-sm text-white font-numeric placeholder-slate-500 outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-semibold text-slate-300 mb-1">পেমেন্ট মেথড *</label>
+            <div class="grid grid-cols-2 gap-3">
+              <label class="flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-900 p-2.5 cursor-pointer has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-950/20">
+                <input type="radio" name="payment-method" value="bKash" checked class="text-emerald-500" />
+                <span class="font-bold text-[#e2136e] text-xs">বিকাশ (bKash)</span>
+              </label>
+              <label class="flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-900 p-2.5 cursor-pointer has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-950/20">
+                <input type="radio" name="payment-method" value="Nagad" class="text-emerald-500" />
+                <span class="font-bold text-[#F7941D] text-xs">নগদ (Nagad)</span>
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-semibold text-slate-300 mb-1">ট্রানজেকশন আইডি (TrxID) *</label>
+            <input
+              type="text"
+              id="student-trxid"
+              required
+              placeholder="যেমন: 9J37D8K2LM"
+              class="w-full rounded-xl border border-slate-700 bg-slate-900 px-3.5 py-2.5 text-sm font-numeric uppercase text-white placeholder-slate-500 outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="w-full mt-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 py-3.5 text-sm font-extrabold text-slate-950 shadow-xl shadow-emerald-500/30 transition hover:brightness-110 active:scale-[0.98] cursor-pointer"
+          >
+            কনফার্ম করুন ও অ্যাক্সেস নিন →
+          </button>
+        </form>
+
+        <!-- Order Success Notice (Hidden Initially) -->
+        <div id="order-success" class="hidden mt-4 rounded-2xl border border-emerald-500/40 bg-emerald-950/40 p-5 text-center space-y-3">
+          <div class="flex size-12 items-center justify-center rounded-full bg-emerald-500 mx-auto text-slate-950 font-bold text-xl">
+            ✓
+          </div>
+          <h4 class="text-lg font-bold text-white">অর্ডার সফলভাবে জমা হয়েছে!</h4>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            ধন্যবাদ! আপনার পেমেন্ট ট্রানজেকশন যাচাই করা হচ্ছে। দ্রুততম সময়ে অ্যাক্সেস চালু করতে হোয়াটসঅ্যাপে একটি কনফার্মেশন মেসেজ দিন।
+          </p>
+          <a
+            id="whatsapp-confirm-link"
+            href="https://wa.me/8801871303786"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-xl bg-[#25D366] px-5 py-2.5 text-xs font-bold text-slate-950 shadow-lg"
+          >
+            <span>হোয়াটসঅ্যাপে TrxID নিশ্চিত করুন</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Interactive Scripts: Countdown & Modal -->
+    <script>
+      // Live Countdown Timer (Rolling target)
+      function updateCountdown() {
+        const now = new Date();
+        const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
+        let diff = Math.floor((midnight - now) / 1000);
+        if (diff < 0) diff = 86400 + diff;
+
+        const hours = Math.floor(diff / 3600);
+        const minutes = Math.floor((diff % 3600) / 60);
+        const seconds = diff % 60;
+
+        const pad = (n) => String(n).padStart(2, '0');
+        const hEl = document.getElementById('countdown-hours');
+        const mEl = document.getElementById('countdown-minutes');
+        const sEl = document.getElementById('countdown-seconds');
+
+        if (hEl) hEl.textContent = pad(hours);
+        if (mEl) mEl.textContent = pad(minutes);
+        if (sEl) sEl.textContent = pad(seconds);
+      }
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+
+      // Video Modal Functions
+      function openVideoModal() {
+        const modal = document.getElementById('video-modal');
+        const frame = document.getElementById('video-frame');
+        if (modal && frame) {
+          frame.src = 'https://www.youtube.com/embed/MA0IYwbQCIs?autoplay=1';
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+
+      function closeVideoModal() {
+        const modal = document.getElementById('video-modal');
+        const frame = document.getElementById('video-frame');
+        if (modal && frame) {
+          frame.src = '';
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+          document.body.style.overflow = '';
+        }
+      }
+
+      // Close modal on escape key
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeVideoModal();
+      });
+
+      // Touch-friendly Before/After Comparison Slider (Vanilla JS)
+      function initBeforeAfterSlider() {
+        const slider = document.getElementById('before-after-slider');
+        const clipLayer = document.getElementById('slider-clip-layer');
+        const divider = document.getElementById('slider-divider-line');
+        if (!slider || !clipLayer || !divider) return;
+
+        let isDragging = false;
+
+        function setPosition(clientX) {
+          const rect = slider.getBoundingClientRect();
+          let x = clientX - rect.left;
+          let percent = (x / rect.width) * 100;
+          if (percent < 0) percent = 0;
+          if (percent > 100) percent = 100;
+
+          clipLayer.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+          divider.style.left = `${percent}%`;
+          slider.setAttribute('aria-valuenow', Math.round(percent));
+        }
+
+        slider.addEventListener('pointerdown', (e) => {
+          isDragging = true;
+          slider.setPointerCapture(e.pointerId);
+          setPosition(e.clientX);
+        });
+
+        slider.addEventListener('pointermove', (e) => {
+          if (!isDragging) return;
+          setPosition(e.clientX);
+        });
+
+        slider.addEventListener('pointerup', () => {
+          isDragging = false;
+        });
+
+        slider.addEventListener('pointercancel', () => {
+          isDragging = false;
+        });
+
+        // Keyboard arrow accessibility
+        slider.addEventListener('keydown', (e) => {
+          let current = parseFloat(slider.getAttribute('aria-valuenow')) || 50;
+          if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+            e.preventDefault();
+            let next = Math.max(0, current - 5);
+            clipLayer.style.clipPath = `inset(0 ${100 - next}% 0 0)`;
+            divider.style.left = `${next}%`;
+            slider.setAttribute('aria-valuenow', next);
+          } else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+            e.preventDefault();
+            let next = Math.min(100, current + 5);
+            clipLayer.style.clipPath = `inset(0 ${100 - next}% 0 0)`;
+            divider.style.left = `${next}%`;
+            slider.setAttribute('aria-valuenow', next);
+          }
+        });
+      }
+      initBeforeAfterSlider();
+
+      // Smooth Course Curriculum Accordion Toggle
+      function toggleModule(btn) {
+        const item = btn.closest('.module-item');
+        const content = item.querySelector('.module-content');
+        const chevron = item.querySelector('.chevron-icon');
+        const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+
+        // Close other modules smoothly for clean reading experience
+        document.querySelectorAll('.module-item').forEach((otherItem) => {
+          if (otherItem !== item) {
+            const otherBtn = otherItem.querySelector('button');
+            const otherContent = otherItem.querySelector('.module-content');
+            const otherChevron = otherItem.querySelector('.chevron-icon');
+            if (otherContent && otherBtn) {
+              otherContent.classList.add('hidden');
+              otherBtn.setAttribute('aria-expanded', 'false');
+              otherItem.classList.remove('border-emerald-500/40', 'bg-slate-900/80');
+              otherItem.classList.add('border-slate-800', 'bg-slate-900/60');
+              if (otherChevron) otherChevron.classList.remove('rotate-180');
+            }
+          }
+        });
+
+        if (isExpanded) {
+          content.classList.add('hidden');
+          btn.setAttribute('aria-expanded', 'false');
+          item.classList.remove('border-emerald-500/40', 'bg-slate-900/80');
+          item.classList.add('border-slate-800', 'bg-slate-900/60');
+          if (chevron) chevron.classList.remove('rotate-180');
+        } else {
+          content.classList.remove('hidden');
+          btn.setAttribute('aria-expanded', 'true');
+          item.classList.add('border-emerald-500/40', 'bg-slate-900/80');
+          item.classList.remove('border-slate-800', 'bg-slate-900/60');
+          if (chevron) chevron.classList.add('rotate-180');
+        }
+      }
+
+      // Interactive FAQ Accordion Toggle
+      function toggleFaq(btn) {
+        const item = btn.closest('.faq-item');
+        const content = item.querySelector('.faq-content');
+        const icon = item.querySelector('.faq-icon');
+        const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+
+        if (isExpanded) {
+          content.classList.add('hidden');
+          btn.setAttribute('aria-expanded', 'false');
+          if (icon) icon.classList.remove('rotate-180');
+          item.classList.remove('border-emerald-500/40', 'bg-slate-900/80');
+          item.classList.add('border-slate-800', 'bg-slate-900/60');
+        } else {
+          content.classList.remove('hidden');
+          btn.setAttribute('aria-expanded', 'true');
+          if (icon) icon.classList.add('rotate-180');
+          item.classList.add('border-emerald-500/40', 'bg-slate-900/80');
+          item.classList.remove('border-slate-800', 'bg-slate-900/60');
+        }
+      }
+
+      // Automated Checkout Modal Functions
+      function openCheckoutModal() {
+        const modal = document.getElementById('checkout-modal');
+        if (modal) {
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+
+      function closeCheckoutModal() {
+        const modal = document.getElementById('checkout-modal');
+        if (modal) {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+          document.body.style.overflow = '';
+        }
+      }
+
+      // Handle Checkout Order Form Submit
+      function handleOrderSubmit(e) {
+        e.preventDefault();
+        const name = document.getElementById('student-name')?.value || '';
+        const phone = document.getElementById('student-phone')?.value || '';
+        const email = document.getElementById('student-email')?.value || '';
+        const trxId = document.getElementById('student-trxid')?.value || '';
+        const method = document.querySelector('input[name="payment-method"]:checked')?.value || 'bKash';
+
+        const orderForm = document.getElementById('order-form');
+        const successBox = document.getElementById('order-success');
+        const waLink = document.getElementById('whatsapp-confirm-link');
+
+        if (waLink) {
+          const waText = encodeURIComponent(
+            `আসসালামু আলাইকুম রাসেল ভাই, আমি পিক্সেল একাডেমি লাইটরুম কোর্সে অ্যাডমিশন নিয়েছি।\n\nনাম: ${name}\nফোন: ${phone}\nইমেইল: ${email}\nপেমেন্ট মেথড: ${method}\nTrxID: ${trxId}\n\nদয়া করে চেক করে আমার অ্যাকাউন্টে লাইফটাইম অ্যাক্সেস দিন।`
+          );
+          waLink.href = `https://wa.me/8801871303786?text=${waText}`;
+        }
+
+        if (orderForm) orderForm.classList.add('hidden');
+        if (successBox) successBox.classList.remove('hidden');
+      }
+
+      // Backdrop click listeners for modals
+      document.getElementById('checkout-modal')?.addEventListener('click', (e) => {
+        if (e.target.id === 'checkout-modal') closeCheckoutModal();
+      });
+      document.getElementById('video-modal')?.addEventListener('click', (e) => {
+        if (e.target.id === 'video-modal') closeVideoModal();
+      });
+
+      // Update Escape key listener to close both modals
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeVideoModal();
+          closeCheckoutModal();
+        }
+      });
+    </script>
   </body>
 </html>

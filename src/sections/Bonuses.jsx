@@ -12,7 +12,7 @@ export default function Bonuses() {
           subtitle="কোনো অতিরিক্ত খরচ ছাড়াই, কোর্সের সাথেই"
         />
         <ul className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
-          {BONUSES.map(({ title, description }, i) => (
+          {BONUSES.map(({ title, description, value }, i) => (
             <li
               key={title}
               className={`space-y-3 rounded-2xl border border-slate-800 bg-slate-900/70 p-6 transition hover:border-emerald-500/30 ${
@@ -23,9 +23,16 @@ export default function Bonuses() {
                 <span className="flex size-10 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400">
                   <Gift className="size-5" aria-hidden="true" />
                 </span>
-                <span className="rounded border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-xs font-bold text-emerald-400">
-                  কোর্সের সাথে ফ্রি
-                </span>
+                <div className="flex items-center gap-1.5">
+                  {value && (
+                    <span className="rounded bg-slate-800 px-2 py-0.5 font-sans text-xs font-semibold text-slate-400 line-through">
+                      {value}
+                    </span>
+                  )}
+                  <span className="rounded border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-xs font-bold text-emerald-400">
+                    কোর্সের সাথে ফ্রি
+                  </span>
+                </div>
               </div>
               <h3 className="text-lg font-bold text-white">{title}</h3>
               <p className="text-sm leading-relaxed text-slate-400">{description}</p>

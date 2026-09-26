@@ -26,6 +26,11 @@ export default function Curriculum() {
             title={`${module.title} (${toBnDigits(module.lessons.length)}টি লেসন)`}
             defaultOpen={i === 0}
           >
+            {module.outcome && (
+              <p className="mb-3 rounded-xl border border-emerald-500/20 bg-emerald-950/20 px-3.5 py-2 text-xs font-medium text-emerald-300">
+                🎯 <strong className="font-bold">মডিউল আউটকাম:</strong> {module.outcome}
+              </p>
+            )}
             <ul className="divide-y divide-slate-800/60">
               {module.lessons.map((lesson) => (
                 <li key={lesson.title} className="flex items-center justify-between gap-4 py-2.5">

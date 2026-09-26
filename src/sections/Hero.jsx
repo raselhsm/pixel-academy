@@ -1,9 +1,7 @@
 import { ChevronDown, MonitorPlay, PlayCircle } from 'lucide-react';
 import { useOpenFreePreview } from '../lib/freePreview';
 import CourseCard from './CourseCard';
-import { COURSE, INSTRUCTOR, SOCIAL_PROOF } from '../data/homeContent';
-
-const HIGHLIGHTS = ['নিজের সময়ে শিখুন', 'মোবাইল ও ল্যাপটপে দেখুন', 'প্রিসেট ও RAW ফাইল ফ্রি'];
+import { INSTRUCTOR, SOCIAL_PROOF } from '../data/homeContent';
 
 export default function Hero() {
   const openFreePreview = useOpenFreePreview();
@@ -20,20 +18,24 @@ export default function Hero() {
         <div className="space-y-5 lg:col-span-7 lg:pt-6">
           <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-semibold text-emerald-400">
             <MonitorPlay className="size-4" aria-hidden="true" />
-            বাংলায় {COURSE.format} • নিজের সময়ে শিখুন
+            নতুন ব্যাচে ভর্তি চলছে • ১০০% বাংলায় লাইফটাইম অ্যাক্সেস
           </div>
 
-          <h1 className="text-[2rem] font-extrabold leading-tight text-balance text-white sm:text-5xl lg:text-6xl">
-            ঘরে বসে{' '}
+          <h1 className="text-[2.2rem] font-extrabold leading-tight text-balance text-white sm:text-5xl lg:text-6xl">
+            কম্পিউটারে{' '}
             <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-200 bg-clip-text text-transparent">
               লাইটরুম ফটো এডিটিং
             </span>{' '}
-            শিখুন, ফ্রিল্যান্সিংয়ে আয়ের পথ তৈরি করুন
+            শিখে ঘরে বসে ফ্রিল্যান্সিংয়ে আয়ের পথ তৈরি করুন
           </h1>
 
           <p className="max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
-            একদম শুরু থেকে প্রফেশনাল ওয়েডিং ফটো এডিটিং, তারপর ফাইভারে অ্যাকাউন্ট খুলে কাজ পাওয়া পর্যন্ত — শেখাচ্ছেন
-            ২০১৮ সাল থেকে বিদেশি ক্লায়েন্টের কাজ করা <span className="font-semibold text-white">{INSTRUCTOR.name}</span>।
+            কোনো পূর্ব অভিজ্ঞতা বা দামি ক্যামেরা ছাড়াই জিরো থেকে প্রফেশনাল ওয়েডিং ফটো এডিটিং শিখুন।
+            আন্তর্জাতিক মার্কেটপ্লেস ফাইভারে গিগ খুলে কাজ পাওয়ার সিক্রেট গাইডলাইন — শেখাচ্ছেন ২০১৮ সাল থেকে
+            আমেরিকা ও ইউরোপের ক্লায়েন্টের কাজ করা Fiverr Level 2 Seller{' '}
+            <span className="font-bold text-white underline decoration-emerald-500 underline-offset-4">
+              {INSTRUCTOR.name}
+            </span>।
           </p>
         </div>
 
@@ -45,11 +47,18 @@ export default function Hero() {
 
         <div className="space-y-6 lg:col-span-7">
           <ul className="flex flex-wrap gap-2">
-            {HIGHLIGHTS.map((item) => (
-              <li key={item} className="rounded-full border border-slate-700 bg-slate-900/60 px-3.5 py-1.5 text-sm text-slate-200">
-                ✓ {item}
-              </li>
-            ))}
+            <li className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1.5 text-sm font-semibold text-emerald-300">
+              ✓ ৫০+ প্রিমিয়াম প্রিসেট ফ্রি
+            </li>
+            <li className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1.5 text-sm font-semibold text-emerald-300">
+              ✓ ১০০+ RAW প্র্যাকটিস ছবি
+            </li>
+            <li className="rounded-full border border-slate-700 bg-slate-900/60 px-3.5 py-1.5 text-sm text-slate-200">
+              ✓ প্রাইভেট ভিআইপি সাপোর্ট
+            </li>
+            <li className="rounded-full border border-slate-700 bg-slate-900/60 px-3.5 py-1.5 text-sm text-slate-200">
+              ✓ ৭ দিনের মানি-ব্যাক গ্যারান্টি
+            </li>
           </ul>
 
           <div className="flex flex-wrap items-center gap-4 border-t border-slate-800/80 pt-5">
