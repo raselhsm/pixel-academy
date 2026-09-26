@@ -1,10 +1,13 @@
-import { ChevronDown, MonitorPlay, Star } from 'lucide-react';
+import { ChevronDown, MonitorPlay, PlayCircle, Star } from 'lucide-react';
+import { useOpenFreePreview } from '../lib/freePreview';
 import CourseCard from './CourseCard';
 import { COURSE, SOCIAL_PROOF } from '../data/homeContent';
 
 const HIGHLIGHTS = ['নিজের সময়ে শিখুন', 'মোবাইল ও ল্যাপটপে দেখুন', 'প্রিসেট ও RAW ফাইল ফ্রি'];
 
 export default function Hero() {
+  const openFreePreview = useOpenFreePreview();
+
   return (
     <section className="relative mx-auto max-w-7xl px-4 pb-16 pt-8 sm:px-6 sm:pb-20 sm:pt-12 lg:pt-16">
       <div
@@ -76,13 +79,23 @@ export default function Hero() {
             </div>
           </div>
 
-          <a
-            href="#curriculum"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 transition hover:text-emerald-400"
-          >
-            কোর্সে কী কী শিখবেন দেখুন
-            <ChevronDown className="size-4" aria-hidden="true" />
-          </a>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
+            <button
+              type="button"
+              onClick={openFreePreview}
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-emerald-500/40 bg-emerald-500/10 px-5 font-bold text-emerald-300 transition hover:bg-emerald-500/20"
+            >
+              <PlayCircle className="size-5" aria-hidden="true" />
+              ফ্রি ক্লাস দেখুন
+            </button>
+            <a
+              href="#curriculum"
+              className="inline-flex items-center justify-center gap-2 text-sm font-semibold text-slate-300 transition hover:text-emerald-400"
+            >
+              কোর্সে কী কী শিখবেন দেখুন
+              <ChevronDown className="size-4" aria-hidden="true" />
+            </a>
+          </div>
         </div>
       </div>
     </section>

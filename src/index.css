@@ -4,6 +4,7 @@
   /* `font-sans` is used for Latin text and figures; Bangla copy uses the body font. */
   --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
   --font-bangla: 'Hind Siliguri', 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Anek Bangla', 'Hind Siliguri', ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
@@ -15,6 +16,12 @@
     html {
       scroll-behavior: smooth;
     }
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-heading);
   }
 
   body {

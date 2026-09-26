@@ -6,7 +6,7 @@ import { METHOD_LABELS, STATUS, formatDateTime } from './orderMeta';
 import { toBnDigits, whatsappLink } from '../../lib/format';
 import { COURSE, PRICE } from '../../data/homeContent';
 
-const REJECT_REASONS = ['TrxID মেলেনি', 'টাকার পরিমাণ কম', 'এই নম্বর থেকে পেমেন্ট আসেনি'];
+const REJECT_REASONS = ['TrxID মেলেনি', 'টাকার পরিমাণ কম', 'এই নম্বর থেকে পেমেন্ট আসেনি', 'রিফান্ড দেওয়া হয়েছে'];
 
 export default function OrderCard({ order, onReview }) {
   const [busy, setBusy] = useState(false);

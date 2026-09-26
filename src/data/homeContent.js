@@ -57,6 +57,44 @@ export const COURSE_INCLUDES = [
   'কোর্স কমপ্লিশন সার্টিফিকেট',
 ];
 
+// Money-back guarantee, decided by the owner on 2026-09-26.
+export const GUARANTEE = {
+  days: '৭',
+  summary: 'ভর্তির ৭ দিনের মধ্যে কোর্স ভালো না লাগলে পুরো টাকা ফেরত।',
+  terms: [
+    'অ্যাক্সেস চালু হওয়ার ৭ দিনের মধ্যে হোয়াটসঅ্যাপে রিফান্ডের অনুরোধ করতে হবে।',
+    'কেন ভালো লাগেনি জানালে আমরা কৃতজ্ঞ থাকব, তবে রিফান্ডের জন্য কোনো জেরা করা হবে না।',
+    'যে বিকাশ বা নগদ নম্বর থেকে টাকা পাঠিয়েছিলেন, সেই নম্বরেই টাকা ফেরত যাবে।',
+    'অনুরোধ পাওয়ার ৩ কর্মদিবসের মধ্যে টাকা ফেরত দেওয়া হবে।',
+    'রিফান্ডের পর কোর্স ও প্রাইভেট গ্রুপের অ্যাক্সেস বন্ধ হয়ে যাবে।',
+  ],
+};
+
+// One lesson anyone can watch before buying (owner chose lesson 2).
+export const FREE_PREVIEW = {
+  url: 'https://youtu.be/5k2ToYBr_4M',
+  lessonTitle: 'Lightroom Interface', // marks this lesson "ফ্রি" in the curriculum
+  label: 'ফ্রি ক্লাস: লাইটরুম ইন্টারফেস',
+};
+
+// Real student reviews only, used with their permission. Put files in
+// /public/reviews/ and add entries here; the section stays hidden while empty.
+//   videos:      { name, detail, youtubeUrl }           (record vertically, 9:16)
+//   screenshots: { src: '/reviews/1.jpg', caption }
+export const REVIEWS = {
+  videos: [],
+  screenshots: [],
+};
+
+export const REQUIREMENTS = [
+  'একটা ল্যাপটপ বা ডেস্কটপ কম্পিউটার',
+  'প্র্যাকটিসের RAW ছবি আমরাই দেব — ক্যামেরা না থাকলেও চলবে',
+  'দিনে ২-৪ ঘণ্টা সময় আর নিয়মিত প্র্যাকটিস',
+];
+
+export const INCOME_DISCLAIMER =
+  'আয় নির্ভর করে আপনার প্র্যাকটিস, কাজের মান আর চেষ্টার উপর। আমরা কোনো নির্দিষ্ট আয়ের গ্যারান্টি দিই না — পথটা হাতে ধরে দেখাই।';
+
 export const HOW_TO_BUY = [
   { title: 'কোর্সটি কিনুন বাটনে ক্লিক করুন', text: 'নাম, মোবাইল নম্বর ও ইমেইল দিয়ে অ্যাকাউন্ট খুলুন।' },
   { title: 'বিকাশ / নগদে Send Money করুন', text: '01871303786 নম্বরে ৪,৯৯০ টাকা পাঠান।' },
@@ -85,10 +123,10 @@ export const HERO_IMAGE =
 export const HERO_BEFORE_IMAGE = null;
 
 export const TRUST_METRICS = [
-  { value: '৪০+', label: 'শিক্ষার্থী কোর্সটি করেছেন', accent: false },
-  { value: 'live:duration', label: 'রেকর্ডেড ভিডিও লেসন', accent: true }, // filled from the curriculum
-  { value: '৫০০+', label: 'ফাইভার অর্ডার সম্পন্ন করেছেন মেন্টর', accent: false },
-  { value: '$১ লাখ+', label: 'মেন্টরের ফ্রিল্যান্সিং আয়', accent: true },
+  { value: '৯২ জন', label: 'অফিসে সরাসরি শিখেছেন', accent: false },
+  { value: '৭৭+', label: 'স্টুডেন্ট এখন ক্লায়েন্টের কাজ করেন', accent: true },
+  { value: '৪০+', label: 'অনলাইনে কোর্সটি করেছেন', accent: false },
+  { value: '২০১৮', label: 'থেকে বিদেশি ক্লায়েন্টের কাজ', accent: true },
 ];
 
 export const PAIN_POINTS = [
@@ -175,20 +213,30 @@ export const BONUSES = [
   },
 ];
 
+// Facts confirmed by the owner (Sept 2026) plus the old site's Fiverr record.
 export const INSTRUCTOR = {
-  name: 'রাসেল',
-  role: 'ফাউন্ডার, পিক্সেল একাডেমি আইটি • Fiverr Level 2 Seller',
+  name: 'মোঃ রাসেল মিয়া',
+  role: 'প্রফেশনাল ফটো এডিটর • Fiverr Level 2 Seller',
   // Path to a real photo in /public, e.g. '/rasel.jpg'. Without one, a monogram shows.
   photo: null,
-  initial: 'র',
-  bio: 'ফাইভারে ৫-স্টার রিভিউসহ ৫০০+ অর্ডার সম্পন্ন করেছেন, ফ্রিল্যান্সিং থেকে লাইফটাইম আয় $১,০০,০০০+। বর্তমানে ৩০+ প্রফেশনাল এডিটরের একটি টিম পরিচালনা করছেন। রিয়েল ক্লায়েন্টদের কাজ যে ওয়ার্কফ্লোতে করা হয়, এই কোর্সে ঠিক সেটাই হাতে-কলমে শেখানো হয়েছে।',
-  stats: [
-    { value: '৫০০+', label: 'ফাইভার অর্ডার' },
-    { value: '$১০০k+', label: 'লাইফটাইম আয়' },
-    { value: '৩০+', label: 'এডিটরের টিম' },
+  initial: 'রা',
+  bio: [
+    '২০১৮ সাল থেকে রাসেল আমেরিকা, যুক্তরাজ্য আর ইউরোপের ফটোগ্রাফারদের ছবি এডিট করছেন। ফাইভারে ৫-স্টার রিভিউসহ ৫০০+ অর্ডার সম্পন্ন করেছেন, আর বর্তমানে ৩০+ প্রফেশনাল এডিটরের একটি টিম পরিচালনা করছেন।',
+    'নিজের অফিসে সরাসরি ক্লাস নিয়ে এ পর্যন্ত ৯২ জনকে এডিটিং শিখিয়েছেন, যাদের ৭৭+ জন এখন নিজের ক্লায়েন্টের কাজ করেন। এই অনলাইন কোর্সে সেই একই পদ্ধতি, যাতে দেশের যেকোনো জায়গা থেকে শেখা যায়।',
   ],
+  // Shown like Lightroom's Metadata panel.
+  metadata: [
+    { label: 'কাজ শুরু', value: '২০১৮ সাল' },
+    { label: 'ক্লায়েন্ট', value: 'আমেরিকা, যুক্তরাজ্য, ইউরোপ' },
+    { label: 'Fiverr', value: 'লেভেল ২ সেলার' },
+    { label: 'Fiverr অর্ডার', value: '৫০০+ (৫-স্টার)' },
+    { label: 'Fiverr আয়', value: '$২১,০০০+' },
+    { label: 'লাইফটাইম আয়', value: '$১,০০,০০০+' },
+    { label: 'অফলাইন স্টুডেন্ট', value: '৯২ জন' },
+    { label: 'ক্লায়েন্ট পেয়েছেন', value: '৭৭+ জন স্টুডেন্ট' },
+  ],
+  quote: 'আমি নিজে প্রতিদিন বিদেশি ক্লায়েন্টের কাজ করি। এই কোর্সে ঠিক সেই ওয়ার্কফ্লোটাই শেখাই — কোনো থিওরি না, যেটা দিয়ে আসলে কাজ হয়।',
 };
-
 // The first line (lessons + length) comes from the live curriculum.
 export const PRICING_FEATURES = [
   'লাইফটাইম ভিডিও অ্যাক্সেস',
@@ -218,6 +266,14 @@ export const FAQS = [
   {
     question: 'কোনো সমস্যা হলে সাপোর্ট কীভাবে পাব?',
     answer: 'কোর্সের সাথে একটি প্রাইভেট সাপোর্ট গ্রুপ রয়েছে, যেখানে সরাসরি মেন্টর আপনার কাজের ফিডব্যাক এবং সমস্যার সমাধান দেবেন।',
+  },
+  {
+    question: 'কোর্স ভালো না লাগলে কি টাকা ফেরত পাব?',
+    answer: 'হ্যাঁ। অ্যাক্সেস চালু হওয়ার ৭ দিনের মধ্যে হোয়াটসঅ্যাপে জানালে যে বিকাশ/নগদ নম্বর থেকে পাঠিয়েছিলেন, সেই নম্বরে ৩ কর্মদিবসের মধ্যে পুরো টাকা ফেরত দেওয়া হবে।',
+  },
+  {
+    question: 'কেনার আগে কি কোনো ক্লাস দেখে নিতে পারব?',
+    answer: 'হ্যাঁ, "লাইটরুম ইন্টারফেস" ক্লাসটি সবার জন্য ফ্রি — পেজের উপরে বা কারিকুলামে "ফ্রি ক্লাস দেখুন" বাটনে চাপুন।',
   },
   {
     question: 'পেমেন্ট করেছি কিন্তু এখনো অ্যাক্সেস পাইনি, কী করব?',
