@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 import { Check, Flame, Lock } from 'lucide-react';
 import { useCountdown } from '../hooks/useCountdown';
 import { toBnDigits } from '../lib/format';
-import { HOW_TO_BUY, OFFER_ENDS_AT, PRICE, PRICING_FEATURES } from '../data/homeContent';
+import { GUARANTEE, HOW_TO_BUY, OFFER_ENDS_AT, PRICE, PRICING_FEATURES } from '../data/homeContent';
 import { useCourseOutline } from '../hooks/useCourseOutline';
 
 function TimeBox({ value, label }) {
@@ -76,6 +76,9 @@ export default function Pricing() {
           <p className="mt-3 flex items-center justify-center gap-1.5 text-xs text-slate-400">
             <Lock className="size-3.5" aria-hidden="true" />
             পেমেন্ট যাচাই হলেই লগইন করে কোর্স দেখা শুরু করুন
+          </p>
+          <p className="mt-2 text-sm font-semibold text-emerald-400">
+            ✓ {GUARANTEE.summary}
           </p>
         </div>
 

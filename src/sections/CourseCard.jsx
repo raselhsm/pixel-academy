@@ -5,7 +5,7 @@ import BeforeAfterSlider from '../components/ui/BeforeAfterSlider';
 import VideoPreview from '../components/ui/VideoPreview';
 import { useCountdown } from '../hooks/useCountdown';
 import { toBnDigits } from '../lib/format';
-import { COURSE, HERO_BEFORE_IMAGE, HERO_IMAGE, OFFER_ENDS_AT, PRICE, PROMO_VIDEO_URL, SUPPORT_PHONE } from '../data/homeContent';
+import { COURSE, GUARANTEE, HERO_BEFORE_IMAGE, HERO_IMAGE, OFFER_ENDS_AT, PRICE, PROMO_VIDEO_URL, SUPPORT_PHONE } from '../data/homeContent';
 
 export default function CourseCard() {
   const left = useCountdown(OFFER_ENDS_AT);
@@ -65,6 +65,9 @@ export default function CourseCard() {
               <span className="font-semibold text-[#f06aa7]">বিকাশ</span> / <span className="font-semibold text-[#F7941D]">নগদ</span> দিয়ে পেমেন্ট
             </span>
           </p>
+          <a href="#guarantee" className="mt-1.5 block text-center text-xs font-semibold text-emerald-400 hover:underline">
+            ✓ {GUARANTEE.days} দিনের মানি-ব্যাক গ্যারান্টি
+          </a>
         </div>
 
         <div className="border-t border-slate-800 pt-4">
