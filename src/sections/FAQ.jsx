@@ -8,7 +8,7 @@ function FaqItem({ number, question, answer }) {
   const id = `faq-${number}`;
 
   return (
-    <div className={`overflow-hidden rounded-2xl border bg-slate-900/60 transition ${open ? 'border-emerald-500/40' : 'border-slate-800 hover:border-slate-700'}`}>
+    <div className={`overflow-hidden rounded-2xl border bg-slate-900/60 transition ${open ? 'border-brand-500/40' : 'border-slate-800 hover:border-slate-700'}`}>
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
@@ -34,9 +34,9 @@ function FaqItem({ number, question, answer }) {
 
 export default function FAQ() {
   return (
-    <section id="faq" className="mx-auto max-w-4xl scroll-mt-20 border-t border-slate-800/80 px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+    <section id="faq" className="mx-auto max-w-4xl scroll-mt-28 border-t border-slate-800/80 px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
       <div className="mx-auto max-w-2xl space-y-3 text-center">
-        <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-semibold text-emerald-400">
+        <span className="inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-4 py-1.5 text-xs font-semibold text-brand-400">
           ❓ সচরাচর জিজ্ঞাসিত প্রশ্ন
         </span>
         <h2 className="text-3xl font-extrabold text-white sm:text-4xl">সাধারণ কিছু জিজ্ঞাসা ও উত্তর</h2>

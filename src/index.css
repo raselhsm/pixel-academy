@@ -5,6 +5,20 @@
   --font-sans: 'Plus Jakarta Sans', 'Hind Siliguri', ui-sans-serif, system-ui, sans-serif;
   --font-bangla: 'Hind Siliguri', 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
   --font-heading: 'Hind Siliguri', 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+
+  /* Lightroom blue: 400 is #31A8FF, 600 is #0075FF. */
+  --color-brand-50: #eef8ff;
+  --color-brand-100: #d9efff;
+  --color-brand-200: #bce3ff;
+  --color-brand-300: #8ed2ff;
+  --color-brand-400: #31a8ff;
+  --color-brand-500: #1a8ff5;
+  --color-brand-600: #0075ff;
+  --color-brand-700: #005fd1;
+  --color-brand-800: #0a4fa8;
+  --color-brand-900: #0e4384;
+  --color-brand-950: #0b2a52;
+  --color-navy: #0b0f19;
 }
 
 @layer base {
@@ -19,20 +33,20 @@
   }
 
   body {
-    @apply bg-[#0B0F17] font-bangla text-slate-100 antialiased selection:bg-emerald-500 selection:text-slate-950;
+    @apply bg-[#0b0f19] font-bangla text-slate-100 antialiased selection:bg-brand-500 selection:text-slate-950;
   }
 
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-emerald-400;
+    @apply outline-2 outline-offset-2 outline-brand-400;
   }
 }
 
-@utility glow-emerald {
-  box-shadow: 0 0 35px -5px rgba(16, 185, 129, 0.25);
+@utility glow-brand {
+  box-shadow: 0 0 35px -5px rgba(49, 168, 255, 0.25);
 }
 
-@utility glow-emerald-lg {
-  box-shadow: 0 0 60px -10px rgba(16, 185, 129, 0.35);
+@utility glow-brand-lg {
+  box-shadow: 0 0 60px -10px rgba(49, 168, 255, 0.35);
 }
 
 /* Soft pulse behind play buttons. */
@@ -55,5 +69,35 @@
 @media (prefers-reduced-motion: reduce) {
   .pulse-ring {
     animation: none;
+  }
+}
+
+/* Glowing pulse on the main enrol buttons. */
+@utility cta-glow {
+  animation: cta-glow 2.4s ease-in-out infinite;
+}
+
+@keyframes cta-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 117, 255, 0.55), 0 10px 30px -10px rgba(49, 168, 255, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(0, 117, 255, 0), 0 10px 40px -6px rgba(49, 168, 255, 0.85);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-glow {
+    animation: none;
+  }
+}
+
+@keyframes urgency-shift {
+  from {
+    background-position: 0% 0;
+  }
+  to {
+    background-position: 200% 0;
   }
 }

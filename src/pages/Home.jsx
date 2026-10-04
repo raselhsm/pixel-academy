@@ -7,11 +7,13 @@ import { PRICE } from '../data/homeContent';
 import UrgencyBar from '../sections/UrgencyBar';
 import Navbar from '../sections/Navbar';
 import Hero from '../sections/Hero';
-import ProofSection from '../sections/ProofSection';
 import Showcase from '../sections/Showcase';
+import Audience from '../sections/Audience';
+import BonusStack from '../sections/BonusStack';
 import Curriculum from '../sections/Curriculum';
+import Instructor from '../sections/Instructor';
 import Reviews from '../sections/Reviews';
-import Pricing from '../sections/Pricing';
+import CheckoutBox from '../sections/CheckoutBox';
 import Guarantee from '../sections/Guarantee';
 import FAQ from '../sections/FAQ';
 import Footer from '../sections/Footer';
@@ -33,15 +35,19 @@ export default function Home() {
     // mobile viewport without breaking the sticky header.
     <FreePreviewContext.Provider value={openPreview}>
       <div id="top" className="overflow-x-clip pb-24 md:pb-0">
-        <UrgencyBar />
-        <Navbar account={{ loggedIn }} />
+        <div className="sticky top-0 z-50">
+          <UrgencyBar />
+          <Navbar account={{ loggedIn }} />
+        </div>
         <main>
           <Hero />
-          <ProofSection />
           <Showcase />
+          <Audience />
+          <BonusStack />
           <Curriculum />
+          <Instructor />
           <Reviews />
-          <Pricing />
+          <CheckoutBox />
           <Guarantee />
           <FAQ />
         </main>

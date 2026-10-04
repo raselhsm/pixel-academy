@@ -12,7 +12,7 @@ export default function Field({ label, hint, error, className = '', ...inputProp
         id={id}
         aria-invalid={error ? true : undefined}
         aria-describedby={error || hint ? `${id}-note` : undefined}
-        className={`w-full rounded-xl border bg-slate-950/60 px-4 py-3 text-base text-white placeholder:text-slate-500 transition focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/30 ${
+        className={`w-full rounded-xl border bg-slate-950/60 px-4 py-3 text-base text-white placeholder:text-slate-500 transition focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/30 ${
           error ? 'border-red-500/70' : 'border-slate-700'
         }`}
         {...inputProps}

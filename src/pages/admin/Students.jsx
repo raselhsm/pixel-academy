@@ -17,7 +17,7 @@ const FILTERS = [
 ];
 
 const STATUS_BADGE = {
-  approved: ['কিনেছেন', 'bg-emerald-500/15 text-emerald-300'],
+  approved: ['কিনেছেন', 'bg-brand-500/15 text-brand-300'],
   pending: ['যাচাই বাকি', 'bg-amber-500/15 text-amber-300'],
   rejected: ['বাতিল', 'bg-red-500/15 text-red-300'],
   none: ['কেনেননি', 'bg-slate-700/60 text-slate-300'],
@@ -102,7 +102,7 @@ export default function Students() {
               aria-selected={filter === f.key}
               onClick={() => setFilter(f.key)}
               className={`shrink-0 rounded-full px-4 py-2 text-sm font-semibold transition ${
-                filter === f.key ? 'bg-emerald-500 text-slate-950' : 'bg-slate-800/70 text-slate-300 hover:text-white'
+                filter === f.key ? 'bg-brand-500 text-slate-950' : 'bg-slate-800/70 text-slate-300 hover:text-white'
               }`}
             >
               {f.label} <span className="font-sans opacity-70">{toBnDigits(counts[f.key])}</span>
@@ -146,7 +146,7 @@ export default function Students() {
                   </div>
                   <div className="flex shrink-0 flex-wrap gap-2">
                     {s.status === 'approved' ? (
-                      <span className="inline-flex items-center gap-1.5 text-sm text-emerald-400">
+                      <span className="inline-flex items-center gap-1.5 text-sm text-brand-400">
                         <Check className="size-4" /> অ্যাক্সেস আছে
                       </span>
                     ) : (

@@ -16,17 +16,17 @@ const LINKS = [
 
 const linkClass = ({ isActive }) =>
   `flex shrink-0 items-center gap-2.5 rounded-xl px-3.5 py-2.5 text-sm font-semibold transition ${
-    isActive ? 'bg-emerald-500/15 text-emerald-300' : 'text-slate-400 hover:bg-slate-800/70 hover:text-white'
+    isActive ? 'bg-brand-500/15 text-brand-300' : 'text-slate-400 hover:bg-slate-800/70 hover:text-white'
   }`;
 
 // Admin-only header: no marketing links, buy button, footer or WhatsApp.
 function AdminHeader({ email, onSignOut }) {
   return (
-    <header className="sticky top-0 z-40 border-b border-slate-800/80 bg-[#0B0F17]/90 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-slate-800/80 bg-[#0b0f19]/90 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6">
         <Link to="/admin" className="flex items-center gap-3" aria-label="অ্যাডমিন ওভারভিউ">
           <Logo />
-          <span className="hidden rounded-md border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-xs font-bold text-emerald-400 sm:inline">
+          <span className="hidden rounded-md border border-brand-500/30 bg-brand-500/10 px-2 py-0.5 text-xs font-bold text-brand-400 sm:inline">
             অ্যাডমিন
           </span>
         </Link>

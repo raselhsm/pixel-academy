@@ -1,7 +1,7 @@
 import { Link } from 'react-router';
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { CreditCard, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
 import Logo from '../components/ui/Logo';
-import { CONTACT, FOOTER_LINKS } from '../data/homeContent';
+import { CONTACT, FOOTER_LINKS, WHATSAPP_URL } from '../data/homeContent';
 
 function FacebookIcon() {
   return (
@@ -20,7 +20,7 @@ function YouTubeIcon() {
 }
 
 const iconLink =
-  'flex size-9 items-center justify-center rounded-full border border-slate-700 text-slate-300 transition hover:border-emerald-500/50 hover:text-white';
+  'flex size-9 items-center justify-center rounded-full border border-slate-700 text-slate-300 transition hover:border-brand-500/50 hover:text-white';
 
 export default function Footer() {
   return (
@@ -45,17 +45,22 @@ export default function Footer() {
           <h2 className="mb-4 font-bold text-white">যোগাযোগ</h2>
           <ul className="space-y-3">
             <li>
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 transition hover:text-white">
+                <MessageCircle className="size-4 text-brand-400" aria-hidden="true" /> হোয়াটসঅ্যাপ: <span className="font-sans">{CONTACT.phone}</span>
+              </a>
+            </li>
+            <li>
               <a href={`tel:${CONTACT.phone}`} className="flex items-center gap-2.5 font-sans transition hover:text-white">
-                <Phone className="size-4 text-emerald-400" aria-hidden="true" /> {CONTACT.phone}
+                <Phone className="size-4 text-brand-400" aria-hidden="true" /> {CONTACT.phone}
               </a>
             </li>
             <li>
               <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-2.5 font-sans transition hover:text-white">
-                <Mail className="size-4 text-emerald-400" aria-hidden="true" /> {CONTACT.email}
+                <Mail className="size-4 text-brand-400" aria-hidden="true" /> {CONTACT.email}
               </a>
             </li>
             <li className="flex items-start gap-2.5">
-              <MapPin className="mt-0.5 size-4 shrink-0 text-emerald-400" aria-hidden="true" /> {CONTACT.address}
+              <MapPin className="mt-0.5 size-4 shrink-0 text-brand-400" aria-hidden="true" /> {CONTACT.address}
             </li>
           </ul>
         </div>
@@ -64,20 +69,28 @@ export default function Footer() {
           <h2 className="mb-4 font-bold text-white">প্রয়োজনীয় লিংক</h2>
           <ul className="space-y-3">
             <li>
-              <Link to="/checkout" className="transition hover:text-emerald-400">কোর্সটি কিনুন</Link>
+              <a href="/#checkout" className="transition hover:text-brand-400">কোর্সে ভর্তি হোন</a>
             </li>
             <li>
-              <Link to="/login" className="transition hover:text-emerald-400">স্টুডেন্ট লগইন</Link>
+              <Link to="/login" className="transition hover:text-brand-400">স্টুডেন্ট লগইন</Link>
             </li>
             {FOOTER_LINKS.map((link) => (
               <li key={link.href}>
-                <Link to={link.href} className="transition hover:text-emerald-400">
+                <Link to={link.href} className="transition hover:text-brand-400">
                   {link.label}
                 </Link>
               </li>
             ))}
           </ul>
         </nav>
+      </div>
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-2 border-t border-slate-800/80 px-4 py-5 text-xs">
+        <span className="mr-1">পেমেন্ট মেথড:</span>
+        <span className="rounded bg-[#E2136E] px-2 py-1 font-sans font-black text-white">bKash</span>
+        <span className="rounded bg-[#F7941D] px-2 py-1 font-sans font-black text-white">Nagad</span>
+        <span className="flex items-center gap-1 rounded border border-slate-700 px-2 py-1 font-sans font-bold text-slate-400">
+          <CreditCard className="size-3.5" aria-hidden="true" /> Card (শীঘ্রই)
+        </span>
       </div>
       <p className="border-t border-slate-800/80 px-4 py-5 text-center text-xs">
         © ২০২৬ Pixel Academy IT • সর্বস্বত্ব সংরক্ষিত

@@ -18,7 +18,7 @@ function StatCard({ Icon, label, value, tone = 'text-white', to }) {
       <div className="flex items-center justify-between">
         <span className="text-sm text-slate-400">{label}</span>
         <span className="flex size-9 items-center justify-center rounded-xl bg-slate-800/80">
-          <Icon className="size-4 text-emerald-400" aria-hidden="true" />
+          <Icon className="size-4 text-brand-400" aria-hidden="true" />
         </span>
       </div>
       <p className={`mt-3 font-sans text-3xl font-extrabold ${tone}`}>{value}</p>
@@ -26,7 +26,7 @@ function StatCard({ Icon, label, value, tone = 'text-white', to }) {
   );
   const className = 'block rounded-2xl border border-slate-800 bg-slate-900/50 p-5 transition';
   return to ? (
-    <Link to={to} className={`${className} hover:border-emerald-500/40`}>
+    <Link to={to} className={`${className} hover:border-brand-500/40`}>
       {body}
     </Link>
   ) : (
@@ -38,11 +38,11 @@ function ChecklistItem({ done, children, href }) {
   const Icon = done ? CircleCheck : CircleDashed;
   return (
     <li className="flex items-start gap-3 px-5 py-3.5">
-      <Icon className={`mt-0.5 size-5 shrink-0 ${done ? 'text-emerald-400' : 'text-amber-400'}`} aria-hidden="true" />
+      <Icon className={`mt-0.5 size-5 shrink-0 ${done ? 'text-brand-400' : 'text-amber-400'}`} aria-hidden="true" />
       <div className={`text-sm ${done ? 'text-slate-400' : 'text-slate-200'}`}>
         {children}
         {!done && href && (
-          <a href={href} target="_blank" rel="noopener noreferrer" className="ml-2 font-semibold text-emerald-400 hover:underline">
+          <a href={href} target="_blank" rel="noopener noreferrer" className="ml-2 font-semibold text-brand-400 hover:underline">
             ঠিক করুন →
           </a>
         )}
@@ -82,7 +82,7 @@ export default function Overview() {
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <StatCard Icon={Clock} label="যাচাই বাকি" value={toBnDigits(stats.pending)} tone={stats.pending ? 'text-amber-300' : 'text-white'} to="/admin/orders" />
         <StatCard Icon={GraduationCap} label="মোট শিক্ষার্থী (কিনেছেন)" value={toBnDigits(stats.buyers)} to="/admin/students" />
-        <StatCard Icon={Wallet} label="মোট আয়" value={`৳${toBnDigits(stats.revenue.toLocaleString('en-IN'))}`} tone="text-emerald-400" />
+        <StatCard Icon={Wallet} label="মোট আয়" value={`৳${toBnDigits(stats.revenue.toLocaleString('en-IN'))}`} tone="text-brand-400" />
         <StatCard Icon={TrendingUp} label="আজকের অর্ডার" value={toBnDigits(stats.todayOrders)} />
       </div>
 
@@ -90,7 +90,7 @@ export default function Overview() {
         <Panel
           title="যাচাইয়ের অপেক্ষায়"
           action={
-            <Link to="/admin/orders" className="flex items-center gap-1 text-sm font-semibold text-emerald-400 hover:underline">
+            <Link to="/admin/orders" className="flex items-center gap-1 text-sm font-semibold text-brand-400 hover:underline">
               সব অর্ডার <ArrowRight className="size-4" />
             </Link>
           }
@@ -112,7 +112,7 @@ export default function Overview() {
               <ChecklistItem done={withVideo === lessonCount && lessonCount > 0}>
                 লেসনে ভিডিও যোগ হয়েছে: {toBnDigits(withVideo)}/{toBnDigits(lessonCount)}
                 {withVideo < lessonCount && (
-                  <Link to="/admin/content" className="ml-2 font-semibold text-emerald-400 hover:underline">
+                  <Link to="/admin/content" className="ml-2 font-semibold text-brand-400 hover:underline">
                     যোগ করুন →
                   </Link>
                 )}
@@ -129,7 +129,7 @@ export default function Overview() {
           <Panel>
             <div className="flex items-center gap-4 p-5">
               <span className="flex size-11 items-center justify-center rounded-xl bg-slate-800/80">
-                <UserPlus className="size-5 text-emerald-400" aria-hidden="true" />
+                <UserPlus className="size-5 text-brand-400" aria-hidden="true" />
               </span>
               <div>
                 <p className="font-sans text-2xl font-extrabold text-white">{toBnDigits(stats.accounts)}</p>

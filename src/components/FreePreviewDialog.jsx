@@ -58,7 +58,7 @@ export default function FreePreviewDialog({ onClose }) {
           <Link
             to="/checkout"
             onClick={onClose}
-            className="flex min-h-12 w-full items-center justify-center rounded-xl bg-emerald-500 px-8 font-bold text-slate-950 transition hover:bg-emerald-400 sm:w-auto"
+            className="flex min-h-12 w-full items-center justify-center rounded-xl bg-brand-500 px-8 font-bold text-slate-950 transition hover:bg-brand-400 sm:w-auto"
           >
             পুরো কোর্সে ভর্তি হন →
           </Link>

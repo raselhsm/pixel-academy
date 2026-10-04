@@ -21,7 +21,7 @@ function SubmitButton({ busy, children }) {
     <button
       type="submit"
       disabled={busy}
-      className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 py-3.5 font-bold text-slate-950 shadow-lg shadow-emerald-500/20 transition hover:brightness-110 disabled:opacity-60"
+      className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 py-3.5 font-bold text-slate-950 shadow-lg shadow-brand-500/20 transition hover:brightness-110 disabled:opacity-60"
     >
       {busy && <LoaderCircle className="size-5 animate-spin" aria-hidden="true" />}
       {children}
@@ -31,7 +31,7 @@ function SubmitButton({ busy, children }) {
 
 function Message({ tone = 'error', children }) {
   const styles =
-    tone === 'error' ? 'border-red-500/30 bg-red-500/10 text-red-300' : 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300';
+    tone === 'error' ? 'border-red-500/30 bg-red-500/10 text-red-300' : 'border-brand-500/30 bg-brand-500/10 text-brand-300';
   return (
     <p role={tone === 'error' ? 'alert' : 'status'} className={`rounded-xl border px-4 py-3 text-sm ${styles}`}>
       {children}
@@ -44,19 +44,19 @@ function CoursePanel() {
   const includes = useCourseIncludes();
 
   return (
-    <aside className="hidden flex-col justify-between rounded-3xl border border-slate-800 bg-gradient-to-br from-emerald-950/50 via-slate-900 to-slate-900 p-8 lg:flex">
+    <aside className="hidden flex-col justify-between rounded-3xl border border-slate-800 bg-gradient-to-br from-brand-950/50 via-slate-900 to-slate-900 p-8 lg:flex">
       <div>
         <div className="flex items-center gap-4">
           <img src={HERO_IMAGE} alt="" className="size-16 rounded-2xl object-cover" />
           <div>
-            <span className="text-xs font-bold text-emerald-400">{COURSE.format}</span>
+            <span className="text-xs font-bold text-brand-400">{COURSE.format}</span>
             <p className="font-bold leading-snug text-white">{COURSE.title}</p>
           </div>
         </div>
         <ul className="mt-8 space-y-3 text-sm text-slate-300">
           {includes.map((item) => (
             <li key={item} className="flex items-start gap-2.5">
-              <Check className="mt-0.5 size-4 shrink-0 text-emerald-400" strokeWidth={3} aria-hidden="true" />
+              <Check className="mt-0.5 size-4 shrink-0 text-brand-400" strokeWidth={3} aria-hidden="true" />
               {item}
             </li>
           ))}
@@ -65,7 +65,7 @@ function CoursePanel() {
       <div className="mt-10 rounded-2xl border border-slate-800 bg-slate-950/40 p-4">
         <p className="font-semibold leading-snug text-white">{SOCIAL_PROOF.headline}</p>
         <p className="mt-1 text-sm text-slate-400">{SOCIAL_PROOF.sub}</p>
-        <p className="mt-3 font-sans text-lg font-extrabold text-emerald-400">
+        <p className="mt-3 font-sans text-lg font-extrabold text-brand-400">
           {PRICE.offer} <s className="text-sm font-normal text-slate-500">{PRICE.regular}</s>
         </p>
       </div>
@@ -278,7 +278,7 @@ export default function Login() {
         />
         {!signup && (
           <div className="-mt-1 text-right">
-            <button type="button" onClick={() => switchMode('reset')} className="text-xs text-emerald-400 hover:underline">
+            <button type="button" onClick={() => switchMode('reset')} className="text-xs text-brand-400 hover:underline">
               পাসওয়ার্ড ভুলে গেছেন?
             </button>
           </div>
@@ -292,18 +292,18 @@ export default function Login() {
         {signup ? (
           <>
             আগে থেকেই অ্যাকাউন্ট আছে?{' '}
-            <button type="button" onClick={() => switchMode('login')} className="font-semibold text-emerald-400 hover:underline">
+            <button type="button" onClick={() => switchMode('login')} className="font-semibold text-brand-400 hover:underline">
               লগইন করুন
             </button>
           </>
         ) : (
           <>
             নতুন?{' '}
-            <button type="button" onClick={() => switchMode('signup')} className="font-semibold text-emerald-400 hover:underline">
+            <button type="button" onClick={() => switchMode('signup')} className="font-semibold text-brand-400 hover:underline">
               ফ্রি অ্যাকাউন্ট খুলুন
             </button>{' '}
             অথবা{' '}
-            <Link to="/checkout" className="font-semibold text-emerald-400 hover:underline">
+            <Link to="/checkout" className="font-semibold text-brand-400 hover:underline">
               সরাসরি কোর্সটি কিনুন →
             </Link>
           </>

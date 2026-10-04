@@ -1,50 +1,49 @@
+import { useState } from 'react';
 import BeforeAfterSlider from '../components/ui/BeforeAfterSlider';
-import { HERO_BEFORE_IMAGE, HERO_IMAGE, SHOWCASE } from '../data/homeContent';
+import SectionTitle from '../components/ui/SectionTitle';
+import { BEFORE_AFTER } from '../data/homeContent';
 
 export default function Showcase() {
+  const [active, setActive] = useState(0);
+  const item = BEFORE_AFTER[active];
+
   return (
-    <section id="showcase" className="mx-auto max-w-6xl scroll-mt-20 border-t border-slate-800/80 px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-      <div className="mx-auto max-w-3xl space-y-3 text-center">
-        <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-semibold text-emerald-400">
-          ✨ চোখে দেখে বিশ্বাস করুন
-        </span>
-        <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
-          সাধারণ RAW ছবিকে বানান{' '}
-          <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-200 bg-clip-text text-transparent">প্রফেশনাল ছবি</span>
-        </h2>
-        <p className="text-base leading-relaxed text-slate-300">
-          স্লাইডারের গোল হ্যান্ডেলটি ডানে-বামে টেনে দেখুন লাইটরুমে সঠিক কালার কারেকশনের পর ছবি কতটা বদলে যায়:
-        </p>
-      </div>
+    <section id="showcase" className="scroll-mt-28 border-t border-slate-800/80 px-4 py-16 sm:px-6 sm:py-24">
+      <div className="mx-auto max-w-5xl">
+        <SectionTitle
+          eyebrow="📸 বিফোর / আফটার"
+          title="এক নজরে লাইটরুমের পাওয়ার দেখুন"
+          subtitle="কোর্সে দেখানো টেকনিক ব্যবহার করে যেভাবে সাধারণ ছবি হাই-এন্ড প্রফেশনাল লুকে পরিবর্তিত হয়।"
+        />
 
-      <div className="mx-auto mt-10 max-w-4xl">
-        <div className="rounded-3xl border-2 border-slate-700/80 shadow-2xl shadow-emerald-500/10 ring-1 ring-white/10">
-          <BeforeAfterSlider image={HERO_IMAGE} beforeImage={HERO_BEFORE_IMAGE} alt="ওয়েডিং ফটো" className="aspect-[16/10] w-full rounded-3xl sm:aspect-[16/9]" />
+        <div role="tablist" aria-label="এডিটিং স্টাইল" className="mx-auto mb-6 grid max-w-2xl grid-cols-3 gap-1.5 rounded-2xl border border-slate-800 bg-slate-900/70 p-1.5">
+          {BEFORE_AFTER.map((tab, i) => (
+            <button
+              key={tab.key}
+              type="button"
+              role="tab"
+              id={`ba-tab-${tab.key}`}
+              aria-selected={i === active}
+              aria-controls="ba-panel"
+              onClick={() => setActive(i)}
+              className={`rounded-xl px-2 py-2.5 text-xs font-bold transition sm:text-sm ${
+                i === active ? 'bg-gradient-to-r from-brand-600 to-brand-400 text-white shadow-lg shadow-brand-600/30' : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
         </div>
-        <p className="mt-3 text-center text-xs text-slate-400">↔ আঙুল দিয়ে বা মাউস দিয়ে ডানে-বামে টেনে পার্থক্য দেখুন</p>
-      </div>
 
-      {/* Swipeable on phones, three columns from tablet up. */}
-      <div className="-mx-4 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible sm:px-0">
-        {SHOWCASE.map(({ tag, title, text, lesson, image }) => (
-          <div
-            key={title}
-            className="group w-[78vw] max-w-xs shrink-0 snap-start overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 p-4 transition hover:border-emerald-500/50 hover:bg-slate-900 sm:w-auto sm:max-w-none"
-          >
-            <div className="relative h-48 w-full overflow-hidden rounded-xl">
-              <img src={image} alt={title} loading="lazy" className="size-full object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none" />
-              <span className="absolute left-3 top-3 rounded-full bg-emerald-500/90 px-2.5 py-0.5 text-[11px] font-extrabold text-slate-950">{tag}</span>
-            </div>
-            <div className="mt-4 space-y-1.5">
-              <h3 className="text-base font-bold text-white">{title}</h3>
-              <p className="text-xs leading-relaxed text-slate-300">{text}</p>
-              <div className="flex items-center justify-between gap-2 pt-2 text-[11px]">
-                <span className="font-semibold text-emerald-400">✓ কোর্সে অন্তর্ভুক্ত</span>
-                <span className="truncate font-sans text-slate-400">লেসন: {lesson}</span>
-              </div>
-            </div>
+        <div id="ba-panel" role="tabpanel" aria-labelledby={`ba-tab-${item.key}`}>
+          {/* key remounts the slider so each tab starts at the middle. */}
+          <BeforeAfterSlider key={item.key} image={item.image} beforeImage={item.beforeImage} alt={item.title} className="aspect-[4/3] w-full sm:aspect-[16/9]" />
+          <div className="mt-4 text-center">
+            <h3 className="text-lg font-bold text-white">{item.title}</h3>
+            <p className="mt-1 text-sm text-slate-400">{item.text}</p>
+            <p className="mt-2 text-xs text-slate-500">← স্লাইডার টেনে আগে ও পরে তুলনা করুন →</p>
           </div>
-        ))}
+        </div>
       </div>
     </section>
   );

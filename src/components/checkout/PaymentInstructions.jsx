@@ -45,7 +45,7 @@ export default function PaymentInstructions({ method }) {
         <span>
           <span className="font-semibold text-white">২.</span> এই নম্বরে পাঠান:
         </span>
-        <span className="font-sans text-lg font-extrabold tracking-wide text-emerald-400">{PAYMENT.number}</span>
+        <span className="font-sans text-lg font-extrabold tracking-wide text-brand-400">{PAYMENT.number}</span>
         <CopyButton text={PAYMENT.number} label="নম্বর কপি" />
       </li>
       <li className="flex flex-wrap items-center gap-2">

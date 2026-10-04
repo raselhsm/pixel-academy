@@ -1,34 +1,36 @@
 import { useState } from 'react';
-import { Link } from 'react-router';
 import { CheckCircle2, ChevronDown, Lock, Play } from 'lucide-react';
 import { useCourseOutline } from '../hooks/useCourseOutline';
 import { moduleLength } from '../lib/outline';
 import { toBnDigits } from '../lib/format';
 import { useOpenFreePreview } from '../lib/freePreview';
-import { FREE_PREVIEW, MODULE_OUTCOMES, PRICE, REQUIREMENTS } from '../data/homeContent';
+import { FREE_PREVIEW, MODULE_OUTCOMES, MODULES, PRICE, REQUIREMENTS } from '../data/homeContent';
 
 const pad = (n) => String(n).padStart(2, '0');
 
 function ModuleCard({ module, index, firstLessonNo, open, onToggle, onFreePreview }) {
   const outcome = MODULE_OUTCOMES[index];
+  // Sales-page copy for the module, by position; extra modules use their DB title.
+  const copy = MODULES[index];
   const panelId = `module-${index}`;
 
   return (
     <div
       className={`overflow-hidden rounded-2xl border bg-slate-900/80 shadow-lg transition ${
-        open ? 'border-emerald-500/40' : 'border-slate-800 hover:border-slate-700'
+        open ? 'border-brand-500/40' : 'border-slate-800 hover:border-slate-700'
       }`}
     >
       <button type="button" onClick={onToggle} aria-expanded={open} aria-controls={panelId} className="flex w-full items-center justify-between gap-4 p-5 text-left sm:p-6">
         <span className="flex items-center gap-4">
-          <span className="flex size-9 shrink-0 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/20 font-sans text-xs font-extrabold text-emerald-400">
+          <span className="flex size-9 shrink-0 items-center justify-center rounded-xl border border-brand-500/30 bg-brand-500/20 font-sans text-xs font-extrabold text-brand-400">
             {pad(index + 1)}
           </span>
           <span>
             <span className="block text-base font-bold text-white sm:text-lg">
-              Module {index + 1}: {module.title}
+              মডিউল {toBnDigits(index + 1)}: {copy?.title ?? module.title}
             </span>
-            <span className="text-xs text-slate-400">
+            {copy && <span className="block text-sm text-slate-300">{copy.topics}</span>}
+            <span className="text-xs text-slate-500">
               {toBnDigits(module.lessons.length)}টি লেসন • {moduleLength(module)}
             </span>
           </span>
@@ -41,7 +43,7 @@ function ModuleCard({ module, index, firstLessonNo, open, onToggle, onFreePrevie
       {open && (
         <div id={panelId} className="px-5 pb-5 sm:px-6 sm:pb-6">
           {outcome && (
-            <p className="mb-4 rounded-xl border border-emerald-500/20 bg-emerald-950/20 p-3 text-xs leading-relaxed text-emerald-300">
+            <p className="mb-4 rounded-xl border border-brand-500/20 bg-brand-950/20 p-3 text-xs leading-relaxed text-brand-300">
               🎯 <strong className="font-bold text-white">মডিউল আউটকাম:</strong> {outcome}
             </p>
           )}
@@ -52,7 +54,7 @@ function ModuleCard({ module, index, firstLessonNo, open, onToggle, onFreePrevie
                 <li key={lesson.title} className="flex items-center justify-between gap-3 py-3">
                   <span className="flex min-w-0 items-center gap-3">
                     {free ? (
-                      <Play className="size-4 shrink-0 fill-emerald-400 text-emerald-400" aria-hidden="true" />
+                      <Play className="size-4 shrink-0 fill-brand-400 text-brand-400" aria-hidden="true" />
                     ) : (
                       <Lock className="size-4 shrink-0 text-slate-500" aria-label="কেনার পর দেখা যাবে" />
                     )}
@@ -65,7 +67,7 @@ function ModuleCard({ module, index, firstLessonNo, open, onToggle, onFreePrevie
                       <button
                         type="button"
                         onClick={onFreePreview}
-                        className="rounded-full border border-emerald-500/40 bg-emerald-500/20 px-3 py-0.5 text-xs font-bold text-emerald-300 transition hover:bg-emerald-500 hover:text-slate-950"
+                        className="rounded-full border border-brand-500/40 bg-brand-500/20 px-3 py-0.5 text-xs font-bold text-brand-300 transition hover:bg-brand-500 hover:text-slate-950"
                       >
                         ▶ ফ্রি ক্লাস
                       </button>
@@ -99,12 +101,12 @@ export default function Curriculum() {
   const firstLessonNos = modules.reduce((acc, m, i) => [...acc, i === 0 ? 1 : acc[i - 1] + modules[i - 1].lessons.length], []);
 
   return (
-    <section id="curriculum" className="mx-auto max-w-4xl scroll-mt-20 border-t border-slate-800/80 px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+    <section id="curriculum" className="mx-auto max-w-4xl scroll-mt-28 border-t border-slate-800/80 px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
       <div className="mx-auto max-w-3xl space-y-3 text-center">
-        <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-semibold text-emerald-400">
+        <span className="inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-4 py-1.5 text-xs font-semibold text-brand-400">
           📚 পূর্ণাঙ্গ সিলেবাস • {lessonsLabel} • {durationLabel}
         </span>
-        <h2 className="text-3xl font-extrabold text-white sm:text-4xl">প্র্যাকটিক্যাল কারিকুলাম — জিরো থেকে মার্কেটপ্লেসে কাজ পর্যন্ত</h2>
+        <h2 className="text-2xl font-extrabold text-white sm:text-4xl">প্র্যাকটিক্যাল কারিকুলাম</h2>
         <p className="text-base leading-relaxed text-slate-300">
           কোনো অপ্রয়োজনীয় থিওরি নয় — লাইটরুম ইনস্টল থেকে শুরু করে রিয়েল ওয়েডিং প্রজেক্ট আর ফাইভারে গিগ পাবলিশ পর্যন্ত ধাপে ধাপে:
         </p>
@@ -125,13 +127,13 @@ export default function Curriculum() {
       </div>
 
       <div className="mt-8 flex flex-col items-center gap-3 text-center">
-        <Link
-          to="/checkout"
-          className="flex min-h-14 w-full max-w-md items-center justify-center rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-500 px-8 text-lg font-extrabold text-slate-950 shadow-xl shadow-emerald-500/25 transition hover:brightness-110"
+        <a
+          href="#checkout"
+          className="flex min-h-14 w-full max-w-md items-center justify-center rounded-xl bg-gradient-to-r from-brand-600 to-brand-400 px-8 text-lg font-extrabold text-white shadow-xl shadow-brand-600/25 transition hover:brightness-110"
         >
-          সব লেসন পেতে ভর্তি হন — {PRICE.offer}
-        </Link>
-        <button type="button" onClick={openFreePreview} className="text-sm font-semibold text-emerald-400 hover:underline">
+          সব লেসন পেতে ভর্তি হোন — {PRICE.offer}
+        </a>
+        <button type="button" onClick={openFreePreview} className="text-sm font-semibold text-brand-400 hover:underline">
           আগে একটা ক্লাস ফ্রি দেখে নিন ▶
         </button>
       </div>
@@ -141,7 +143,7 @@ export default function Curriculum() {
         <ul className="mt-4 grid gap-3 sm:grid-cols-3">
           {REQUIREMENTS.map((item) => (
             <li key={item} className="flex items-start gap-2.5 text-sm leading-relaxed text-slate-300">
-              <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-emerald-400" aria-hidden="true" />
+              <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-brand-400" aria-hidden="true" />
               {item}
             </li>
           ))}

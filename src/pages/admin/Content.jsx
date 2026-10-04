@@ -51,7 +51,7 @@ function LessonRow({ lesson, index, isFirst, isLast, onMove, onSave, onDelete })
       <label>
         <span className="sr-only">ভিডিও লিংক</span>
         <div className="relative">
-          <Video className={`pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 ${embed ? 'text-emerald-400' : 'text-slate-500'}`} aria-hidden="true" />
+          <Video className={`pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 ${embed ? 'text-brand-400' : 'text-slate-500'}`} aria-hidden="true" />
           <input
             value={videoUrl}
             onChange={(e) => setVideoUrl(e.target.value)}
@@ -98,7 +98,7 @@ function ModuleCard({ module, index, isFirst, isLast, run }) {
   return (
     <Panel>
       <div className="flex flex-col gap-3 border-b border-slate-800 px-4 py-4 sm:flex-row sm:items-center sm:px-5">
-        <span className="shrink-0 rounded-md border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 font-sans text-xs font-bold text-emerald-400">
+        <span className="shrink-0 rounded-md border border-brand-500/30 bg-brand-500/10 px-2.5 py-1 font-sans text-xs font-bold text-brand-400">
           Module {String(index + 1).padStart(2, '0')}
         </span>
         <input
@@ -142,7 +142,7 @@ function ModuleCard({ module, index, isFirst, isLast, run }) {
       </ul>
 
       <div className="px-4 py-3 sm:px-5">
-        <button type="button" onClick={() => run(() => addLesson(module.id, 'নতুন লেসন', nextPosition(lessons)))} className="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-400 hover:text-emerald-300">
+        <button type="button" onClick={() => run(() => addLesson(module.id, 'নতুন লেসন', nextPosition(lessons)))} className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-400 hover:text-brand-300">
           <Plus className="size-4" /> লেসন যোগ করুন
         </button>
       </div>

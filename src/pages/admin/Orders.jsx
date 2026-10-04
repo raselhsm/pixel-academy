@@ -49,7 +49,7 @@ export default function Orders() {
               aria-selected={status === t.key}
               onClick={() => setStatus(t.key)}
               className={`shrink-0 rounded-full px-4 py-2 text-sm font-semibold transition ${
-                status === t.key ? 'bg-emerald-500 text-slate-950' : 'bg-slate-800/70 text-slate-300 hover:text-white'
+                status === t.key ? 'bg-brand-500 text-slate-950' : 'bg-slate-800/70 text-slate-300 hover:text-white'
               }`}
             >
               {t.label}

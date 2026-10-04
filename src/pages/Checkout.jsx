@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate, useSearchParams } from 'react-router';
+import { Link, useLocation, useNavigate, useSearchParams } from 'react-router';
 import { Lock, LoaderCircle } from 'lucide-react';
 import { useAuth } from '../auth/context';
 import { supabase } from '../lib/supabase';
@@ -18,7 +18,7 @@ function Step({ number, title, children }) {
   return (
     <section className="rounded-3xl border border-slate-800 bg-slate-900/50 p-5 sm:p-6">
       <h2 className="mb-4 flex items-center gap-3 text-lg font-bold text-white">
-        <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-emerald-500 font-sans text-sm font-extrabold text-slate-950">
+        <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-brand-500 font-sans text-sm font-extrabold text-slate-950">
           {number}
         </span>
         {title}
@@ -55,9 +55,11 @@ export default function Checkout() {
   const { user, profile, loading } = useAuth();
   const navigate = useNavigate();
   const [params] = useSearchParams();
+  // Name, phone, email and method chosen in the homepage checkout box.
+  const { state } = useLocation();
   const [orderLookup, setOrderLookup] = useState(null);
-  const [method, setMethod] = useState('bkash');
-  const [edits, setEdits] = useState({});
+  const [method, setMethod] = useState(() => (PAYMENT.methods[state?.method] ? state.method : 'bkash'));
+  const [edits, setEdits] = useState(() => state?.prefill ?? {});
   const [errors, setErrors] = useState({});
   const [formError, setFormError] = useState(null);
   const [submitting, setSubmitting] = useState(false);
@@ -197,7 +199,7 @@ export default function Checkout() {
                   <GoogleButton next="/checkout" label="Google দিয়ে এক ক্লিকে অ্যাকাউন্ট খুলুন" divider="অথবা নিচের তথ্য দিন" />
                   <p className="mb-4 text-sm text-slate-400">
                     আগে থেকে অ্যাকাউন্ট আছে?{' '}
-                    <Link to="/login?next=/checkout" className="font-semibold text-emerald-400 underline-offset-2 hover:underline">
+                    <Link to="/login?next=/checkout" className="font-semibold text-brand-400 underline-offset-2 hover:underline">
                       লগইন করুন
                     </Link>
                   </p>
@@ -266,7 +268,7 @@ export default function Checkout() {
           <button
             type="submit"
             disabled={submitting}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 py-4 text-lg font-extrabold text-slate-950 shadow-xl shadow-emerald-500/20 transition hover:brightness-110 disabled:opacity-60"
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 py-4 text-lg font-extrabold text-slate-950 shadow-xl shadow-brand-500/20 transition hover:brightness-110 disabled:opacity-60"
           >
             {submitting && <LoaderCircle className="size-5 animate-spin" aria-hidden="true" />}
             {supabase ? 'অর্ডার কনফার্ম করুন' : 'হোয়াটসঅ্যাপে অর্ডার পাঠান'}
