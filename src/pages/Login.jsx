@@ -21,7 +21,7 @@ function SubmitButton({ busy, children }) {
     <button
       type="submit"
       disabled={busy}
-      className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 py-3.5 font-bold text-slate-950 shadow-lg shadow-emerald-500/20 transition hover:brightness-110 disabled:opacity-60"
+      className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#0284C7] py-3.5 font-bold text-white shadow-studio transition hover:bg-[#0369A1] active:scale-[0.98] disabled:opacity-60"
     >
       {busy && <LoaderCircle className="size-5 animate-spin" aria-hidden="true" />}
       {children}
@@ -31,9 +31,9 @@ function SubmitButton({ busy, children }) {
 
 function Message({ tone = 'error', children }) {
   const styles =
-    tone === 'error' ? 'border-red-500/30 bg-red-500/10 text-red-300' : 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300';
+    tone === 'error' ? 'border-red-200 bg-red-50 text-red-800' : 'border-emerald-200 bg-emerald-50 text-emerald-800';
   return (
-    <p role={tone === 'error' ? 'alert' : 'status'} className={`rounded-xl border px-4 py-3 text-sm ${styles}`}>
+    <p role={tone === 'error' ? 'alert' : 'status'} className={`rounded-xl border px-4 py-3 text-sm font-medium ${styles}`}>
       {children}
     </p>
   );
@@ -44,29 +44,29 @@ function CoursePanel() {
   const includes = useCourseIncludes();
 
   return (
-    <aside className="hidden flex-col justify-between rounded-3xl border border-slate-800 bg-gradient-to-br from-emerald-950/50 via-slate-900 to-slate-900 p-8 lg:flex">
+    <aside className="hidden flex-col justify-between rounded-3xl border border-slate-200/90 bg-white p-8 shadow-studio lg:flex">
       <div>
         <div className="flex items-center gap-4">
-          <img src={HERO_IMAGE} alt="" className="size-16 rounded-2xl object-cover" />
+          <img src={HERO_IMAGE} alt="" className="size-16 rounded-2xl object-cover ring-1 ring-slate-200" />
           <div>
-            <span className="text-xs font-bold text-emerald-400">{COURSE.format}</span>
-            <p className="font-bold leading-snug text-white">{COURSE.title}</p>
+            <span className="text-xs font-bold text-[#0284C7]">{COURSE.format}</span>
+            <p className="font-bold leading-snug text-[#0F172A]">{COURSE.title}</p>
           </div>
         </div>
-        <ul className="mt-8 space-y-3 text-sm text-slate-300">
+        <ul className="mt-8 space-y-3 text-sm text-slate-600">
           {includes.map((item) => (
             <li key={item} className="flex items-start gap-2.5">
-              <Check className="mt-0.5 size-4 shrink-0 text-emerald-400" strokeWidth={3} aria-hidden="true" />
+              <Check className="mt-0.5 size-4 shrink-0 text-[#0284C7]" strokeWidth={3} aria-hidden="true" />
               {item}
             </li>
           ))}
         </ul>
       </div>
-      <div className="mt-10 rounded-2xl border border-slate-800 bg-slate-950/40 p-4">
-        <p className="font-semibold leading-snug text-white">{SOCIAL_PROOF.headline}</p>
-        <p className="mt-1 text-sm text-slate-400">{SOCIAL_PROOF.sub}</p>
-        <p className="mt-3 font-sans text-lg font-extrabold text-emerald-400">
-          {PRICE.offer} <s className="text-sm font-normal text-slate-500">{PRICE.regular}</s>
+      <div className="mt-10 rounded-2xl border border-slate-100 bg-slate-50/80 p-4">
+        <p className="font-semibold leading-snug text-[#0F172A]">{SOCIAL_PROOF.headline}</p>
+        <p className="mt-1 text-sm text-slate-500">{SOCIAL_PROOF.sub}</p>
+        <p className="mt-3 font-sans text-lg font-extrabold text-[#0284C7]">
+          {PRICE.offer} <s className="text-sm font-normal text-slate-400">{PRICE.regular}</s>
         </p>
       </div>
     </aside>
@@ -77,7 +77,7 @@ function Layout({ children }) {
   return (
     <div className="mx-auto grid max-w-5xl gap-6 px-4 py-10 sm:px-6 sm:py-14 lg:grid-cols-2">
       <CoursePanel />
-      <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-6 shadow-2xl sm:p-8">{children}</div>
+      <div className="rounded-3xl border border-slate-200/90 bg-white p-6 shadow-studio sm:p-8">{children}</div>
     </div>
   );
 }
@@ -99,7 +99,7 @@ function NewPasswordForm({ onDone }) {
 
   return (
     <Layout>
-      <h1 className="text-2xl font-bold text-white">নতুন পাসওয়ার্ড দিন</h1>
+      <h1 className="text-2xl font-bold text-[#0F172A]">নতুন পাসওয়ার্ড দিন</h1>
       <form onSubmit={onSubmit} noValidate className="mt-6 space-y-4">
         <Field label="নতুন পাসওয়ার্ড" type="password" autoComplete="new-password" value={password} onChange={(e) => setPassword(e.target.value)} />
         {error && <Message>{error}</Message>}
@@ -214,14 +214,14 @@ export default function Login() {
   if (mode === 'reset') {
     return (
       <Layout>
-        <h1 className="text-2xl font-bold text-white">পাসওয়ার্ড ভুলে গেছেন?</h1>
-        <p className="mt-2 text-sm text-slate-400">আপনার ইমেইল দিন, রিসেট লিংক পাঠিয়ে দেব।</p>
+        <h1 className="text-2xl font-bold text-[#0F172A]">পাসওয়ার্ড ভুলে গেছেন?</h1>
+        <p className="mt-2 text-sm text-slate-600">আপনার ইমেইল দিন, রিসেট লিংক পাঠিয়ে দেব।</p>
         <form onSubmit={onReset} noValidate className="mt-6 space-y-4">
           <Field label="ইমেইল" type="email" autoComplete="email" placeholder="you@gmail.com" {...bind('email')} />
           {error && <Message>{error}</Message>}
           {notice && <Message tone="success">{notice}</Message>}
           <SubmitButton busy={busy}>রিসেট লিংক পাঠান</SubmitButton>
-          <button type="button" onClick={() => switchMode('login')} className="w-full text-sm text-slate-400 hover:text-white">
+          <button type="button" onClick={() => switchMode('login')} className="w-full text-sm font-semibold text-slate-500 hover:text-slate-800">
             ← লগইনে ফিরে যান
           </button>
         </form>
@@ -235,7 +235,7 @@ export default function Login() {
 
   return (
     <Layout>
-      <div role="tablist" aria-label="লগইন বা নতুন অ্যাকাউন্ট" className="grid grid-cols-2 gap-1 rounded-xl bg-slate-950/60 p-1">
+      <div role="tablist" aria-label="লগইন বা নতুন অ্যাকাউন্ট" className="grid grid-cols-2 gap-1 rounded-xl bg-slate-100 p-1">
         {TABS.map((t) => (
           <button
             key={t.key}
@@ -244,7 +244,7 @@ export default function Login() {
             aria-selected={mode === t.key}
             onClick={() => switchMode(t.key)}
             className={`rounded-lg py-2.5 text-sm font-bold transition ${
-              mode === t.key ? 'bg-slate-800 text-white shadow' : 'text-slate-400 hover:text-white'
+              mode === t.key ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-500 hover:text-slate-900'
             }`}
           >
             {t.label}
@@ -252,8 +252,8 @@ export default function Login() {
         ))}
       </div>
 
-      <h1 className="mt-6 text-2xl font-bold text-white">{signup ? 'ফ্রি অ্যাকাউন্ট খুলুন' : 'আবার স্বাগতম!'}</h1>
-      <p className="mt-1.5 text-sm text-slate-400">
+      <h1 className="mt-6 text-2xl font-bold text-[#0F172A]">{signup ? 'ফ্রি অ্যাকাউন্ট খুলুন' : 'আবার স্বাগতম!'}</h1>
+      <p className="mt-1.5 text-sm text-slate-600">
         {signup ? 'অ্যাকাউন্ট খুলে বিকাশ/নগদে পেমেন্ট করুন, যাচাই হলেই কোর্স চালু।' : 'লগইন করে আপনার কোর্স দেখা চালিয়ে যান।'}
       </p>
 
@@ -278,7 +278,7 @@ export default function Login() {
         />
         {!signup && (
           <div className="-mt-1 text-right">
-            <button type="button" onClick={() => switchMode('reset')} className="text-xs text-emerald-400 hover:underline">
+            <button type="button" onClick={() => switchMode('reset')} className="text-xs font-semibold text-[#0284C7] hover:underline">
               পাসওয়ার্ড ভুলে গেছেন?
             </button>
           </div>
@@ -288,22 +288,22 @@ export default function Login() {
         <SubmitButton busy={busy}>{signup ? 'অ্যাকাউন্ট খুলুন' : 'লগইন করুন'}</SubmitButton>
       </form>
 
-      <p className="mt-6 border-t border-slate-800 pt-5 text-center text-sm text-slate-400">
+      <p className="mt-6 border-t border-slate-100 pt-5 text-center text-sm text-slate-500">
         {signup ? (
           <>
             আগে থেকেই অ্যাকাউন্ট আছে?{' '}
-            <button type="button" onClick={() => switchMode('login')} className="font-semibold text-emerald-400 hover:underline">
+            <button type="button" onClick={() => switchMode('login')} className="font-semibold text-[#0284C7] hover:underline">
               লগইন করুন
             </button>
           </>
         ) : (
           <>
             নতুন?{' '}
-            <button type="button" onClick={() => switchMode('signup')} className="font-semibold text-emerald-400 hover:underline">
+            <button type="button" onClick={() => switchMode('signup')} className="font-semibold text-[#0284C7] hover:underline">
               ফ্রি অ্যাকাউন্ট খুলুন
             </button>{' '}
             অথবা{' '}
-            <Link to="/checkout" className="font-semibold text-emerald-400 hover:underline">
+            <Link to="/checkout" className="font-semibold text-[#0284C7] hover:underline">
               সরাসরি কোর্সটি কিনুন →
             </Link>
           </>

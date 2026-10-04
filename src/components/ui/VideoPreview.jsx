@@ -34,25 +34,27 @@ export default function VideoPreview({ url, title, label, className = '', rounde
         track('ViewContent', { content_name: title });
       }}
       aria-label={`${label} — ভিডিও চালু করুন`}
-      className={`group relative block overflow-hidden bg-slate-950 ${rounded} ${className}`}
+      className={`group relative block overflow-hidden bg-slate-900 ${rounded} ${className}`}
     >
       <img
         src={`https://i.ytimg.com/vi/${ytId}/hqdefault.jpg`}
         alt=""
         fetchPriority="high"
-        className="size-full object-cover opacity-80 transition duration-700 group-hover:scale-105 motion-reduce:transition-none"
+        className="size-full object-cover opacity-90 transition duration-500 group-hover:scale-105 motion-reduce:transition-none"
       />
-      <span className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" aria-hidden="true" />
+      <span className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" aria-hidden="true" />
       <span className="absolute inset-0 flex items-center justify-center" aria-hidden="true">
         <span className="relative flex items-center justify-center">
-          <span className="pulse-ring absolute size-20 rounded-full bg-emerald-500/40" />
-          <span className="flex size-16 items-center justify-center rounded-full bg-gradient-to-tr from-emerald-500 to-teal-400 text-slate-950 shadow-xl shadow-emerald-500/50 transition group-hover:scale-110 motion-reduce:transition-none">
-            <Play className="ml-0.5 size-7 fill-current" />
+          <span className="pulse-ring absolute size-20 rounded-full bg-white/30" />
+          <span className="flex size-16 items-center justify-center rounded-full bg-white text-slate-900 shadow-xl shadow-black/25 ring-1 ring-white/60 transition duration-300 group-hover:scale-110 group-hover:bg-[#0284C7] group-hover:text-white motion-reduce:transition-none">
+            <Play className="ml-0.5 size-6 fill-current" />
           </span>
         </span>
       </span>
       <span className="absolute inset-x-3 bottom-3 text-center">
-        <span className="rounded-lg bg-black/70 px-3 py-1 text-xs font-semibold text-slate-200 backdrop-blur-sm">{label}</span>
+        <span className="rounded-lg bg-black/60 px-3 py-1 font-sans text-xs font-semibold text-white/90 backdrop-blur-md">
+          {label}
+        </span>
       </span>
     </button>
   );

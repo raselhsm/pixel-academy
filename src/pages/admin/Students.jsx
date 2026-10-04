@@ -17,10 +17,10 @@ const FILTERS = [
 ];
 
 const STATUS_BADGE = {
-  approved: ['কিনেছেন', 'bg-emerald-500/15 text-emerald-300'],
-  pending: ['যাচাই বাকি', 'bg-amber-500/15 text-amber-300'],
-  rejected: ['বাতিল', 'bg-red-500/15 text-red-300'],
-  none: ['কেনেননি', 'bg-slate-700/60 text-slate-300'],
+  approved: ['কিনেছেন', 'bg-emerald-50 text-emerald-800 border border-emerald-200'],
+  pending: ['যাচাই বাকি', 'bg-amber-50 text-amber-800 border border-amber-200'],
+  rejected: ['বাতিল', 'bg-red-50 text-red-800 border border-red-200'],
+  none: ['কেনেননি', 'bg-slate-100 text-slate-700 border border-slate-200'],
 };
 
 function downloadCsv(rows) {
@@ -28,7 +28,7 @@ function downloadCsv(rows) {
   const escape = (v) => `"${String(v ?? '').replace(/"/g, '""')}"`;
   const lines = [header, ...rows.map((s) => [s.full_name, s.phone, s.email, STATUS_BADGE[s.status][0], s.created_at?.slice(0, 10)])];
   // BOM so Excel opens the Bangla text correctly.
-  const blob = new Blob(['﻿' + lines.map((l) => l.map(escape).join(',')).join('\n')], { type: 'text/csv;charset=utf-8' });
+  const blob = new Blob(['\uFEFF' + lines.map((l) => l.map(escape).join(',')).join('\n')], { type: 'text/csv;charset=utf-8' });
   const url = URL.createObjectURL(blob);
   const a = Object.assign(document.createElement('a'), { href: url, download: `pixel-academy-students-${new Date().toISOString().slice(0, 10)}.csv` });
   a.click();
@@ -91,7 +91,6 @@ export default function Students() {
       />
       {(error || grantError) && <ErrorNote>{grantError ?? 'শিক্ষার্থীদের তালিকা লোড করা যায়নি।'}</ErrorNote>}
 
-
       <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div role="tablist" aria-label="শিক্ষার্থী ফিল্টার" className="flex gap-2 overflow-x-auto">
           {FILTERS.map((f) => (
@@ -102,7 +101,9 @@ export default function Students() {
               aria-selected={filter === f.key}
               onClick={() => setFilter(f.key)}
               className={`shrink-0 rounded-full px-4 py-2 text-sm font-semibold transition ${
-                filter === f.key ? 'bg-emerald-500 text-slate-950' : 'bg-slate-800/70 text-slate-300 hover:text-white'
+                filter === f.key
+                  ? 'bg-[#0284C7] text-white shadow-2xs font-bold'
+                  : 'border border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50'
               }`}
             >
               {f.label} <span className="font-sans opacity-70">{toBnDigits(counts[f.key])}</span>
@@ -111,7 +112,7 @@ export default function Students() {
         </div>
         <label className="relative sm:w-72">
           <span className="sr-only">শিক্ষার্থী খুঁজুন</span>
-          <Search className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-slate-500" aria-hidden="true" />
+          <Search className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-slate-400" aria-hidden="true" />
           <input type="search" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="নাম, নম্বর বা ইমেইল" className={`${inputStyles} pl-10`} />
         </label>
       </div>
@@ -120,24 +121,24 @@ export default function Students() {
         {!visible.length ? (
           <EmptyState>{students?.length ? 'এই ফিল্টারে কেউ নেই।' : 'এখনো কেউ অ্যাকাউন্ট খোলেননি।'}</EmptyState>
         ) : (
-          <ul className="divide-y divide-slate-800">
+          <ul className="divide-y divide-slate-100">
             {visible.map((s) => {
               const [label, badge] = STATUS_BADGE[s.status];
               return (
                 <li key={s.id} className="flex flex-col gap-3 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
                   <div className="min-w-0">
                     <div className="flex flex-wrap items-center gap-2">
-                      <p className="font-semibold text-white">{s.full_name || 'নাম নেই'}</p>
+                      <p className="font-semibold text-slate-900">{s.full_name || 'নাম নেই'}</p>
                       <span className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${badge}`}>{label}</span>
                     </div>
-                    <p className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-400">
+                    <p className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500">
                       {s.phone && (
-                        <a href={`tel:${s.phone}`} className="inline-flex items-center gap-1 font-sans hover:text-white">
+                        <a href={`tel:${s.phone}`} className="inline-flex items-center gap-1 font-sans hover:text-[#0284C7]">
                           <Phone className="size-3" /> {s.phone}
                         </a>
                       )}
                       {s.email && (
-                        <a href={`mailto:${s.email}`} className="inline-flex min-w-0 items-center gap-1 font-sans hover:text-white">
+                        <a href={`mailto:${s.email}`} className="inline-flex min-w-0 items-center gap-1 font-sans hover:text-[#0284C7]">
                           <Mail className="size-3 shrink-0" /> <span className="truncate">{s.email}</span>
                         </a>
                       )}
@@ -146,8 +147,8 @@ export default function Students() {
                   </div>
                   <div className="flex shrink-0 flex-wrap gap-2">
                     {s.status === 'approved' ? (
-                      <span className="inline-flex items-center gap-1.5 text-sm text-emerald-400">
-                        <Check className="size-4" /> অ্যাক্সেস আছে
+                      <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-700">
+                        <Check className="size-4 text-emerald-600" /> অ্যাক্সেস আছে
                       </span>
                     ) : (
                       <>
@@ -156,7 +157,7 @@ export default function Students() {
                             href={whatsappLink(s.phone, nudgeText(s.full_name))}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={`${buttonStyles.secondary} border-[#25D366]/50 text-[#5ee08f]`}
+                            className={`${buttonStyles.secondary} border-emerald-300 text-emerald-800 hover:bg-emerald-50`}
                           >
                             <MessageCircle className="size-4" /> মনে করিয়ে দিন
                           </a>

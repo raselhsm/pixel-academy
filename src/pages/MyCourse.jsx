@@ -16,10 +16,10 @@ function Player({ lesson }) {
   const embed = toEmbed(lesson?.video_url);
 
   return (
-    <div className="aspect-video w-full overflow-hidden rounded-2xl border border-slate-800 bg-black">
+    <div className="aspect-video w-full overflow-hidden rounded-2xl border border-slate-200 bg-black shadow-studio">
       {!embed ? (
         <div className="flex size-full flex-col items-center justify-center gap-2 p-6 text-center text-slate-400">
-          <Clock className="size-8 text-slate-500" aria-hidden="true" />
+          <Clock className="size-8 text-slate-400" aria-hidden="true" />
           এই লেসনের ভিডিও শীঘ্রই যোগ করা হবে।
         </div>
       ) : embed.type === 'video' ? (
@@ -49,7 +49,7 @@ function CoursePlayer({ modules }) {
   const lesson = lessons[index];
 
   if (!lesson) {
-    return <p className="px-4 py-16 text-center text-slate-400">কোর্সের লেসনগুলো শীঘ্রই যোগ করা হবে।</p>;
+    return <p className="px-4 py-16 text-center text-slate-500">কোর্সের লেসনগুলো শীঘ্রই যোগ করা হবে।</p>;
   }
 
   const go = (i) => {
@@ -63,17 +63,17 @@ function CoursePlayer({ modules }) {
         <Player lesson={lesson} />
         <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div>
-            <p className="text-xs font-semibold text-emerald-400">
+            <p className="text-xs font-bold text-[#0284C7]">
               মডিউল {toBnDigits(lesson.moduleNo)} • লেসন {toBnDigits(index + 1)}/{toBnDigits(lessons.length)}
             </p>
-            <h1 className="mt-1 text-xl font-bold text-white sm:text-2xl">{lesson.title}</h1>
+            <h1 className="mt-1 text-xl font-bold text-[#0F172A] sm:text-2xl">{lesson.title}</h1>
           </div>
           <div className="flex shrink-0 gap-2">
             <button
               type="button"
               disabled={index === 0}
               onClick={() => go(index - 1)}
-              className="flex items-center gap-1 rounded-xl border border-slate-700 px-4 py-2.5 text-sm font-semibold text-slate-200 transition hover:border-slate-500 disabled:opacity-40"
+              className="flex items-center gap-1 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 shadow-2xs transition hover:bg-slate-50 disabled:opacity-40"
             >
               <ChevronLeft className="size-4" /> আগের
             </button>
@@ -81,7 +81,7 @@ function CoursePlayer({ modules }) {
               type="button"
               disabled={index === lessons.length - 1}
               onClick={() => go(index + 1)}
-              className="flex items-center gap-1 rounded-xl bg-emerald-500 px-4 py-2.5 text-sm font-bold text-slate-950 transition hover:bg-emerald-400 disabled:opacity-40"
+              className="flex items-center gap-1 rounded-xl bg-[#0284C7] px-4 py-2.5 text-sm font-bold text-white shadow-2xs transition hover:bg-[#0369A1] disabled:opacity-40"
             >
               পরের <ChevronRight className="size-4" />
             </button>
@@ -89,11 +89,11 @@ function CoursePlayer({ modules }) {
         </div>
       </div>
 
-      <aside className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50 lg:max-h-[calc(100dvh-8rem)] lg:overflow-y-auto">
-        <h2 className="border-b border-slate-800 px-5 py-4 font-bold text-white">{COURSE.title}</h2>
+      <aside className="overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-studio lg:max-h-[calc(100dvh-8rem)] lg:overflow-y-auto">
+        <h2 className="border-b border-slate-100 px-5 py-4 font-bold text-[#0F172A]">{COURSE.title}</h2>
         {modules.map((mod, mi) => (
-          <div key={mod.id} className="border-b border-slate-800/70 last:border-0">
-            <p className="bg-slate-950/40 px-5 py-2.5 text-xs font-semibold text-slate-400">
+          <div key={mod.id} className="border-b border-slate-100 last:border-0">
+            <p className="bg-slate-50 px-5 py-2.5 text-xs font-semibold text-slate-500">
               মডিউল {toBnDigits(mi + 1)}: {mod.title}
             </p>
             <ul>
@@ -106,12 +106,12 @@ function CoursePlayer({ modules }) {
                       onClick={() => setCurrentId(l.id)}
                       aria-current={active ? 'true' : undefined}
                       className={`flex w-full items-start gap-3 px-5 py-3 text-left text-sm transition ${
-                        active ? 'bg-emerald-500/10 text-emerald-300' : 'text-slate-300 hover:bg-slate-800/60'
+                        active ? 'bg-sky-50 font-semibold text-[#0284C7]' : 'text-slate-700 hover:bg-slate-50'
                       }`}
                     >
-                      <CirclePlay className={`mt-0.5 size-4 shrink-0 ${active ? 'text-emerald-400' : 'text-slate-500'}`} aria-hidden="true" />
+                      <CirclePlay className={`mt-0.5 size-4 shrink-0 ${active ? 'text-[#0284C7]' : 'text-slate-400'}`} aria-hidden="true" />
                       <span className="flex-1">{l.title}</span>
-                      {l.duration && <span className="shrink-0 font-sans text-xs tabular-nums text-slate-500">{l.duration}</span>}
+                      {l.duration && <span className="shrink-0 font-sans text-xs font-medium tabular-nums text-slate-400">{l.duration}</span>}
                     </button>
                   </li>
                 );
@@ -151,9 +151,9 @@ export default function MyCourse() {
   if (!order) {
     return (
       <div className="mx-auto max-w-md px-4 py-16 text-center">
-        <h1 className="text-2xl font-bold text-white">আপনি এখনো কোর্সটি কেনেননি</h1>
-        <p className="mt-3 text-sm text-slate-400">বিকাশ বা নগদে পেমেন্ট করে আজই শেখা শুরু করুন।</p>
-        <Link to="/checkout" className="mt-6 inline-block rounded-xl bg-emerald-500 px-6 py-3 font-bold text-slate-950 hover:bg-emerald-400">
+        <h1 className="text-2xl font-bold text-[#0F172A]">আপনি এখনো কোর্সটি কেনেননি</h1>
+        <p className="mt-3 text-sm text-slate-600">বিকাশ বা নগদে পেমেন্ট করে আজই শেখা শুরু করুন।</p>
+        <Link to="/checkout" className="mt-6 inline-block rounded-xl bg-[#0284C7] px-6 py-3 font-bold text-white shadow-studio transition hover:bg-[#0369A1]">
           কোর্সটি কিনুন →
         </Link>
       </div>

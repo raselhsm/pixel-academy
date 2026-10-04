@@ -16,9 +16,9 @@ import PaymentInstructions, { MethodPicker } from '../components/checkout/Paymen
 
 function Step({ number, title, children }) {
   return (
-    <section className="rounded-3xl border border-slate-800 bg-slate-900/50 p-5 sm:p-6">
-      <h2 className="mb-4 flex items-center gap-3 text-lg font-bold text-white">
-        <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-emerald-500 font-sans text-sm font-extrabold text-slate-950">
+    <section className="rounded-3xl border border-slate-200/90 bg-white p-5 sm:p-6 shadow-studio">
+      <h2 className="mb-4 flex items-center gap-3 text-lg font-bold text-[#0F172A]">
+        <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-sky-100 font-sans text-sm font-extrabold text-[#0284C7]">
           {number}
         </span>
         {title}
@@ -174,8 +174,8 @@ export default function Checkout() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
       <div className="mb-8 text-center lg:text-left">
-        <h1 className="text-2xl font-extrabold text-white sm:text-3xl">কোর্সটি কিনুন — মাত্র ৩টি ধাপ</h1>
-        <p className="mt-2 text-sm text-slate-400">বিকাশ বা নগদে পেমেন্ট করে TrxID দিন, যাচাই হলেই কোর্স চালু।</p>
+        <h1 className="text-2xl font-extrabold text-[#0F172A] sm:text-3xl">কোর্সটি কিনুন — মাত্র ৩টি ধাপ</h1>
+        <p className="mt-2 text-sm text-slate-600 sm:text-base">বিকাশ বা নগদে পেমেন্ট করে TrxID দিন, যাচাই হলেই কোর্স চালু।</p>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-[1fr_380px] lg:gap-8">
@@ -188,16 +188,16 @@ export default function Checkout() {
         <form onSubmit={onSubmit} noValidate className="space-y-5">
           <Step number="১" title="আপনার তথ্য">
             {user ? (
-              <p className="mb-4 rounded-xl bg-slate-950/50 px-4 py-3 text-sm text-slate-300">
-                লগইন করা আছে: <span className="font-sans font-semibold text-white">{user.email}</span>
+              <p className="mb-4 rounded-xl bg-slate-50 border border-slate-200 px-4 py-3 text-sm text-slate-700">
+                লগইন করা আছে: <span className="font-sans font-bold text-slate-900">{user.email}</span>
               </p>
             ) : (
               needsAccount && (
                 <>
                   <GoogleButton next="/checkout" label="Google দিয়ে এক ক্লিকে অ্যাকাউন্ট খুলুন" divider="অথবা নিচের তথ্য দিন" />
-                  <p className="mb-4 text-sm text-slate-400">
+                  <p className="mb-4 text-sm text-slate-500">
                     আগে থেকে অ্যাকাউন্ট আছে?{' '}
-                    <Link to="/login?next=/checkout" className="font-semibold text-emerald-400 underline-offset-2 hover:underline">
+                    <Link to="/login?next=/checkout" className="font-semibold text-[#0284C7] underline-offset-2 hover:underline">
                       লগইন করুন
                     </Link>
                   </p>
@@ -250,13 +250,13 @@ export default function Checkout() {
           </Step>
 
           {formError && (
-            <div role="alert" className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+            <div role="alert" className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
               <p>{formError.message}</p>
               <a
                 href={formError.whatsappOrder}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 inline-block font-semibold text-white underline underline-offset-2"
+                className="mt-2 inline-block font-semibold text-red-900 underline underline-offset-2"
               >
                 টাকা পাঠিয়ে ফেলেছেন? হোয়াটসঅ্যাপে TrxID পাঠান →
               </a>
@@ -266,13 +266,13 @@ export default function Checkout() {
           <button
             type="submit"
             disabled={submitting}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 py-4 text-lg font-extrabold text-slate-950 shadow-xl shadow-emerald-500/20 transition hover:brightness-110 disabled:opacity-60"
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#0284C7] hover:bg-[#0369A1] py-4 text-base sm:text-lg font-bold text-white shadow-studio transition duration-200 active:scale-[0.98] disabled:opacity-60"
           >
             {submitting && <LoaderCircle className="size-5 animate-spin" aria-hidden="true" />}
             {supabase ? 'অর্ডার কনফার্ম করুন' : 'হোয়াটসঅ্যাপে অর্ডার পাঠান'}
           </button>
-          <p className="flex items-center justify-center gap-1.5 text-center text-xs text-slate-400">
-            <Lock className="size-3.5" aria-hidden="true" />
+          <p className="flex items-center justify-center gap-1.5 text-center text-xs text-slate-500">
+            <Lock className="size-3.5 text-slate-400" aria-hidden="true" />
             আপনার তথ্য সুরক্ষিত। পেমেন্ট যাচাই হলেই কোর্স চালু হবে ({PAYMENT.verifyTime})।
           </p>
         </form>

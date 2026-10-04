@@ -38,18 +38,20 @@ export default function Legal({ doc }) {
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
-      <h1 className="text-3xl font-bold text-white">{title}</h1>
-      <p className="mt-2 text-sm text-slate-500">সর্বশেষ হালনাগাদ: সেপ্টেম্বর ২০২৬</p>
-      <ol className="mt-10 space-y-8">
-        {sections.map(([heading, text], i) => (
-          <li key={heading}>
-            <h2 className="text-lg font-bold text-white">
-              {i + 1}. {heading}
-            </h2>
-            <p className="mt-2 leading-relaxed text-slate-300">{text}</p>
-          </li>
-        ))}
-      </ol>
+      <div className="rounded-3xl border border-slate-200/90 bg-white p-6 shadow-studio sm:p-10">
+        <h1 className="text-3xl font-extrabold text-[#0F172A]">{title}</h1>
+        <p className="mt-2 text-sm text-slate-500">সর্বশেষ হালনাগাদ: সেপ্টেম্বর ২০২৬</p>
+        <ol className="mt-10 space-y-8">
+          {sections.map(([heading, text], i) => (
+            <li key={heading}>
+              <h2 className="text-lg font-bold text-[#0F172A]">
+                {i + 1}. {heading}
+              </h2>
+              <p className="mt-2 leading-relaxed text-slate-600">{text}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
     </article>
   );
 }

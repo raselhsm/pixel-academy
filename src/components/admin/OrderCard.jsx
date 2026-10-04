@@ -32,11 +32,11 @@ export default function OrderCard({ order, onReview }) {
   const amountMismatch = !manual && order.amount !== PRICE.amount;
 
   return (
-    <li className="rounded-2xl border border-slate-800 bg-slate-900/50 p-4 sm:p-5">
+    <li className="rounded-2xl border border-slate-200/90 bg-white p-4 shadow-studio sm:p-5">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <p className="font-bold text-white">{order.full_name}</p>
-          <a href={`tel:${order.phone}`} className="mt-0.5 inline-flex items-center gap-1 font-sans text-sm text-slate-400 hover:text-white">
+          <p className="font-bold text-[#0F172A]">{order.full_name}</p>
+          <a href={`tel:${order.phone}`} className="mt-0.5 inline-flex items-center gap-1 font-sans text-sm text-slate-500 hover:text-[#0284C7]">
             <Phone className="size-3.5" /> {order.phone}
           </a>
         </div>
@@ -46,47 +46,49 @@ export default function OrderCard({ order, onReview }) {
         </div>
       </div>
 
-      <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 rounded-xl bg-slate-950/50 p-3 text-sm sm:grid-cols-4">
+      <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 rounded-xl border border-slate-100 bg-slate-50/80 p-3 text-sm sm:grid-cols-4">
         <div>
           <dt className="text-xs text-slate-500">মেথড</dt>
-          <dd className="font-semibold text-white">{METHOD_LABELS[order.payment_method]}</dd>
+          <dd className="font-semibold text-slate-900">{METHOD_LABELS[order.payment_method]}</dd>
         </div>
         <div>
           <dt className="text-xs text-slate-500">যে নম্বর থেকে</dt>
-          <dd className="font-sans font-semibold text-white">{order.sender_number}</dd>
+          <dd className="font-sans font-semibold text-slate-900">{order.sender_number}</dd>
         </div>
         <div className="col-span-2 sm:col-span-1">
           <dt className="text-xs text-slate-500">TrxID</dt>
-          <dd className="flex flex-wrap items-center gap-2 font-sans font-bold text-emerald-300">
+          <dd className="flex flex-wrap items-center gap-2 font-sans font-bold text-[#0284C7]">
             {order.trx_id}
             <CopyButton text={order.trx_id} />
           </dd>
         </div>
         <div>
           <dt className="text-xs text-slate-500">পরিমাণ</dt>
-          <dd className={`font-semibold ${amountMismatch ? 'text-amber-300' : 'text-white'}`}>
+          <dd className={`font-semibold ${amountMismatch ? 'text-amber-800' : 'text-slate-900'}`}>
             ৳{toBnDigits(order.amount)}
-            {amountMismatch && <span className="block text-[11px] font-normal">বর্তমান দাম ৳{toBnDigits(PRICE.amount)}</span>}
+            {amountMismatch && <span className="block text-[11px] font-normal text-amber-700">বর্তমান দাম ৳{toBnDigits(PRICE.amount)}</span>}
           </dd>
         </div>
       </dl>
 
       {order.note && order.status === 'rejected' && (
-        <p className="mt-3 text-xs text-red-300">
+        <p className="mt-3 text-xs text-red-700">
           <span className="font-semibold">বাতিলের কারণ:</span> {order.note}
         </p>
       )}
 
       {rejecting ? (
-        <div className="mt-4 space-y-3 rounded-xl border border-red-500/30 bg-red-500/5 p-3">
-          <p className="text-sm font-semibold text-white">কেন বাতিল করছেন? (শিক্ষার্থী এটি দেখতে পাবে)</p>
+        <div className="mt-4 space-y-3 rounded-xl border border-red-200 bg-red-50/60 p-3">
+          <p className="text-sm font-semibold text-red-900">কেন বাতিল করছেন? (শিক্ষার্থী এটি দেখতে পাবে)</p>
           <div className="flex flex-wrap gap-2">
             {REJECT_REASONS.map((reason) => (
               <button
                 key={reason}
                 type="button"
                 onClick={() => setNote(reason)}
-                className={`rounded-full border px-3 py-1 text-xs transition ${note === reason ? 'border-red-400 text-red-200' : 'border-slate-700 text-slate-300 hover:border-slate-500'}`}
+                className={`rounded-full border px-3 py-1 text-xs transition ${
+                  note === reason ? 'border-red-400 bg-red-100 text-red-900' : 'border-slate-300 bg-white text-slate-700 hover:border-slate-400'
+                }`}
               >
                 {reason}
               </button>
@@ -120,7 +122,12 @@ export default function OrderCard({ order, onReview }) {
             </button>
           )}
           {order.status !== 'pending' && (
-            <a href={whatsappLink(order.phone, message)} target="_blank" rel="noopener noreferrer" className={`${buttonStyles.secondary} border-[#25D366]/50 text-[#5ee08f]`}>
+            <a
+              href={whatsappLink(order.phone, message)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${buttonStyles.secondary} border-emerald-300 text-emerald-800 hover:bg-emerald-50`}
+            >
               <MessageCircle className="size-4" /> শিক্ষার্থীকে জানান
             </a>
           )}

@@ -49,7 +49,9 @@ export default function Orders() {
               aria-selected={status === t.key}
               onClick={() => setStatus(t.key)}
               className={`shrink-0 rounded-full px-4 py-2 text-sm font-semibold transition ${
-                status === t.key ? 'bg-emerald-500 text-slate-950' : 'bg-slate-800/70 text-slate-300 hover:text-white'
+                status === t.key
+                  ? 'bg-[#0284C7] text-white shadow-2xs font-bold'
+                  : 'border border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50'
               }`}
             >
               {t.label}
@@ -58,7 +60,7 @@ export default function Orders() {
         </div>
         <label className="relative sm:w-72">
           <span className="sr-only">অর্ডার খুঁজুন</span>
-          <Search className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-slate-500" aria-hidden="true" />
+          <Search className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-slate-400" aria-hidden="true" />
           <input
             type="search"
             value={search}

@@ -18,9 +18,13 @@ export default function CopyButton({ text, label = 'কপি' }) {
     <button
       type="button"
       onClick={copy}
-      className="inline-flex items-center gap-1.5 rounded-lg border border-slate-700 bg-slate-800/80 px-3 py-1.5 text-xs font-semibold text-slate-200 transition hover:border-emerald-500/50 hover:text-white"
+      className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-semibold shadow-2xs transition ${
+        copied
+          ? 'border-emerald-300 bg-emerald-50 text-emerald-800'
+          : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900'
+      }`}
     >
-      {copied ? <Check className="size-3.5 text-emerald-400" /> : <Copy className="size-3.5" />}
+      {copied ? <Check className="size-3.5 text-emerald-600" /> : <Copy className="size-3.5 text-slate-500" />}
       {copied ? 'কপি হয়েছে' : label}
     </button>
   );

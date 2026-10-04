@@ -37,7 +37,7 @@ function LessonRow({ lesson, index, isFirst, isLast, onMove, onSave, onDelete })
 
   return (
     <li className="grid gap-3 px-4 py-4 sm:px-5 lg:grid-cols-[auto_1fr_5rem_1.2fr_auto] lg:items-start">
-      <span className="flex size-8 items-center justify-center rounded-lg bg-slate-800 font-sans text-xs font-bold text-slate-300">
+      <span className="flex size-8 items-center justify-center rounded-lg bg-slate-100 font-sans text-xs font-bold text-slate-700">
         {toBnDigits(index + 1)}
       </span>
       <label>
@@ -51,23 +51,23 @@ function LessonRow({ lesson, index, isFirst, isLast, onMove, onSave, onDelete })
       <label>
         <span className="sr-only">ভিডিও লিংক</span>
         <div className="relative">
-          <Video className={`pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 ${embed ? 'text-emerald-400' : 'text-slate-500'}`} aria-hidden="true" />
+          <Video className={`pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 ${embed ? 'text-[#0284C7]' : 'text-slate-400'}`} aria-hidden="true" />
           <input
             value={videoUrl}
             onChange={(e) => setVideoUrl(e.target.value)}
             placeholder="YouTube (unlisted) / Vimeo / Bunny লিংক"
-            className={`${inputStyles} pl-10 font-sans ${badLink ? 'border-red-500/70' : ''}`}
+            className={`${inputStyles} pl-10 font-sans ${badLink ? 'border-red-400' : ''}`}
             spellCheck={false}
           />
         </div>
         {badLink ? (
-          <span className="mt-1 flex items-center gap-1 text-xs text-red-400">
+          <span className="mt-1 flex items-center gap-1 text-xs text-red-600">
             <CircleAlert className="size-3.5" /> সঠিক লিংক দিন (https:// দিয়ে শুরু)
           </span>
         ) : !videoUrl.trim() ? (
-          <span className="mt-1 block text-xs text-amber-300">খসড়া — ভিডিও লিংক না দেওয়া পর্যন্ত সাইটে দেখাবে না</span>
+          <span className="mt-1 block text-xs text-amber-700">খসড়া — ভিডিও লিংক না দেওয়া পর্যন্ত সাইটে দেখাবে না</span>
         ) : (
-          <a href={videoUrl.trim()} target="_blank" rel="noopener noreferrer" className="mt-1 inline-flex items-center gap-1 text-xs text-slate-400 hover:text-white">
+          <a href={videoUrl.trim()} target="_blank" rel="noopener noreferrer" className="mt-1 inline-flex items-center gap-1 text-xs text-slate-500 hover:text-slate-800">
             <ExternalLink className="size-3" /> লিংক খুলে দেখুন
           </a>
         )}
@@ -83,7 +83,7 @@ function LessonRow({ lesson, index, isFirst, isLast, onMove, onSave, onDelete })
         <button type="button" onClick={() => onMove(1)} disabled={isLast} className={buttonStyles.icon} aria-label="নিচে সরান">
           <ArrowDown className="size-4" />
         </button>
-        <button type="button" onClick={onDelete} className={`${buttonStyles.icon} hover:text-red-400`} aria-label="লেসন মুছুন">
+        <button type="button" onClick={onDelete} className={`${buttonStyles.icon} hover:text-red-600`} aria-label="লেসন মুছুন">
           <Trash2 className="size-4" />
         </button>
       </div>
@@ -97,8 +97,8 @@ function ModuleCard({ module, index, isFirst, isLast, run }) {
 
   return (
     <Panel>
-      <div className="flex flex-col gap-3 border-b border-slate-800 px-4 py-4 sm:flex-row sm:items-center sm:px-5">
-        <span className="shrink-0 rounded-md border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 font-sans text-xs font-bold text-emerald-400">
+      <div className="flex flex-col gap-3 border-b border-slate-100 px-4 py-4 sm:flex-row sm:items-center sm:px-5">
+        <span className="shrink-0 rounded-md border border-sky-200 bg-sky-50 px-2.5 py-1 font-sans text-xs font-bold text-[#0284C7]">
           Module {String(index + 1).padStart(2, '0')}
         </span>
         <input
@@ -118,7 +118,7 @@ function ModuleCard({ module, index, isFirst, isLast, run }) {
           <button
             type="button"
             onClick={() => window.confirm(`"${module.title}" মডিউল ও এর ${lessons.length}টি লেসন মুছে ফেলবেন?`) && run(() => deleteModule(module.id))}
-            className={`${buttonStyles.icon} hover:text-red-400`}
+            className={`${buttonStyles.icon} hover:text-red-600`}
             aria-label="মডিউল মুছুন"
           >
             <Trash2 className="size-4" />
@@ -126,7 +126,7 @@ function ModuleCard({ module, index, isFirst, isLast, run }) {
         </div>
       </div>
 
-      <ul className="divide-y divide-slate-800/70">
+      <ul className="divide-y divide-slate-100">
         {lessons.map((lesson, i) => (
           <LessonRow
             key={`${lesson.id}:${lesson.title}:${lesson.video_url}:${lesson.duration}`}
@@ -142,7 +142,7 @@ function ModuleCard({ module, index, isFirst, isLast, run }) {
       </ul>
 
       <div className="px-4 py-3 sm:px-5">
-        <button type="button" onClick={() => run(() => addLesson(module.id, 'নতুন লেসন', nextPosition(lessons)))} className="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-400 hover:text-emerald-300">
+        <button type="button" onClick={() => run(() => addLesson(module.id, 'নতুন লেসন', nextPosition(lessons)))} className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0284C7] hover:text-[#0369A1]">
           <Plus className="size-4" /> লেসন যোগ করুন
         </button>
       </div>
@@ -183,9 +183,9 @@ export default function Content() {
         }
       />
 
-      <div className="mb-5 rounded-2xl border border-slate-800 bg-slate-900/50 p-4 text-sm leading-relaxed text-slate-400">
-        <p className="font-semibold text-slate-200">ভিডিও যোগ করার নিয়ম</p>
-        YouTube-এ ভিডিও আপলোড করে Visibility <span className="font-semibold text-white">Unlisted</span> দিন, তারপর লিংকটি এখানে পেস্ট করে সেভ করুন।
+      <div className="mb-5 rounded-2xl border border-slate-200/90 bg-slate-50/80 p-4 text-sm leading-relaxed text-slate-600 shadow-2xs">
+        <p className="font-semibold text-slate-900">ভিডিও যোগ করার নিয়ম</p>
+        YouTube-এ ভিডিও আপলোড করে Visibility <span className="font-semibold text-slate-900">Unlisted</span> দিন, তারপর লিংকটি এখানে পেস্ট করে সেভ করুন।
         শুধু যাদের পেমেন্ট অনুমোদিত তারাই লিংক দেখতে পাবে। আরও সুরক্ষার জন্য Bunny Stream বা Vimeo-র embed লিংকও দিতে পারেন।
       </div>
 
