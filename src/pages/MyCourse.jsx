@@ -63,7 +63,7 @@ function CoursePlayer({ modules }) {
         <Player lesson={lesson} />
         <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div>
-            <p className="text-xs font-semibold text-emerald-400">
+            <p className="text-xs font-semibold text-brand-400">
               মডিউল {toBnDigits(lesson.moduleNo)} • লেসন {toBnDigits(index + 1)}/{toBnDigits(lessons.length)}
             </p>
             <h1 className="mt-1 text-xl font-bold text-white sm:text-2xl">{lesson.title}</h1>
@@ -81,7 +81,7 @@ function CoursePlayer({ modules }) {
               type="button"
               disabled={index === lessons.length - 1}
               onClick={() => go(index + 1)}
-              className="flex items-center gap-1 rounded-xl bg-emerald-500 px-4 py-2.5 text-sm font-bold text-slate-950 transition hover:bg-emerald-400 disabled:opacity-40"
+              className="flex items-center gap-1 rounded-xl bg-brand-500 px-4 py-2.5 text-sm font-bold text-slate-950 transition hover:bg-brand-400 disabled:opacity-40"
             >
               পরের <ChevronRight className="size-4" />
             </button>
@@ -106,10 +106,10 @@ function CoursePlayer({ modules }) {
                       onClick={() => setCurrentId(l.id)}
                       aria-current={active ? 'true' : undefined}
                       className={`flex w-full items-start gap-3 px-5 py-3 text-left text-sm transition ${
-                        active ? 'bg-emerald-500/10 text-emerald-300' : 'text-slate-300 hover:bg-slate-800/60'
+                        active ? 'bg-brand-500/10 text-brand-300' : 'text-slate-300 hover:bg-slate-800/60'
                       }`}
                     >
-                      <CirclePlay className={`mt-0.5 size-4 shrink-0 ${active ? 'text-emerald-400' : 'text-slate-500'}`} aria-hidden="true" />
+                      <CirclePlay className={`mt-0.5 size-4 shrink-0 ${active ? 'text-brand-400' : 'text-slate-500'}`} aria-hidden="true" />
                       <span className="flex-1">{l.title}</span>
                       {l.duration && <span className="shrink-0 font-sans text-xs tabular-nums text-slate-500">{l.duration}</span>}
                     </button>
@@ -153,7 +153,7 @@ export default function MyCourse() {
       <div className="mx-auto max-w-md px-4 py-16 text-center">
         <h1 className="text-2xl font-bold text-white">আপনি এখনো কোর্সটি কেনেননি</h1>
         <p className="mt-3 text-sm text-slate-400">বিকাশ বা নগদে পেমেন্ট করে আজই শেখা শুরু করুন।</p>
-        <Link to="/checkout" className="mt-6 inline-block rounded-xl bg-emerald-500 px-6 py-3 font-bold text-slate-950 hover:bg-emerald-400">
+        <Link to="/checkout" className="mt-6 inline-block rounded-xl bg-brand-500 px-6 py-3 font-bold text-slate-950 hover:bg-brand-400">
           কোর্সটি কিনুন →
         </Link>
       </div>

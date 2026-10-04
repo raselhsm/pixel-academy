@@ -20,3 +20,9 @@ export function whatsappLink(phone, text) {
   const number = phone.replace(/^0/, '880');
   return `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
 }
+
+// "2 দিন 04:12:09"; days only while more than one is left.
+export function formatLeft(left) {
+  const clock = `${left.hours}:${left.minutes}:${left.seconds}`;
+  return left.days > 0 ? `${toBnDigits(left.days)} দিন ${toBnDigits(clock)}` : toBnDigits(clock);
+}

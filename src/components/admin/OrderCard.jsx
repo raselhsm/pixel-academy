@@ -57,7 +57,7 @@ export default function OrderCard({ order, onReview }) {
         </div>
         <div className="col-span-2 sm:col-span-1">
           <dt className="text-xs text-slate-500">TrxID</dt>
-          <dd className="flex flex-wrap items-center gap-2 font-sans font-bold text-emerald-300">
+          <dd className="flex flex-wrap items-center gap-2 font-sans font-bold text-brand-300">
             {order.trx_id}
             <CopyButton text={order.trx_id} />
           </dd>

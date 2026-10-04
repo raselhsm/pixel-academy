@@ -10,7 +10,7 @@ export default function SetupNotice() {
         কোর্স কিনতে বা অ্যাক্সেস পেতে হোয়াটসঅ্যাপে যোগাযোগ করুন অথবা চেকআউট পেজ থেকে অর্ডার পাঠান।
       </p>
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
-        <Link to="/checkout" className="rounded-xl bg-emerald-500 px-6 py-3 font-bold text-slate-950 hover:bg-emerald-400">
+        <Link to="/checkout" className="rounded-xl bg-brand-500 px-6 py-3 font-bold text-slate-950 hover:bg-brand-400">
           কোর্সটি কিনুন
         </Link>
         <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="rounded-xl border border-slate-600 px-6 py-3 font-semibold text-slate-200 hover:border-slate-400">

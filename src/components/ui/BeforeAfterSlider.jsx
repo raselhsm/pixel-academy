@@ -51,7 +51,7 @@ export default function BeforeAfterSlider({ image, beforeImage, alt, className =
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onKeyDown={onKeyDown}
-      className={`relative cursor-ew-resize touch-pan-y select-none overflow-hidden rounded-2xl bg-slate-900 outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 ${className}`}
+      className={`relative cursor-ew-resize touch-pan-y select-none overflow-hidden rounded-2xl bg-slate-900 outline-none focus-visible:ring-2 focus-visible:ring-brand-400 ${className}`}
     >
       <img
         src={image}
@@ -60,8 +60,8 @@ export default function BeforeAfterSlider({ image, beforeImage, alt, className =
         fetchPriority="high"
         className="absolute inset-0 size-full object-cover"
       />
-      <span className="pointer-events-none absolute right-4 top-4 rounded-full bg-emerald-500 px-3 py-1 font-sans text-[11px] font-bold uppercase tracking-wider text-slate-950">
-        Lightroom Edit
+      <span className="pointer-events-none absolute right-4 top-4 rounded-full bg-brand-500 px-3 py-1 font-sans text-[11px] font-bold uppercase tracking-wider text-slate-950">
+        Lightroom Graded
       </span>
 
       <div
@@ -82,10 +82,10 @@ export default function BeforeAfterSlider({ image, beforeImage, alt, className =
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 w-0.5 -translate-x-1/2 bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.8)]"
+        className="pointer-events-none absolute inset-y-0 w-0.5 -translate-x-1/2 bg-brand-400 shadow-[0_0_12px_rgba(49,168,255,0.8)]"
         style={{ left: `${pos}%` }}
       >
-        <div className="absolute left-1/2 top-1/2 flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-emerald-400 text-slate-950 shadow-xl ring-4 ring-emerald-400/25">
+        <div className="absolute left-1/2 top-1/2 flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-brand-400 text-slate-950 shadow-xl ring-4 ring-brand-400/25">
           <ChevronsLeftRight className="size-5" strokeWidth={2.5} />
         </div>
       </div>

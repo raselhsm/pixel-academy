@@ -2,7 +2,7 @@
 
 export const STATUS = {
   pending: { label: 'যাচাই বাকি', badge: 'bg-amber-500/15 text-amber-300' },
-  approved: { label: 'অনুমোদিত', badge: 'bg-emerald-500/15 text-emerald-300' },
+  approved: { label: 'অনুমোদিত', badge: 'bg-brand-500/15 text-brand-300' },
   rejected: { label: 'বাতিল', badge: 'bg-red-500/15 text-red-300' },
 };
 

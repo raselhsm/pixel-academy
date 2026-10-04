@@ -18,7 +18,7 @@ const STATES = {
   },
   approved: {
     Icon: CircleCheck,
-    tone: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300',
+    tone: 'border-brand-500/30 bg-brand-500/10 text-brand-300',
     title: 'আপনি কোর্সটি কিনেছেন',
     text: 'লাইফটাইম অ্যাক্সেস চালু আছে। এখনই দেখা শুরু করুন।',
   },
@@ -44,7 +44,7 @@ export default function OrderStatus({ order }) {
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
           {order.status === 'approved' ? (
-            <Link to="/my-course" className="rounded-xl bg-emerald-500 px-6 py-3 font-bold text-slate-950 transition hover:bg-emerald-400">
+            <Link to="/my-course" className="rounded-xl bg-brand-500 px-6 py-3 font-bold text-slate-950 transition hover:bg-brand-400">
               কোর্স দেখুন →
             </Link>
           ) : (
